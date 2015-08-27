@@ -7,7 +7,7 @@ source ./MUTPARAMS.sh
 #MAKE COMMAND NAME out of parameters. Then run.
 COMMAND="python mutex_triangles.py"
 
-if [ $MUTATIONMATRIX ]
+if [ $MUTATIONMATRIXPATH ]
 then
     COMMAND=${COMMAND}" -m $MUTATIONMATRIXPATH"
 fi

@@ -1,0 +1,83 @@
+# Centralized parameter file
+
+# ************************************************************************************
+# INPUT OUTPUT
+# ************************************************************************************
+
+export MUTATIONMATRIXPATH=/Users/jlu96/conte/jlu/mutex/data/ACC_broad-som.m2
+
+# This will be prefix all of the output files.
+export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/ACC_broad-som
+
+
+# ************************************************************************************
+# LOADING PARAMETERS
+# ************************************************************************************
+
+# Limit to genes mutated in at least this # of patients
+export MINFREQ=
+
+# Limit to genes mutated in at least this % of patients
+export MINPERCENTILE=2
+
+# Limit to this # of top most frequently mutated genes
+export TOP_NUMBER=
+
+# List of patients to limit loading to
+export PATIENTFILE=$FOLDER/shared_patients.plst
+
+# List of Genes to limit loading to
+export GENEFILE=COSMICGenes_OnlyLoss.txt
+
+# Blacklists
+export PATIENTBLACKLIST=
+export GENEBLACKLIST=
+
+
+
+# ************************************************************************************
+# LIMIT WHICH PAIRS TO TEST
+# ************************************************************************************
+
+# If GENELIST1 and GENELIST2 are both set, only pairs containing one gene in GENELIST1 and one in
+# GENELIST2 will be tested. If only GENELIST1 is set, only pairs containing two genes in GENELIST1
+# Will be tested.
+export GENELIST1=
+export GENELIST2=
+
+# If set, only test pairs from PAIRLIST. The column header must be "Gene0   Gene1"
+export PAIRLIST=
+
+# If set, only test genes that are at least this distance away.
+# This will only apply to genes ending in "gain" or "loss".
+# E.G. Say TP53 and MYC are 30 bp away. If the threshold is set to 1000000, the pair (TP53gain, MYCloss) will not
+# be tested. But the pair (TP53, MYCloss) would be tested. This allows only Copy Number pairs to be
+# filtered out
+export MINDISTANCETHRESHOLD=100000000
+
+
+
+# ************************************************************************************
+# CALCULATION PARAMETERS
+# ************************************************************************************
+
+# Mutex Pair PValue Threshold. Default is 0.05
+export MPROB=
+# Maximum Overlap between mutually exclusive pairs.
+export MAXOVERLAP=
+
+
+# Cooccur Pair PValue Threshold. Default is 0.05
+export CPROB=
+# Minimum overlap between cooccurring pairs
+export MINCOOCCUR=
+# minimum co-occurrence ratio for cooccuring pairs. This is the overlap/
+export MINRATIO=
+
+
+# If "Triplet", search for triplets among pairs. If "Network", calculate Network attributes
+export GROUPTYPE=Triplet
+
+
+# Number of processes to start and divide parameter testing across.
+export NUMPROCESSES=3

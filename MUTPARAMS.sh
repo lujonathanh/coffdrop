@@ -4,10 +4,10 @@
 # INPUT OUTPUT
 # ************************************************************************************
 
-export MUTATIONMATRIXPATH=
+export MUTATIONMATRIXPATH=/Users/jlu96/conte/jlu/mutex/data/ACC_broad-som.m2
 
 # This will be prefix all of the output files.
-export OUTPUTPREFIX=
+export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/ACC_broad-som
 
 
 # ************************************************************************************
@@ -18,16 +18,16 @@ export OUTPUTPREFIX=
 export MINFREQ=
 
 # Limit to genes mutated in at least this % of patients
-export MINPERCENTILE=2
+export MINPERCENTILE=10
 
 # Limit to this # of top most frequently mutated genes
 export TOP_NUMBER=
 
 # List of patients to limit loading to
-export PATIENTFILE=$FOLDER/shared_patients.plst
+export PATIENTFILE=
 
 # List of Genes to limit loading to
-export GENEFILE=COSMICGenes_OnlyLoss.txt
+export GENEFILE=
 
 # Blacklists
 export PATIENTBLACKLIST=
@@ -53,7 +53,7 @@ export PAIRLIST=
 # E.G. Say TP53 and MYC are 30 bp away. If the threshold is set to 1000000, the pair (TP53gain, MYCloss) will not
 # be tested. But the pair (TP53, MYCloss) would be tested. This allows only Copy Number pairs to be
 # filtered out
-export MINDISTANCETHRESHOLD=100000000
+export MINDISTANCETHRESHOLD=
 
 
 
@@ -80,4 +80,4 @@ export GROUPTYPE=Triplet
 
 
 # Number of processes to start and divide parameter testing across.
-export NUMPROCESSES=3
+export NUMPROCESSES=

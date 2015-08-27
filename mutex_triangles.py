@@ -8,8 +8,6 @@ from scipy import stats
 import edgereader as edg
 import networkx as nx
 import sys
-import gainlosscombine as glc
-# import genedistancefilter as gdf
 import parallel_compute_working as pac
 import bingenesbypairs as bgbp
 
@@ -39,9 +37,7 @@ class Triangle:
 
         self.statsdict = {}
 
-    #     self.calcstats()
-    #
-    # def calcstats(self):
+
 
 
     def getwritabledict(self):
@@ -1366,7 +1362,6 @@ def get_parser():
     parser.add_argument('-rpt', '--ridiculous_pvalue_thresh', type=float, default=0, help="Filter ridiculous pvalues")
 
 
-    parser.add_argument('-glc', '--gainlosscombine', type=int, default=0, help='Combine gain and loss in file')
     parser.add_argument('-fc', '--filter_cooccur', default=False, help='Filter cooccurring pairs')
     parser.add_argument('-ud', '--use_downstream', default=True, help='Use the cooccurring pairs downstream')
 
@@ -1528,12 +1523,10 @@ def run(args):
         if top_number:
             numGenes, numCases, genes, patients, geneToCases, patientToGenes = mex.filtertopnumbermatrix(top_number, *mutations)
 
-        # numGenes, numCases, genes, patients, geneToCases, patientToGenes = mex.load_mutation_data(mutationmatrix, minFreq=minFreq)
 
         print "Post-filter Mutation data: %s genes x %s patients" % (numGenes, numCases)
         tload = time.time()
-        # print "Filtered in ", tload - t1
-        # print "Current time ", time.strftime("%H:%M:%S")
+
 
     else:
         numGenes, numCases, genes, patients, geneToCases, patientToGenes = None, None, [None], [None], None, None
@@ -1568,7 +1561,7 @@ def run(args):
                        + '.pcn' + ('0' if not parallel_compute_number else str(parallel_compute_number))
 
 
-
+        print "Getting gene pairs to test..."
         if gene_list_1 and gene_list_2:
             genepairs = getgenepairs(geneToCases, genes1=gene_list_1, genes2=gene_list_2)
         elif gene_list_1:
@@ -1578,14 +1571,9 @@ def run(args):
         else:
             genepairs = getgenepairs(geneToCases, genes1=genes)
 
+        print "Gene pairs finished"
 
         # MUTEX BEGINNING HERE
-
-        # filter the genes by if present in file
-        if filter_coding:
-            print len(genepairs), " gene pairs before filtering by coding."
-            genepairs = filter_pair_coding(genepairs)
-            print len(genepairs), " gene pairs after filtering by coding."
 
 
         if cooccur_distance_threshold:
@@ -1602,35 +1590,6 @@ def run(args):
 
         mpairsdict, mgenedict = complete_mutexpairs(numCases, geneToCases, patientToGenes, genepairs, mprob, maxOverlap, parallel_compute_number,
                 filter_mutex_gain_loss, filter_mutex_same_segment)
-
-
-
-        if bin_genes_by_pairs:
-            # combined_pairsdict = cpairsdict.copy()
-            # combined_pairsdict.update(mpairsdict)
-
-            gene_bin_entries, geneToBin, bins, bin_sets, bin_setToBin, \
-            geneToCases, patientToGenes = bin_genes_cooccur_same_segment(cpairsdict, geneToCases, patientToGenes, fcss_cratiothresh, fcss_mutfreqdiffthresh,
-                                   fcss_mutfreqdiffratiothresh, fcss_coveragethresh, fcss_probabilitythresh,
-                                                filename=file_prefix + '_binnedgenes.tsv')
-            # Update the genes to the new bins
-            genes = convert_genes_to_bins(genes, geneToBin)
-
-
-            # Only need to test certain cgenepairs.
-            cgenepairs_binned = genedict_to_bin_pairs(cgenedict, geneToBin, bin_sets, bin_setToBin)
-
-            # Update the cpairs
-            cpairsdict, cgenedict = complete_cooccurpairs(numCases, geneToCases, patientToGenes, cgenepairs_binned, cprob, minCooccur,
-                  cooccur_distance_threshold, min_cooccurrence_ratio, parallel_compute_number,
-                  filter_cooccur_same_segment, fcss_cratiothresh, fcss_mutfreqdiffratiothresh,
-                  fcss_coveragethresh, fcss_probabilitythresh)
-
-            mgenepairs_binned = genedict_to_bin_pairs(mgenedict, geneToBin, bin_sets, bin_setToBin)
-
-            mpairsdict, mgenedict = complete_mutexpairs(numCases, geneToCases, patientToGenes, mgenepairs_binned, mprob, maxOverlap, parallel_compute_number,
-                filter_mutex_gain_loss, filter_mutex_same_segment)
-
 
 
         if ridiculous_pvalue_thresh:
@@ -1663,28 +1622,6 @@ def run(args):
             writeanydict(cpairsdict, file_prefix + 'Cpairs.tsv')
             writegenedict(cgenedict, file_prefix + 'Cgenes.tsv')
             print len(cpairsdict), 'Cooccur pairs written to ', file_prefix + 'Cpairs.tsv'
-
-
-
-
-
-    # Filter the cooccurring pairs by score.
-
-    #Filter and write pairs.
-
-    if gainlosscombine:
-        if mpairsdict:
-            mpairsdict = glc.gainlosscombine(mpairsdict, combine_type='mutex')
-            mgenedict = edg.get_gene_dict(mpairsdict)
-            file_prefix += '.mglc' + str(len(mpairsdict))
-            writeanydict(mpairsdict, file_prefix + 'Mpairs_glc.tsv')
-            print len(mpairsdict), "GainlossCombined Mutex pairs written to ", file_prefix + 'Mpairs_glc.tsv'
-        if cpairsdict:
-            cpairsdict = glc.gainlosscombine(cpairsdict, combine_type='cooccur')
-            cgenedict = edg.get_gene_dict(cpairsdict)
-            file_prefix += '.cglc' + str(len(cpairsdict))
-            writeanydict(cpairsdict, file_prefix + 'Cpairs_glc.tsv')
-            print len(cpairsdict), 'GainLossCombined Cooccur pairs written to ', file_prefix + 'Cpairs_glc.tsv'
 
 
 
@@ -1751,16 +1688,6 @@ def run(args):
         name = "Triangles"
         Triangles, mpairsdict_Triangles, cpairsdict_Triangles, sorted_mpairs, sorted_cpairs = getTriangles(mpairsdict, mgenedict, cpairsdict, cgenedict, name=name)
 
-        # Get the mpairs and cpairs NOT in the triangles
-        #mpairsdict_Triangles = sorted
-        # mpairsdict_noTriangles, cpairsdict_noTriangles = mpairsdict.copy(), cpairsdict.copy()
-        # for mpair in mpairsdict:
-        #     if mpair in mpairsdict_Triangles:
-        #         mpairsdict_noTriangles.pop(mpair)
-        #
-        # for cpair in cpairsdict:
-        #     if cpair in cpairsdict_Triangles:
-        #         cpairsdict_noTriangles.pop(cpair)
 
 
 

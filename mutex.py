@@ -14,7 +14,6 @@ import functools
 from scipy.misc import comb
 import csv
 import bingenesbypairs as bgbp
-# import mutexnetwork as mun
 
 
 def aremutex(genes, geneToCases, maxOverlap=0):

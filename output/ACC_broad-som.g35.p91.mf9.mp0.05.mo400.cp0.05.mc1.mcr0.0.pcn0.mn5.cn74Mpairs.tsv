@@ -1,0 +1,6 @@
+MutationFrequencyDifferenceRatio	Concordance	Probability	Gene0	Gene1	CooccurrenceRatio	MutationFrequency1	MutationFrequency0	MutationFrequencies	Somatic	Overlap	Coverage	RoundedLogPCov	MutationFrequencyDifference	Type	GeneSet
+0.41935483870967744	False	0.036153601108963623	KRTAP5-5	TUBBP5	0.0	22	9	[9, 22]	2	0	31	2.9	13	MutuallyExclusive	frozenset(['KRTAP5-5', 'TUBBP5'])
+0.3103448275862069	False	0.041716231639059471	KRTAP4-11	UPF3A	0.0	19	10	[10, 19]	2	0	29	2.8	9	MutuallyExclusive	frozenset(['KRTAP4-11', 'UPF3A'])
+0.14285714285714285	False	0.041400478269064497	MT-CO1	MUC16	0.0	16	12	[12, 16]	2	0	28	2.8	4	MutuallyExclusive	frozenset(['MT-CO1', 'MUC16'])
+0.3103448275862069	False	0.041716231639060727	OTOP1	KRTAP4-11	0.0	10	19	[19, 10]	2	0	29	2.8	9	MutuallyExclusive	frozenset(['OTOP1', 'KRTAP4-11'])
+0.10344827586206896	False	0.033015571277864135	CTNNB1	MUC16	0.0	16	13	[13, 16]	2	0	29	2.9	3	MutuallyExclusive	frozenset(['CTNNB1', 'MUC16'])
