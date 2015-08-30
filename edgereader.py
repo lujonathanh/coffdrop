@@ -5,11 +5,6 @@ import sys
 import itertools
 
 
-# Fieldnames are
-# Gene pair is frozenset. Rest is header
-
-# a write method
-
 def get_gene_dict(pairdict):
     gene_dict = {}
     for pair in pairdict:
@@ -85,18 +80,6 @@ class EdgeReader:
                             self.gene_to_pair_dict[gene].add(new_edge)
 
 
-
-                    # gene1, gene2 = tuple(edge)
-                    # if gene1 not in self.gene_dict:
-                    #     self.gene_dict[gene1] = {gene2}
-                    # else:
-                    #     self.gene_dict[gene1].add(gene2)
-                    #
-                    # if gene2 not in self.gene_dict:
-                    #     self.gene_dict[gene2] = {gene1}
-                    # else:
-                    #     self.gene_dict[gene2].add(gene1)
-
                 else:
                     print "Edge already in records!"
                     self.repeats.add(edge)
@@ -115,6 +98,10 @@ class EdgeReader:
             print "Repeated edges chosen by: ", already_column
         else:
             print "Repeats were not included."
+
+
+
+
 
 
     def rename_fieldname(self, old_fieldname, new_fieldname):
@@ -224,8 +211,8 @@ class EdgeReader:
 
             for edge in only_edges:
                 writer.writerow([gene for gene in edge] +
-                                [(self.edge_records[edge][fieldname] if self.edge_records[edge][fieldname]
-                                    else NoneStandin) for fieldname in only_fieldnames])
+                                [self.edge_records[edge][fieldname] if self.edge_records[edge][fieldname] != None
+                                    else NoneStandin for fieldname in only_fieldnames])
 
     def get_pair_dict(self):
         return self.edge_records
@@ -415,7 +402,7 @@ def run(args):
 
 
     if output:
-        print "Writing to output", output
+        print "Combined file written to output", output
         completeEdgeReader.writetooutput(output)
 
     if gene_dict_file:

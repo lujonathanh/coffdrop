@@ -1,0 +1,153 @@
+usage: run_multi_dendrix_mcmc.py [-h] -m MUTATION_MATRIX [-c CUTOFF]
+                                 [-g GENE_WHITELIST] [-bg GENE_BLACKLIST]
+                                 [-ws SAMPLE_WHITELIST] [-bs SAMPLE_BLACKLIST]
+                                 -k GENE_SET_SIZE -t NUM_GENE_SETS -o
+                                 OUTPUT_FILE [-q] [-n NUM_ITERATIONS]
+                                 [-s STEP_LENGTH] [-p NUM_PERMUTATIONS]
+                                 [--permuted_matrices_dir PERMUTED_MATRICES_DIR]
+                                 [--parallel]
+-h, --help            show this help message and exit
+  -m MUTATION_MATRIX, --mutation_matrix MUTATION_MATRIX
+                        File name for mutation data.
+  -c CUTOFF, --cutoff CUTOFF
+                        Minimum gene mutation frequency.
+  -g GENE_WHITELIST, --gene_whitelist GENE_WHITELIST
+                        File of genes to be included.
+  -bg GENE_BLACKLIST, --gene_blacklist GENE_BLACKLIST
+                        File of genes to not be included.
+  -ws SAMPLE_WHITELIST, --sample_whitelist SAMPLE_WHITELIST
+                        File of samples to be included.
+  -bs SAMPLE_BLACKLIST, --sample_blacklist SAMPLE_BLACKLIST
+                        File of samples to not be included.
+  -k GENE_SET_SIZE, --gene_set_size GENE_SET_SIZE
+                        Gene set size.
+  -t NUM_GENE_SETS, --num_gene_sets NUM_GENE_SETS
+                        Number of gene sets.
+  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                        Path to output file.
+  -q, --quiet           Quiet output flag.
+  -n NUM_ITERATIONS, --num_iterations NUM_ITERATIONS
+                        Number of iterations of MCMC.
+  -s STEP_LENGTH, --step_length STEP_LENGTH
+                        Number of iterations between samples.
+  -p NUM_PERMUTATIONS, --num_permutations NUM_PERMUTATIONS
+                        Number of permutations to perform.
+  --permuted_matrices_dir PERMUTED_MATRICES_DIR
+                        Directory of permuted matrices.
+  --parallel            Use all available cores for permutation test
+                        (recommended for machines with at least 8 cores.
+
+python run_multi_dendrix_mcmc.py -m ~/comet/multi-dendrix-master/examples/mutation_data/GBM/GBM.m2 -k4 -t 4 -o ./testout
+
+000
+
+usage: run_comet.py [-h] -o OUTPUT_PREFIX [-v] [--seed SEED] -m
+                    MUTATION_MATRIX [-mf MIN_FREQ] [-pf PATIENT_FILE]
+                    [-gf GENE_FILE] -ks [GENE_SET_SIZES [GENE_SET_SIZES ...]]
+                    [-N NUM_ITERATIONS] [-NStop N_STOP] [-s STEP_LENGTH]
+                    [-init [INITIAL_SOLN [INITIAL_SOLN ...]]]
+                    [-acc ACCELERATOR] [-sub SUBTYPE] [-r NUM_INITIAL]
+                    [--exact_cut EXACT_CUT] [--binom_cut BINOM_CUT] [-nt NT]
+                    [-tv TOTAL_DISTANCE_CUTOFF]
+                    [--precomputed_scores PRECOMPUTED_SCORES]
+
+
+ -h, --help            show this help message and exit
+  -o OUTPUT_PREFIX, --output_prefix OUTPUT_PREFIX
+                        Output path prefix (TSV format).
+  -v, --verbose         Flag verbose output.
+  --seed SEED           Set the seed of the PRNG.
+  -m MUTATION_MATRIX, --mutation_matrix MUTATION_MATRIX
+                        File name for mutation data.
+  -mf MIN_FREQ, --min_freq MIN_FREQ
+                        Minimum gene mutation frequency.
+  -pf PATIENT_FILE, --patient_file PATIENT_FILE
+                        File of patients to be included (optional).
+  -gf GENE_FILE, --gene_file GENE_FILE
+                        File of genes to be included (optional).
+  -ks [GENE_SET_SIZES [GENE_SET_SIZES ...]], --gene_set_sizes [GENE_SET_SIZES [GENE_SET_SIZES ...]]
+                        Gene set sizes (length must be t). This or -k must be
+                        set.
+  -N NUM_ITERATIONS, --num_iterations NUM_ITERATIONS
+                        Number of iterations of MCMC.
+  -NStop N_STOP, --n_stop N_STOP
+                        Number of iterations of MCMC to stop the pipeline.
+  -s STEP_LENGTH, --step_length STEP_LENGTH
+                        Number of iterations between samples.
+  -init [INITIAL_SOLN [INITIAL_SOLN ...]], --initial_soln [INITIAL_SOLN [INITIAL_SOLN ...]]
+                        Initial solution to use.
+  -acc ACCELERATOR, --accelerator ACCELERATOR
+                        accelerating factor for target weight
+  -sub SUBTYPE, --subtype SUBTYPE
+                        File with a list of subtype for performing subtype-
+                        comet.
+  -r NUM_INITIAL, --num_initial NUM_INITIAL
+                        Number of different initial starts to use with MCMC.
+  --exact_cut EXACT_CUT
+                        Maximum accumulated table prob. to stop exact test.
+  --binom_cut BINOM_CUT
+                        Minumum pval cutoff for CoMEt to perform binom test.
+  -nt NT, --nt NT       Maximum co-occurrence cufoff to perform exact test.
+  -tv TOTAL_DISTANCE_CUTOFF, --total_distance_cutoff TOTAL_DISTANCE_CUTOFF
+                        stop condition of convergence (total distance).
+  --precomputed_scores PRECOMPUTED_SCORES
+                        input file with lists of pre-run results.
+
+python run_comet.py -m ~/conte/multi-dendrix-master/examples/mutation_data/GBM/GBM.m2 -k4 -t 4 -o ./testout
+
+python run_comet.py -m ~/conte/multi-dendrix-master/examples/mutation_data/GBM/GBM.m2 -ks 4 4 4 4 -t 4 -k 4 -o ./testout -N 100
+
+
+python run_comet.py -m ~/conte/multi-dendrix-master/examples/mutation_data/BRCA/BRCA.m2 -ks 4 4 4 4 -t 4 -k 4 -o ./testout -N 10000000
+
+python run_comet.py -m ~/brcawustl_sample.m2 -ks 4 4 4 4 -t 4 -k 4 -o ./brcawustl_sample -N 10000000
+
+python run_comet.py -m ~/brcawustl_sample.m2 -ks 4 4 4 4 -t 4 -k 4 -o ./brcawustl_sample3 -N 10000000
+
+python run_comet.py -m ~/brcawustl_sample.m2 -t 1 -k 3 -o ./brcawustl_sample3_comet -N 10000000
+
+python run_comet.py -m example_datasets/gbm/GBM.m2 -t 1 -k 3 -o ./gbm -N 100000000 -mf 5
+
+python compute_significance.py -i gbm.sum.k3.100M.1.tsv -m example_datasets/gbm/GBM.m2 -o gbm
+
+
+
+MutEx
+
+python mutex.py -m ~/conte/comet/example_datasets/gbm/GBM.m2 -o testout -mf 6 -s 3 -p 
+
+
+Concatenating files
+
+cat brcawustl_sample.sum.k4.100M.1.tsv brcawustl_sample_2.sum.k4.100M.1.tsv > brcawustl_sample_combined.sum.k4.100M.1.tsv
+
+
+Making website commands
+
+usage: compute_significance.py [-h] -i INPUT_FILE [-csf COMET_STATS_FILE] -o
+                               OUTPUT_DIRECTORY [-v] -m MUTATION_MATRIX
+                               [-mf MIN_FREQ] [-pf PATIENT_FILE]
+                               [-gf GENE_FILE] [-e EVENT_NAMES]
+                               [-st SAMPLE_TYPES_FILE]
+                               [-mew MINIMUM_EDGE_WEIGHT]
+                               [-msf MINIMUM_SAMPLING_FREQUENCY]
+                               [-tf TEMPLATE_FILE]
+                               [-rmse STANDARD_ERROR_CUTOFF]
+
+python compute_significance.py -i testout4.sum.k4.100M.1.tsv -m ~/conte/multi-dendrix-master/examples/mutation_data/GBM/GBM.m2 -o testout4
+
+python compute_significance.py -i brcawustl_sample.sum.k4.100M.1.tsv -m ~/brcawustl_sample.m2 -o brcawustl_sample
+
+python compute_significance.py -i brcawustl_sample_combined.sum.k4.100M.1.tsv -m ~/brcawustl_sample.m2 -o brcawustl_sample_combined
+
+
+
+perl maf2vcf.pl /Users/jlu96/ucsc.edu__IlluminaGA_automated_DNA_sequencing_level2.maf ~/testvcf
+perl maf2vcf.pl --input-maf /Users/jlu96/ucsc.edu__IlluminaGA_automated_DNA_sequencing_level2.maf --output-dir ~/testvcf
+
+perl maf2vcf.pl --input-maf /Users/jlu96/genome.wustl.edu__IlluminaGA_curated_DNA_sequencing_level2.maf --output-dir ~/testvcf
+
+perl maf2vcf.pl --input-maf /Users/jlu96/genome.wustl.edu__IlluminaGA_curated_DNA_sequencing_level2.maf --output-dir ~/brcawustlvcf —use-snpeff
+
+
+perl INSTALL.pl --SPECIES homo_sapiens --ASSEMBLY GRCh37 --DESTDIR $VEP_PATH --CACHEDIR $VEP_DATA

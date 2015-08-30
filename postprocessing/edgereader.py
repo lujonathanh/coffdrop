@@ -211,8 +211,8 @@ class EdgeReader:
 
             for edge in only_edges:
                 writer.writerow([gene for gene in edge] +
-                                [(self.edge_records[edge][fieldname] if self.edge_records[edge][fieldname]
-                                    else NoneStandin) for fieldname in only_fieldnames])
+                                [self.edge_records[edge][fieldname] if self.edge_records[edge][fieldname] != None
+                                    else NoneStandin for fieldname in only_fieldnames])
 
     def get_pair_dict(self):
         return self.edge_records
