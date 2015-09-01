@@ -1483,19 +1483,14 @@ def run(args):
 
 
 
-    if gene_file_1:
-        with open(gene_file_1) as f:
-            gene_list_1 = set(l.rstrip().split()[0] for l in f if not l.startswith("#"))
-    else:
-        gene_list_1 = None
 
-    if gene_file_2:
-        with open(gene_file_2) as f:
-            gene_list_2 = set(l.rstrip().split()[0] for l in f if not l.startswith("#"))
-    else:
-        gene_list_2 = None
 
-    # Load mutation data
+
+
+
+    # LOAD MUTATION DATA
+    # --------------------------------
+
     if mutationmatrix:
 
 
@@ -1529,7 +1524,11 @@ def run(args):
 
 
     else:
-        numGenes, numCases, genes, patients, geneToCases, patientToGenes = None, None, [None], [None], None, None
+        print "No mutation matrix specified"
+        return
+
+
+
 
 
     # LOAD OR CALCULATE PAIRS
@@ -1550,7 +1549,6 @@ def run(args):
             if not file_prefix:
                 file_prefix = cdictfile[:-4]
 
-
     else:
 
         if not file_prefix:
@@ -1561,7 +1559,23 @@ def run(args):
                        + '.pcn' + ('0' if not parallel_compute_number else str(parallel_compute_number))
 
 
+
         print "Getting gene pairs to test..."
+
+        if gene_file_1:
+            with open(gene_file_1) as f:
+                gene_list_1 = set(l.rstrip().split()[0] for l in f if not l.startswith("#"))
+        else:
+            gene_list_1 = None
+
+        if gene_file_2:
+            with open(gene_file_2) as f:
+                gene_list_2 = set(l.rstrip().split()[0] for l in f if not l.startswith("#"))
+        else:
+            gene_list_2 = None
+
+
+
         if gene_list_1 and gene_list_2:
             genepairs = getgenepairs(geneToCases, genes1=gene_list_1, genes2=gene_list_2)
         elif gene_list_1:
@@ -1572,6 +1586,14 @@ def run(args):
             genepairs = getgenepairs(geneToCases, genes1=genes)
 
         print "Gene pairs finished"
+
+
+
+
+
+
+
+
 
         # MUTEX BEGINNING HERE
 
@@ -1683,35 +1705,8 @@ def run(args):
     print "Number of pairs total ", len(pairsdict)
 
 
-    if group_type == 'Triangle':
-
-        name = "Triangles"
-        Triangles, mpairsdict_Triangles, cpairsdict_Triangles, sorted_mpairs, sorted_cpairs = getTriangles(mpairsdict, mgenedict, cpairsdict, cgenedict, name=name)
 
 
-
-
-        #print Triangles
-        file_prefix += '.n' + str(len(Triangles))
-        writeTriangles(Triangles, file_prefix)
-
-        # write mpair file
-        writeanydict(mpairsdict_Triangles, file_prefix + "_TrianglesMpairs.tsv", orderedkeys=sorted_mpairs)
-        #writeanydict(mpairsdict_noTriangles, file_prefix + "_noTriangleMpairs.tsv")
-
-        # write cpair file
-        writeanydict(cpairsdict_Triangles, file_prefix + "_TrianglesCpairs.tsv", orderedkeys=sorted_cpairs)
-        #writeanydict(cpairsdict_noTriangles, file_prefix + "_noTriangleCpairs.tsv")
-
-
-    elif group_type == 'CoMPair':
-
-        CoMPairs = getCoMPairs(mpairsdict, mgenedict, cpairsdict, cgenedict)
-        # write CoMPairs
-
-        #print CoMPairs
-        file_prefix += '.n' + str(len(CoMPairs))
-        writeCoMPairs(CoMPairs, file_prefix)
 
     if group_type == 'Network' or group_type == 'TripletNetwork':
 
