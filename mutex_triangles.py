@@ -11,64 +11,6 @@ import sys
 import parallel_compute_working as pac
 import bingenesbypairs as bgbp
 
-class Triangle:
-    def __init__(self, number, mpairdict=None, cpairdict=None):
-        assert len(mpairdict) == 1
-        assert len(cpairdict) == 2
-
-        self.number = number
-
-        self.mpairdict = {}
-        # Turn into our own sets.
-        for inputmpair in mpairdict:
-            # mpair = set(inputmpair)
-            self.mpairdict[inputmpair] = mpairdict[inputmpair]
-
-
-        self.cpairdict = {}
-        for inputcpair in cpairdict:
-            # cpair = set(inputcpair)
-            self.cpairdict[inputcpair] = cpairdict[inputcpair]
-
-        self.nodes = set.union(*[set(cpair) for cpair in cpairdict.keys()])
-        self.medge = self.mpairdict.keys()[0]
-        self.vertex = next(iter(self.nodes.difference(self.medge)))
-
-
-        self.statsdict = {}
-
-
-
-
-    def getwritabledict(self):
-        wdict = collections.OrderedDict()
-        wdict['Vertex'] = self.vertex
-        wdict['Edge1'], wdict['Edge2'] = tuple(self.medge)
-        return wdict
-        # Later possibly add mutation frequencies, gene information, probabilities, etc.
-
-    #def getGOwritabledict(self):
-        # when the time comes, look up GO annotation to optimize how convenient this is.
-
-    def getmpairs(self):
-        return self.mpairdict
-
-    def getcpairs(self):
-        return self.cpairdict
-
-
-class CoMPair:
-    def __init__(self, mpairdict=None):
-        assert len(mpairdict) == 2
-        self.mpairdict = mpairdict.copy()
-        self.genes = set.union(*[set(mpair) for mpair in mpairdict.keys()])
-    def getwritabledict(self):
-        [mpair1, mpair2] = self.mpairdict.keys()
-        wdict = collections.OrderedDict()
-        wdict['AGene1'], wdict['AGene2'] = tuple(mpair1)
-        wdict['BGene1'], wdict['BGene2'] = tuple(mpair2)
-        return wdict
-
 
 class Triplet:
     def __init__(self, number, pairdict=None):
@@ -154,162 +96,6 @@ class Triplet:
 
         return self.stats
 
-        # Old working
-        #  gene0, gene1, gene2 = tuple(self.genes)
-        # #
-        # # if gene0 in pair2:
-        # #     gene2 = pair2.difference(gene0).pop()
-        # # else:
-        # #     gene2 = pair3.difference(gene0).pop()
-        #
-        #
-        # wdict = collections.OrderedDict()
-        # wdict['Gene0'], wdict['Gene1'], wdict['Gene2'] = gene0, gene1, gene2
-        # try:
-        #     pair01, pair02, pair12 = frozenset([gene0, gene1]), frozenset([gene0, gene2]), frozenset([gene1, gene2]),
-        #     wdict['TripletType'] = self.type
-        #
-        #     #wdict['Coverage'] = 0.5 * sum([self.pairdict[pair]['Coverage'] - self.pairdict[pair]['Overlap'] for pair in self.pairdict])
-        #
-        #
-        #     score_names = ['SetScore', 'CooccurrenceRatio', 'CombinedScore']
-        #     for score_name in score_names:
-        #         pair_scores = [self.pairdict[pair][score_name] for pair in self.pairdict if score_name in self.pairdict[pair]]
-        #         if pair_scores:
-        #             wdict['Average' + score_name] = sum(pair_scores)/len(pair_scores)
-        #         else:
-        #             wdict['Average' + score_name] = 0
-        #
-        #     wdict['01Type'] = self.pairdict[pair01]['Type']
-        #     wdict['02Type']= self.pairdict[pair02]['Type']
-        #     wdict['12Type'] = self.pairdict[pair12]['Type']
-        #     wdict['Probability'] = mex.prod([self.pairdict[pair]['Probability'] for pair in self.pairdict])
-        #
-        #     # setscores = [self.pairdict[pair]['SetScore'] for pair in self.pairdict if self.pairdict[pair]['Type']=='Cooccurring']
-        #
-        #     # if setscores:
-        #     #     wdict['AverageSetScore'] = sum(setscores)/len(setscores)
-        #     # else:
-        #     #     wdict['AverageSetScore'] = 0
-        #
-        #
-        #
-        # except KeyError:
-        #     pass
-        #
-        # return wdict
-
-
-
-
-def getTriangles(mpairsdict, mgenedict, cpairsdict, cgenedict, name="Triangles"):
-    """
-    :return: Triangles:
-        A list of all initialized triangles.
-        mpairsdict_Triangles:
-        All the mpairs with Triangles assigned.
-        cpairsdict_Triangles:
-        All the cpairs with Triangles assigned.
-    """
-    # Get mutexpairs, mutexdict
-
-    # mpairsdict, mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
-    # cpairsdict, cgenedict = cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=cprob, minCooccur=minCooccur)
-
-    Triangles = []
-    num_Triangles = 0
-    mpairsdict_Triangles = mpairsdict.copy()
-    for mpair in mpairsdict:
-        mpairsdict_Triangles[mpair][name] = set()
-
-    cpairsdict_Triangles = cpairsdict.copy()
-    for cpair in cpairsdict:
-        cpairsdict_Triangles[cpair][name] = set()
-
-
-    for mpair in mpairsdict:
-        gene1, gene2 = tuple(mpair)
-        if gene1 in cgenedict and gene2 in cgenedict:
-            cgenes1 = cgenedict[gene1]
-            cgenes2 = cgenedict[gene2]
-
-            # The set of genes that cooccur with both genes.
-            cboth = cgenes1.intersection(cgenes2)
-            if cboth:
-                for cbothgene in cboth:
-                    # The cooccurring pairs of the triangle.
-                    cbothpair1 = frozenset([gene1, cbothgene])
-                    cbothpair2 = frozenset([gene2, cbothgene])
-
-
-                    mpairdict = {}
-                    mpairdict[mpair] = mpairsdict[mpair]
-
-                    cpairdict = {}
-                    cpairdict[cbothpair1] = cpairsdict[cbothpair1]
-                    cpairdict[cbothpair2] = cpairsdict[cbothpair2]
-
-                    newTriangle = Triangle(num_Triangles, mpairdict=mpairdict, cpairdict=cpairdict)
-                    Triangles.append(newTriangle)
-
-                    mpairsdict_Triangles[mpair][name].add(num_Triangles)
-                    cpairsdict_Triangles[cbothpair1][name].add(num_Triangles)
-                    cpairsdict_Triangles[cbothpair2][name].add(num_Triangles)
-
-
-                    # Add to the mpairsdict_Triangles and cpairsdict_Triangles
-                    # if mpair not in mpairsdict_Triangles:
-                    #     mpairsdict_Triangles[mpair] = mpairsdict[mpair]
-                    #     mpairsdict_Triangles[mpair][name] = {num_Triangles}
-                    # else:
-                    #     mpairsdict_Triangles[mpair][name].add(num_Triangles)
-                    #
-                    # if cbothpair1 not in cpairsdict_Triangles:
-                    #     cpairsdict_Triangles[cbothpair1] = cpairsdict[cbothpair1]
-                    #     cpairsdict_Triangles[cbothpair1][name] = {num_Triangles}
-                    # else:
-                    #     cpairsdict_Triangles[cbothpair1][name].add(num_Triangles)
-                    #
-                    # if cbothpair2 not in cpairsdict_Triangles:
-                    #     cpairsdict_Triangles[cbothpair2] = cpairsdict[cbothpair2]
-                    #     cpairsdict_Triangles[cbothpair2][name] = {num_Triangles}
-                    # else:
-                    #     cpairsdict_Triangles[cbothpair2][name].add(num_Triangles)
-
-
-                    num_Triangles += 1
-
-    sorted_mpairs = sorted(mpairsdict_Triangles.keys(), key=lambda entry: len(mpairsdict_Triangles[entry]), reverse=True)
-    sorted_cpairs = sorted(mpairsdict_Triangles.keys(), key=lambda entry: len(mpairsdict_Triangles[entry]), reverse=True)
-
-    return Triangles, mpairsdict_Triangles, cpairsdict_Triangles, sorted_mpairs, sorted_cpairs
-
-
-
-
-
-
-def writeTriangles(Triangles, file_prefix, delimiter='\t'):
-    # Dictwriter
-    # Get writabledict from each triangle, make header from
-    Trianglefile = file_prefix + '_triangles.tsv'
-    genefile = file_prefix + '_genes.txt'
-
-    with open(Trianglefile, 'w') as csvfile:
-        fieldnames = Triangles[0].getwritabledict().keys()
-        writer = csv.DictWriter(csvfile, delimiter=delimiter, fieldnames=fieldnames)
-
-        writer.writeheader()
-        for Triangle in Triangles:
-            writer.writerow(Triangle.getwritabledict())
-
-    with open(genefile, 'w') as csvfile:
-        writer = csv.writer(csvfile)
-        # writer.writerow(['Genes'])
-        for Triangle in Triangles:
-            nodes = Triangle.nodes
-            for node in nodes:
-                writer.writerow([node])
 
 
 
@@ -504,58 +290,7 @@ def writeTriplets(Triplets, file_prefix, delimiter='\t', fieldnames=None):
 
 
 
-def getCoMPairs(mpairsdict, mgenedict, cpairsdict, cgenedict):
-    """
 
-    :return: CoMPairs:
-        A list of all initialized CoMPairs.
-    """
-    # Get mutexpairs, mutexdict
-
-    CoMPairs = []
-    for mpair in mpairsdict:
-        gene1, gene2 = tuple(mpair)
-        if gene1 in cgenedict and gene2 in cgenedict:
-            cgenes1 = cgenedict[gene1]
-            cgenes2 = cgenedict[gene2]
-
-            # The set of genes that cooccur with either in the pair.
-            ceither = cgenes1.union(cgenes2)
-
-            if ceither:
-                for mpair2 in mpairsdict:
-                    mpair2_unfrozen = iter(mpair2)
-                    if mpair2_unfrozen.next() in ceither and mpair2_unfrozen.next() in ceither:
-                        mpairdict = {}
-                        mpairdict[mpair] = mpairsdict[mpair]
-                        mpairdict[mpair2] = mpairsdict[mpair2]
-                        newCoMPair = CoMPair(mpairdict=mpairdict)
-                        CoMPairs.append(newCoMPair)
-
-    return CoMPairs
-
-
-def writeCoMPairs(CoMPairs, file_prefix, delimiter='\t'):
-    # Dictwriter
-    # Get writabledict from each CoMPair, make header from
-    CoMPairfile = file_prefix + '_CoMPairs.tsv'
-    genefile = file_prefix + '_genes.txt'
-
-    with open(CoMPairfile, 'w') as csvfile:
-        fieldnames = CoMPairs[0].getwritabledict().keys()
-        writer = csv.DictWriter(csvfile, delimiter=delimiter, fieldnames=fieldnames)
-
-        writer.writeheader()
-        for CoMPair in CoMPairs:
-            writer.writerow(CoMPair.getwritabledict())
-
-    with open(genefile, 'w') as csvfile:
-        writer = csv.writer(csvfile)
-        # writer.writerow(['Genes'])
-        for CoMPair in CoMPairs:
-            genes = CoMPair.genes
-            for gene in genes:
-                writer.writerow([gene])
 
 
 def writeanydict(anydict, filename, delimiter='\t', fieldnames=None, orderedkeys=None):
@@ -661,85 +396,6 @@ def mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, maxOverl
 
     return mpairsdict, mgenedict
 
-def filter_pair_distances(genepairs, cooccur_distance_threshold):
-    newgenepairs = genepairs[:]
-
-    for genepair in genepairs:
-        gene0, gene1 = tuple(genepair)
-        if gene0[-4:] in {'loss', 'gain'} and gene1[-4:] in {'loss', 'gain'}:
-            if bgbp.get_gene_distance(*genepair) and (bgbp.get_gene_distance(*genepair) < cooccur_distance_threshold):
-                # print genepair
-                newgenepairs.remove(genepair)
-    return newgenepairs
-
-
-
-def filter_pair_coding(genepairs, filename='/Users/jlu96/conte/jlu/geneToLength_all_firstseen.txt'):
-    # Load the new genes.
-    genes = set()
-    with open(filename, 'rU') as f:
-        arrs = [l.rstrip().split("\t") for l in f if not l.startswith("#")]
-        for arr in arrs:
-            gene = arr[0]
-            genes.add(gene)
-
-    newgenepairs = genepairs.copy()
-    for genepair in genepairs:
-        gene0, gene1 = tuple(genepair)
-        if gene0 not in genes or gene1 not in genes:
-            newgenepairs.remove(genepair)
-
-    return newgenepairs
-
-
-def filter_mutex_gainloss(mpairdict, mgenedict):
-    newmpairdict = mpairdict.copy()
-    newmgenedict = mgenedict.copy()
-    for pair in mpairdict:
-        genes = tuple(pair)
-        if genes[0][:-4] == genes[1][:-4]:
-            newmpairdict.pop(pair)
-            newmgenedict[genes[0]].remove(genes[1])
-            if not newmgenedict[genes[0]]:
-                newmgenedict.pop(genes[0])
-            newmgenedict[genes[1]].remove(genes[0])
-            if not newmgenedict[genes[1]]:
-                newmgenedict.pop(genes[1])
-    return newmpairdict, newmgenedict
-
-def filter_mutex_samesegment(mpairdict, mgenedict):
-    newmpairdict = mpairdict.copy()
-    newmgenedict = mgenedict.copy()
-    for pair in mpairdict:
-        genes = tuple(pair)
-        if not mpairdict[pair]['Concordance']:
-            newmpairdict.pop(pair)
-            newmgenedict[genes[0]].remove(genes[1])
-            if not newmgenedict[genes[0]]:
-                newmgenedict.pop(genes[0])
-            newmgenedict[genes[1]].remove(genes[0])
-            if not newmgenedict[genes[1]]:
-                newmgenedict.pop(genes[1])
-    return newmpairdict, newmgenedict
-
-def filter_cooccur_samesegment(cpairdict, cgenedict, cratiothresh, mutfreqdiffratiothresh, coveragethresh, probabilitythresh):
-    newcpairdict = cpairdict.copy()
-    newcgenedict = cgenedict.copy()
-    for pair in cpairdict:
-        genes = tuple(pair)
-        if cpairdict[pair]['Concordance']:
-            if cpairdict[pair]['Probability'] < probabilitythresh \
-                and cpairdict[pair]['CooccurrenceRatio'] > cratiothresh and \
-                cpairdict[pair]['MutationFrequencyDifferenceRatio'] < mutfreqdiffratiothresh \
-                and cpairdict[pair]['Coverage'] > coveragethresh:
-                newcpairdict.pop(pair)
-                newcgenedict[genes[0]].remove(genes[1])
-                if not newcgenedict[genes[0]]:
-                    newcgenedict.pop(genes[0])
-                newcgenedict[genes[1]].remove(genes[0])
-                if not newcgenedict[genes[1]]:
-                    newcgenedict.pop(genes[1])
-    return newcpairdict, newcgenedict
 
 
 
@@ -791,31 +447,6 @@ def cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, minCoo
 
     return cpairsdict, cgenedict
 
-def filterpairs(pairsdict, genesdict, entry, pair_filter=None):
-    """
-    :param pairsdict:
-    :param genesdict:
-    :param entry: Entry of pairsdict.
-    :param pair_filter: Function that returns True if want to keep.
-    :return:
-    """
-    new_pairsdict = pairsdict.copy()
-    new_genesdict = genesdict.copy()
-    for pair in pairsdict:
-        if not pair_filter(pairsdict[pair][entry]):
-            gene0, gene1 = tuple(pair)
-
-            new_pairsdict.pop(pair)
-
-            if gene0 in new_genesdict:
-                new_genesdict[gene0].remove(gene1)
-                if not new_genesdict[gene0]:
-                    new_genesdict.pop(gene0)
-            if gene1 in new_genesdict:
-                new_genesdict[gene1].remove(gene0)
-                if not new_genesdict[gene1]:
-                    new_genesdict.pop(gene1)
-    return new_pairsdict, new_genesdict
 
 def filterpairs_new(pairsdict, genesdict, entryToFilter):
     """
@@ -892,172 +523,6 @@ def pairs_limittogenes(pairsdict, genesdict, genes):
             #             newgenesdict[bothgene].add(gene)
     return newpairsdict, newgenesdict
 
-
-
-
-def bin_genes_cooccur_same_segment(pairdict, geneToCases, patientToGenes, cratiothresh, mutfreqdiffthresh,
-                                   mutfreqdiffratiothresh, coveragethresh, probabilitythresh,
-              bincol='RoundedLogPCov', filename=None):
-
-    print "Binning genes by pairs...."
-
-    t = time.time()
-    geneToBin = {}
-    for gene in geneToCases:
-        geneToBin[gene] = set([gene])
-
-    sorted_pairs = sorted(pairdict.keys(), key=lambda pair: pairdict[pair][bincol])
-
-
-    for pair in sorted_pairs:
-        if pairdict[pair]['Concordance'] and pairdict[pair]['Probability'] < probabilitythresh:
-            if pairdict[pair]['CooccurrenceRatio'] >= cratiothresh \
-                and pairdict[pair]['MutationFrequencyDifference'] <= mutfreqdiffthresh and \
-                pairdict[pair]['MutationFrequencyDifferenceRatio'] < mutfreqdiffratiothresh \
-                and pairdict[pair]['Coverage'] > coveragethresh:
-                # print "Mutation Frequencies: ", pairdict[pair]['MutationFrequencies']
-                # print "Cooccurrence Ratio: ", pairdict[pair]['CooccurrenceRatio']
-                gene0, gene1 = tuple(pair)
-                geneToBin[gene0] = geneToBin[gene0].union(geneToBin[gene1])
-                for gene in geneToBin[gene0]:
-                    geneToBin[gene] = geneToBin[gene0]
-
-    t1 = time.time()
-    # print "Time to bin genes by pairs", t1 - t
-
-    for gene in geneToBin:
-        geneToBin[gene] = frozenset(geneToBin[gene])
-
-
-    # Update GeneToCases by majority ratios
-    # Iterate across values
-
-
-    newGeneToCases = {}
-
-    bin_sets = set(geneToBin.values())
-
-    print len(geneToBin), " genes reduced to ", len(bin_sets), " bins"
-    print "Ratio threshold: ", cratiothresh, ', Diff ratio threshold: ', mutfreqdiffratiothresh, ', Coverage threshold: ', coveragethresh, ', Pvalue threshold: ', probabilitythresh
-
-
-    bin_setToBin = {}
-
-
-    for bin_set in bin_sets:
-        # Fix the bin name
-        suffix = iter(bin_set).next()[-4:]
-        bin_name = '_'.join(sorted([the_bin[:-4] for the_bin in bin_set])) + suffix
-        bin_setToBin[bin_set] = bin_name
-
-        newGeneToCases[bin_name] = set()
-
-        patients = set.union(*[geneToCases[gene] for gene in bin_set])
-        for patient in patients:
-            # find out how many genes are held by patients
-            if len(patientToGenes[patient].intersection(bin_set)) >= len(bin_set)/2:
-                newGeneToCases[bin_name].add(patient)
-
-
-
-    # Make the new patientToGenes
-
-    newPatientToGenes = {}
-    for patient in patientToGenes:
-        newPatientToGenes[patient] = set()
-
-    for gene in newGeneToCases:
-        for patient in newGeneToCases[gene]:
-            newPatientToGenes[patient].add(gene)
-
-    t2 = time.time()
-    #print "Time to update dictionaries", t2- t1
-
-
-
-    # Consolidate information
-    # Change geneToBin to bin names
-
-    gene_bin_entries = {}
-
-    for gene in geneToBin:
-        bin_name = bin_setToBin[geneToBin[gene]]
-        geneToBin[gene] = bin_name
-
-        # consolidate info
-        entry = {}
-        entry['Gene'] = gene
-        entry['Bin'] = bin_name
-        gene_cases = geneToCases[gene]
-        bin_cases = newGeneToCases[bin_name]
-        shared_cases = gene_cases.intersection(bin_cases)
-        total_cases = gene_cases.union(bin_cases)
-        entry['GeneMutationFrequency'] = len(gene_cases)
-        entry['BinMutationFrequency'] = len(bin_cases)
-        entry['SharedPatients'] = len(shared_cases)
-        entry['TotalPatients'] = len(total_cases)
-        entry['SharedRatio'] = entry['SharedPatients'] * 1.0 / entry['TotalPatients']
-        gene_bin_entries[gene] = entry
-
-    if filename:
-        writeanydict(gene_bin_entries, filename)
-        print "Gene bin entries written to ", filename
-
-    t3 = time.time()
-    # print "Time to get gene bin info ", t3 - t2
-
-    bins = set(geneToBin.values())
-
-    # print "Bins are ", iter(bins).next()
-    # print "Bin sets are ", iter(bin_sets).next()
-
-    return gene_bin_entries, geneToBin, bins, bin_sets, bin_setToBin, newGeneToCases, newPatientToGenes
-
-
-def convert_genes_to_bins(genes, geneToBin):
-
-    return set([geneToBin[gene] for gene in genes])
-
-
-def genedict_to_bin_pairs(genedict, geneToBin, bin_sets, bin_setToBin, max_tries=3):
-
-    binpairs = set()
-
-    # print "Genedict keys are ", genedict.keys()
-
-    for bin_set in bin_sets:
-        bin = bin_setToBin[bin_set]
-        paired_bins = []
-
-        iter_bin = iter(bin_set)
-
-        # Try to find the corresponding bins
-
-        for attempt in range(min(max_tries, len(bin_set))):
-            bin_in_dict = False
-            random_gene = iter_bin.next()
-            try:
-                paired_genes = genedict[random_gene]
-                paired_bins = convert_genes_to_bins(paired_genes, geneToBin)
-                bin_in_dict = True
-            except KeyError:
-                pass
-            if bin_in_dict:
-                break
-
-        for paired_bin in paired_bins:
-            if paired_bin != bin:
-                binpair = frozenset([bin, paired_bin])
-                binpairs.add(binpair)
-
-    return list(binpairs)
-
-
-    # Remember to update numGenes and genes later
-    # Also must re-get genepairs.
-    # Also: update the gene gains and losses accordingly.
-    # Calculate concordances
-    # Write message about which genes got grouped, majority ratios
 
 
 
@@ -1413,6 +878,10 @@ def run(args):
 
     tstart = time.time()
 
+
+    # ------------------------------------------------------------------------------------------------------------
+    # Turn command line arguments to shorter variable handles
+    # ------------------------------------------------------------------------------------------------------------
     mdictfile = args.mdictfile
     cdictfile = args.cdictfile
 
@@ -1450,13 +919,8 @@ def run(args):
     fcss_mutfreqdiffratiothresh = args.fcss_mutfreqdiffratiothresh
     fcss_coveragethresh = args.fcss_coveragethresh
     fcss_probabilitythresh = args.fcss_probabilitythresh
-    bin_genes_by_pairs = args.bin_genes_by_pairs
     ridiculous_pvalue_thresh = args.ridiculous_pvalue_thresh
 
-
-
-
-    gainlosscombine = args.gainlosscombine
     filter_cooccur = args.filter_cooccur
     use_downstream = args.use_downstream
     scoreperc = args.scoreperc
@@ -1472,6 +936,11 @@ def run(args):
     group_type = args.group_type
     local_edge_bet = args.local_edge_bet
     pair_type = args.pair_type
+    # ------------------------------------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -1487,21 +956,21 @@ def run(args):
 
 
 
+<<<<<<< Updated upstream
 
     # LOAD MUTATION DATA
     # --------------------------------
 
+=======
+    # Load mutation data
+>>>>>>> Stashed changes
     if mutationmatrix:
-
 
         mutations = mex.remove_blacklists(gene_blacklist, patient_blacklist,
                                   *mex.load_mutation_data(mutationmatrix, patientFile, geneFile, minFreq))
         numGenes, numCases, genes, patients, geneToCases, patientToGenes = mutations
 
         print 'Pre-percentile filter Mutation data: %s genes x %s patients' % (numGenes, numCases)
-        t1 = time.time()
-        print "Loaded in ", t1 - tstart
-        # print "Current time ", time.strftime("%H:%M:%S")
 
         if min_percentile != 0:
             print "Loading using minimum percentile: ", min_percentile
@@ -1512,15 +981,11 @@ def run(args):
             numGenes, numCases, genes, patients, geneToCases, patientToGenes = mutations
             print 'Post-top-percentile filter Mutation data: %s genes x %s patients' % (numGenes, numCases)
 
-
-
-        # mutations = mex.filtermatrix(top_percentile, *mutations)
         if top_number:
             numGenes, numCases, genes, patients, geneToCases, patientToGenes = mex.filtertopnumbermatrix(top_number, *mutations)
 
 
         print "Post-filter Mutation data: %s genes x %s patients" % (numGenes, numCases)
-        tload = time.time()
 
 
     else:
@@ -1587,10 +1052,18 @@ def run(args):
 
         print "Gene pairs finished"
 
+<<<<<<< Updated upstream
 
 
 
 
+
+
+
+
+        # MUTEX BEGINNING HERE
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -1626,12 +1099,6 @@ def run(args):
             print len(mpairsdict), "mutex pairs remain"
 
 
-
-
-
-
-
-        t2 = time.time()
 
         file_prefix += '.mn' + str(len(mpairsdict)) + '.cn' + str(len(cpairsdict))
 
@@ -1793,3 +1260,778 @@ def run(args):
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# BELOW FOLLOWS UNUSED CODE
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def getTriangles(mpairsdict, mgenedict, cpairsdict, cgenedict, name="Triangles"):
+    """
+    :return: Triangles:
+        A list of all initialized triangles.
+        mpairsdict_Triangles:
+        All the mpairs with Triangles assigned.
+        cpairsdict_Triangles:
+        All the cpairs with Triangles assigned.
+    """
+    # Get mutexpairs, mutexdict
+
+    # mpairsdict, mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
+    # cpairsdict, cgenedict = cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=cprob, minCooccur=minCooccur)
+
+    Triangles = []
+    num_Triangles = 0
+    mpairsdict_Triangles = mpairsdict.copy()
+    for mpair in mpairsdict:
+        mpairsdict_Triangles[mpair][name] = set()
+
+    cpairsdict_Triangles = cpairsdict.copy()
+    for cpair in cpairsdict:
+        cpairsdict_Triangles[cpair][name] = set()
+
+
+    for mpair in mpairsdict:
+        gene1, gene2 = tuple(mpair)
+        if gene1 in cgenedict and gene2 in cgenedict:
+            cgenes1 = cgenedict[gene1]
+            cgenes2 = cgenedict[gene2]
+
+            # The set of genes that cooccur with both genes.
+            cboth = cgenes1.intersection(cgenes2)
+            if cboth:
+                for cbothgene in cboth:
+                    # The cooccurring pairs of the triangle.
+                    cbothpair1 = frozenset([gene1, cbothgene])
+                    cbothpair2 = frozenset([gene2, cbothgene])
+
+
+                    mpairdict = {}
+                    mpairdict[mpair] = mpairsdict[mpair]
+
+                    cpairdict = {}
+                    cpairdict[cbothpair1] = cpairsdict[cbothpair1]
+                    cpairdict[cbothpair2] = cpairsdict[cbothpair2]
+
+                    newTriangle = Triangle(num_Triangles, mpairdict=mpairdict, cpairdict=cpairdict)
+                    Triangles.append(newTriangle)
+
+                    mpairsdict_Triangles[mpair][name].add(num_Triangles)
+                    cpairsdict_Triangles[cbothpair1][name].add(num_Triangles)
+                    cpairsdict_Triangles[cbothpair2][name].add(num_Triangles)
+
+
+                    # Add to the mpairsdict_Triangles and cpairsdict_Triangles
+                    # if mpair not in mpairsdict_Triangles:
+                    #     mpairsdict_Triangles[mpair] = mpairsdict[mpair]
+                    #     mpairsdict_Triangles[mpair][name] = {num_Triangles}
+                    # else:
+                    #     mpairsdict_Triangles[mpair][name].add(num_Triangles)
+                    #
+                    # if cbothpair1 not in cpairsdict_Triangles:
+                    #     cpairsdict_Triangles[cbothpair1] = cpairsdict[cbothpair1]
+                    #     cpairsdict_Triangles[cbothpair1][name] = {num_Triangles}
+                    # else:
+                    #     cpairsdict_Triangles[cbothpair1][name].add(num_Triangles)
+                    #
+                    # if cbothpair2 not in cpairsdict_Triangles:
+                    #     cpairsdict_Triangles[cbothpair2] = cpairsdict[cbothpair2]
+                    #     cpairsdict_Triangles[cbothpair2][name] = {num_Triangles}
+                    # else:
+                    #     cpairsdict_Triangles[cbothpair2][name].add(num_Triangles)
+
+
+                    num_Triangles += 1
+
+    sorted_mpairs = sorted(mpairsdict_Triangles.keys(), key=lambda entry: len(mpairsdict_Triangles[entry]), reverse=True)
+    sorted_cpairs = sorted(mpairsdict_Triangles.keys(), key=lambda entry: len(mpairsdict_Triangles[entry]), reverse=True)
+
+    return Triangles, mpairsdict_Triangles, cpairsdict_Triangles, sorted_mpairs, sorted_cpairs
+
+
+
+
+
+
+def writeTriangles(Triangles, file_prefix, delimiter='\t'):
+    # Dictwriter
+    # Get writabledict from each triangle, make header from
+    Trianglefile = file_prefix + '_triangles.tsv'
+    genefile = file_prefix + '_genes.txt'
+
+    with open(Trianglefile, 'w') as csvfile:
+        fieldnames = Triangles[0].getwritabledict().keys()
+        writer = csv.DictWriter(csvfile, delimiter=delimiter, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for Triangle in Triangles:
+            writer.writerow(Triangle.getwritabledict())
+
+    with open(genefile, 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        # writer.writerow(['Genes'])
+        for Triangle in Triangles:
+            nodes = Triangle.nodes
+            for node in nodes:
+                writer.writerow([node])
+
+
+class Triangle:
+    def __init__(self, number, mpairdict=None, cpairdict=None):
+        assert len(mpairdict) == 1
+        assert len(cpairdict) == 2
+
+        self.number = number
+
+        self.mpairdict = {}
+        # Turn into our own sets.
+        for inputmpair in mpairdict:
+            # mpair = set(inputmpair)
+            self.mpairdict[inputmpair] = mpairdict[inputmpair]
+
+
+        self.cpairdict = {}
+        for inputcpair in cpairdict:
+            # cpair = set(inputcpair)
+            self.cpairdict[inputcpair] = cpairdict[inputcpair]
+
+        self.nodes = set.union(*[set(cpair) for cpair in cpairdict.keys()])
+        self.medge = self.mpairdict.keys()[0]
+        self.vertex = next(iter(self.nodes.difference(self.medge)))
+
+
+        self.statsdict = {}
+
+
+
+
+    def getwritabledict(self):
+        wdict = collections.OrderedDict()
+        wdict['Vertex'] = self.vertex
+        wdict['Edge1'], wdict['Edge2'] = tuple(self.medge)
+        return wdict
+        # Later possibly add mutation frequencies, gene information, probabilities, etc.
+
+    #def getGOwritabledict(self):
+        # when the time comes, look up GO annotation to optimize how convenient this is.
+
+    def getmpairs(self):
+        return self.mpairdict
+
+    def getcpairs(self):
+        return self.cpairdict
+
+
+class CoMPair:
+    def __init__(self, mpairdict=None):
+        assert len(mpairdict) == 2
+        self.mpairdict = mpairdict.copy()
+        self.genes = set.union(*[set(mpair) for mpair in mpairdict.keys()])
+    def getwritabledict(self):
+        [mpair1, mpair2] = self.mpairdict.keys()
+        wdict = collections.OrderedDict()
+        wdict['AGene1'], wdict['AGene2'] = tuple(mpair1)
+        wdict['BGene1'], wdict['BGene2'] = tuple(mpair2)
+        return wdict
+
+def getCoMPairs(mpairsdict, mgenedict, cpairsdict, cgenedict):
+    """
+
+    :return: CoMPairs:
+        A list of all initialized CoMPairs.
+    """
+    # Get mutexpairs, mutexdict
+
+    CoMPairs = []
+    for mpair in mpairsdict:
+        gene1, gene2 = tuple(mpair)
+        if gene1 in cgenedict and gene2 in cgenedict:
+            cgenes1 = cgenedict[gene1]
+            cgenes2 = cgenedict[gene2]
+
+            # The set of genes that cooccur with either in the pair.
+            ceither = cgenes1.union(cgenes2)
+
+            if ceither:
+                for mpair2 in mpairsdict:
+                    mpair2_unfrozen = iter(mpair2)
+                    if mpair2_unfrozen.next() in ceither and mpair2_unfrozen.next() in ceither:
+                        mpairdict = {}
+                        mpairdict[mpair] = mpairsdict[mpair]
+                        mpairdict[mpair2] = mpairsdict[mpair2]
+                        newCoMPair = CoMPair(mpairdict=mpairdict)
+                        CoMPairs.append(newCoMPair)
+
+    return CoMPairs
+
+
+def writeCoMPairs(CoMPairs, file_prefix, delimiter='\t'):
+    # Dictwriter
+    # Get writabledict from each CoMPair, make header from
+    CoMPairfile = file_prefix + '_CoMPairs.tsv'
+    genefile = file_prefix + '_genes.txt'
+
+    with open(CoMPairfile, 'w') as csvfile:
+        fieldnames = CoMPairs[0].getwritabledict().keys()
+        writer = csv.DictWriter(csvfile, delimiter=delimiter, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for CoMPair in CoMPairs:
+            writer.writerow(CoMPair.getwritabledict())
+
+    with open(genefile, 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        # writer.writerow(['Genes'])
+        for CoMPair in CoMPairs:
+            genes = CoMPair.genes
+            for gene in genes:
+                writer.writerow([gene])
+
+
+def filter_pair_distances(genepairs, cooccur_distance_threshold):
+    newgenepairs = genepairs[:]
+
+    for genepair in genepairs:
+        gene0, gene1 = tuple(genepair)
+        if gene0[-4:] in {'loss', 'gain'} and gene1[-4:] in {'loss', 'gain'}:
+            if bgbp.get_gene_distance(*genepair) and (bgbp.get_gene_distance(*genepair) < cooccur_distance_threshold):
+                # print genepair
+                newgenepairs.remove(genepair)
+    return newgenepairs
+
+
+
+def filter_pair_coding(genepairs, filename='/Users/jlu96/conte/jlu/geneToLength_all_firstseen.txt'):
+    # Load the new genes.
+    genes = set()
+    with open(filename, 'rU') as f:
+        arrs = [l.rstrip().split("\t") for l in f if not l.startswith("#")]
+        for arr in arrs:
+            gene = arr[0]
+            genes.add(gene)
+
+    newgenepairs = genepairs.copy()
+    for genepair in genepairs:
+        gene0, gene1 = tuple(genepair)
+        if gene0 not in genes or gene1 not in genes:
+            newgenepairs.remove(genepair)
+
+    return newgenepairs
+
+
+def filter_mutex_gainloss(mpairdict, mgenedict):
+    newmpairdict = mpairdict.copy()
+    newmgenedict = mgenedict.copy()
+    for pair in mpairdict:
+        genes = tuple(pair)
+        if genes[0][:-4] == genes[1][:-4]:
+            newmpairdict.pop(pair)
+            newmgenedict[genes[0]].remove(genes[1])
+            if not newmgenedict[genes[0]]:
+                newmgenedict.pop(genes[0])
+            newmgenedict[genes[1]].remove(genes[0])
+            if not newmgenedict[genes[1]]:
+                newmgenedict.pop(genes[1])
+    return newmpairdict, newmgenedict
+
+def filter_mutex_samesegment(mpairdict, mgenedict):
+    newmpairdict = mpairdict.copy()
+    newmgenedict = mgenedict.copy()
+    for pair in mpairdict:
+        genes = tuple(pair)
+        if not mpairdict[pair]['Concordance']:
+            newmpairdict.pop(pair)
+            newmgenedict[genes[0]].remove(genes[1])
+            if not newmgenedict[genes[0]]:
+                newmgenedict.pop(genes[0])
+            newmgenedict[genes[1]].remove(genes[0])
+            if not newmgenedict[genes[1]]:
+                newmgenedict.pop(genes[1])
+    return newmpairdict, newmgenedict
+
+def filter_cooccur_samesegment(cpairdict, cgenedict, cratiothresh, mutfreqdiffratiothresh, coveragethresh, probabilitythresh):
+    newcpairdict = cpairdict.copy()
+    newcgenedict = cgenedict.copy()
+    for pair in cpairdict:
+        genes = tuple(pair)
+        if cpairdict[pair]['Concordance']:
+            if cpairdict[pair]['Probability'] < probabilitythresh \
+                and cpairdict[pair]['CooccurrenceRatio'] > cratiothresh and \
+                cpairdict[pair]['MutationFrequencyDifferenceRatio'] < mutfreqdiffratiothresh \
+                and cpairdict[pair]['Coverage'] > coveragethresh:
+                newcpairdict.pop(pair)
+                newcgenedict[genes[0]].remove(genes[1])
+                if not newcgenedict[genes[0]]:
+                    newcgenedict.pop(genes[0])
+                newcgenedict[genes[1]].remove(genes[0])
+                if not newcgenedict[genes[1]]:
+                    newcgenedict.pop(genes[1])
+    return newcpairdict, newcgenedict
+
+
+def bin_genes_cooccur_same_segment(pairdict, geneToCases, patientToGenes, cratiothresh, mutfreqdiffthresh,
+                                   mutfreqdiffratiothresh, coveragethresh, probabilitythresh,
+              bincol='RoundedLogPCov', filename=None):
+
+    print "Binning genes by pairs...."
+
+    t = time.time()
+    geneToBin = {}
+    for gene in geneToCases:
+        geneToBin[gene] = set([gene])
+
+    sorted_pairs = sorted(pairdict.keys(), key=lambda pair: pairdict[pair][bincol])
+
+
+    for pair in sorted_pairs:
+        if pairdict[pair]['Concordance'] and pairdict[pair]['Probability'] < probabilitythresh:
+            if pairdict[pair]['CooccurrenceRatio'] >= cratiothresh \
+                and pairdict[pair]['MutationFrequencyDifference'] <= mutfreqdiffthresh and \
+                pairdict[pair]['MutationFrequencyDifferenceRatio'] < mutfreqdiffratiothresh \
+                and pairdict[pair]['Coverage'] > coveragethresh:
+                # print "Mutation Frequencies: ", pairdict[pair]['MutationFrequencies']
+                # print "Cooccurrence Ratio: ", pairdict[pair]['CooccurrenceRatio']
+                gene0, gene1 = tuple(pair)
+                geneToBin[gene0] = geneToBin[gene0].union(geneToBin[gene1])
+                for gene in geneToBin[gene0]:
+                    geneToBin[gene] = geneToBin[gene0]
+
+    t1 = time.time()
+    # print "Time to bin genes by pairs", t1 - t
+
+    for gene in geneToBin:
+        geneToBin[gene] = frozenset(geneToBin[gene])
+
+
+    # Update GeneToCases by majority ratios
+    # Iterate across values
+
+
+    newGeneToCases = {}
+
+    bin_sets = set(geneToBin.values())
+
+    print len(geneToBin), " genes reduced to ", len(bin_sets), " bins"
+    print "Ratio threshold: ", cratiothresh, ', Diff ratio threshold: ', mutfreqdiffratiothresh, ', Coverage threshold: ', coveragethresh, ', Pvalue threshold: ', probabilitythresh
+
+
+    bin_setToBin = {}
+
+
+    for bin_set in bin_sets:
+        # Fix the bin name
+        suffix = iter(bin_set).next()[-4:]
+        bin_name = '_'.join(sorted([the_bin[:-4] for the_bin in bin_set])) + suffix
+        bin_setToBin[bin_set] = bin_name
+
+        newGeneToCases[bin_name] = set()
+
+        patients = set.union(*[geneToCases[gene] for gene in bin_set])
+        for patient in patients:
+            # find out how many genes are held by patients
+            if len(patientToGenes[patient].intersection(bin_set)) >= len(bin_set)/2:
+                newGeneToCases[bin_name].add(patient)
+
+
+
+    # Make the new patientToGenes
+
+    newPatientToGenes = {}
+    for patient in patientToGenes:
+        newPatientToGenes[patient] = set()
+
+    for gene in newGeneToCases:
+        for patient in newGeneToCases[gene]:
+            newPatientToGenes[patient].add(gene)
+
+    t2 = time.time()
+    #print "Time to update dictionaries", t2- t1
+
+
+
+    # Consolidate information
+    # Change geneToBin to bin names
+
+    gene_bin_entries = {}
+
+    for gene in geneToBin:
+        bin_name = bin_setToBin[geneToBin[gene]]
+        geneToBin[gene] = bin_name
+
+        # consolidate info
+        entry = {}
+        entry['Gene'] = gene
+        entry['Bin'] = bin_name
+        gene_cases = geneToCases[gene]
+        bin_cases = newGeneToCases[bin_name]
+        shared_cases = gene_cases.intersection(bin_cases)
+        total_cases = gene_cases.union(bin_cases)
+        entry['GeneMutationFrequency'] = len(gene_cases)
+        entry['BinMutationFrequency'] = len(bin_cases)
+        entry['SharedPatients'] = len(shared_cases)
+        entry['TotalPatients'] = len(total_cases)
+        entry['SharedRatio'] = entry['SharedPatients'] * 1.0 / entry['TotalPatients']
+        gene_bin_entries[gene] = entry
+
+    if filename:
+        writeanydict(gene_bin_entries, filename)
+        print "Gene bin entries written to ", filename
+
+    t3 = time.time()
+    # print "Time to get gene bin info ", t3 - t2
+
+    bins = set(geneToBin.values())
+
+    # print "Bins are ", iter(bins).next()
+    # print "Bin sets are ", iter(bin_sets).next()
+
+    return gene_bin_entries, geneToBin, bins, bin_sets, bin_setToBin, newGeneToCases, newPatientToGenes
+
+
+def convert_genes_to_bins(genes, geneToBin):
+
+    return set([geneToBin[gene] for gene in genes])
+
+
+def genedict_to_bin_pairs(genedict, geneToBin, bin_sets, bin_setToBin, max_tries=3):
+
+    binpairs = set()
+
+    # print "Genedict keys are ", genedict.keys()
+
+    for bin_set in bin_sets:
+        bin = bin_setToBin[bin_set]
+        paired_bins = []
+
+        iter_bin = iter(bin_set)
+
+        # Try to find the corresponding bins
+
+        for attempt in range(min(max_tries, len(bin_set))):
+            bin_in_dict = False
+            random_gene = iter_bin.next()
+            try:
+                paired_genes = genedict[random_gene]
+                paired_bins = convert_genes_to_bins(paired_genes, geneToBin)
+                bin_in_dict = True
+            except KeyError:
+                pass
+            if bin_in_dict:
+                break
+
+        for paired_bin in paired_bins:
+            if paired_bin != bin:
+                binpair = frozenset([bin, paired_bin])
+                binpairs.add(binpair)
+
+    return list(binpairs)
+
+
+
+def filterpairs(pairsdict, genesdict, entry, pair_filter=None):
+    """
+    :param pairsdict:
+    :param genesdict:
+    :param entry: Entry of pairsdict.
+    :param pair_filter: Function that returns True if want to keep.
+    :return:
+    """
+    new_pairsdict = pairsdict.copy()
+    new_genesdict = genesdict.copy()
+    for pair in pairsdict:
+        if not pair_filter(pairsdict[pair][entry]):
+            gene0, gene1 = tuple(pair)
+
+            new_pairsdict.pop(pair)
+
+            if gene0 in new_genesdict:
+                new_genesdict[gene0].remove(gene1)
+                if not new_genesdict[gene0]:
+                    new_genesdict.pop(gene0)
+            if gene1 in new_genesdict:
+                new_genesdict[gene1].remove(gene0)
+                if not new_genesdict[gene1]:
+                    new_genesdict.pop(gene1)
+    return new_pairsdict, new_genesdict

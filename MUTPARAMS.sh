@@ -4,10 +4,10 @@
 # INPUT OUTPUT
 # ************************************************************************************
 
-export MUTATIONMATRIXPATH=/Users/jlu96/conte/jlu/mutex/data/ACC_broad-som.m2
+export MUTATIONMATRIXPATH=/Users/jlu96/conte/jlu/mutex/data/GBM-comet.m2
 
 # This will be prefix all of the output files.
-export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/ACC_broad-som
+export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/GBM-mutex
 
 
 # ************************************************************************************
@@ -15,10 +15,10 @@ export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/ACC_broad-som
 # ************************************************************************************
 
 # Limit to genes mutated in at least this # of patients
-export MINFREQ=
+export MINFREQ=5
 
 # Limit to genes mutated in at least this % of patients
-export MINPERCENTILE=10
+export MINPERCENTILE=
 
 # Limit to this # of top most frequently mutated genes
 export TOP_NUMBER=

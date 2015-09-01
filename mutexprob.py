@@ -129,14 +129,14 @@ def cooccurprob(n, mut_nums, overlap = 0):
 def mutexprob2(n, a, b, overlap):
     oddsratio, pvalue = stats.fisher_exact([[overlap, a - overlap], [b - overlap, n - a - b + overlap]],
                               alternative= 'less')
-    return pvalue * 0.5
+    return pvalue
 
 
 @Memoize
 def cooccurprob2(n, a, b, overlap):
     oddsratio, pvalue = stats.fisher_exact([[overlap, a - overlap], [b - overlap, n - a - b + overlap]],
                               alternative= 'greater')
-    return pvalue * 0.5
+    return pvalue
     # p = 1.0
     # prev_m = 0
     # mut_nums = [a, b]

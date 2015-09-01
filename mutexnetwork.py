@@ -44,26 +44,28 @@ class PermutationMatrices:
 
         for i in range(num_permutations):
 
-            _, _, _, _, geneToCases, patientToGenes = permute.permute_mutation_data(G, genes, patients, self.seeds[i], Q)
-            print i, " matrices generated.", self.seeds[i]
+            t = time.time()
+            _, _, _, _, newGeneToCases, newPatientToGenes = permute.permute_mutation_data(G, genes, patients, self.seeds[i], Q)
+            print i, " matrices generated in ", time.time() - t
+            print "For Q=", Q, " number of same alterations is ", sum([len(patientToGenes[patient].intersection(newPatientToGenes[patient])) for patient in patients])
 
-            for gene in geneToCases:
-                self.geneToCases_perm[gene].append(geneToCases[gene])
+            for gene in newGeneToCases:
+                self.geneToCases_perm[gene].append(newGeneToCases[gene])
 
-            for patient in patientToGenes:
-                self.patientToGenes_perm[patient].append(patientToGenes[patient])
+            for patient in newPatientToGenes:
+                self.patientToGenes_perm[patient].append(newPatientToGenes[patient])
 
 
             # Make directory to hold the temporary files.
             if matrixdirectory:
-                adj_list = [ p + "\t" + "\t".join( sorted(patientToGenes[p]) ) for p in patients ]
+                adj_list = [ p + "\t" + "\t".join( sorted(newPatientToGenes[p]) ) for p in patients ]
 
                 permutation_file = "{}/permuted-matrix-{}.m2".format(matrixdirectory, i+1)
                 with open(permutation_file, 'w') as outfile: outfile.write('\n'.join(adj_list))
 
             # Clear dictionaries from stack once they're not used
-            geneToCases.clear()
-            patientToGenes.clear()
+            newGeneToCases.clear()
+            newPatientToGenes.clear()
 
         print "Time to generate mutation matrices ", time.time() - t_start
 
@@ -143,8 +145,8 @@ def main():
     patientFile = None
     geneFile = None
     minFreq = 2
-    num_permutations = 100
-    Q = 100
+    num_permutations = 500
+    Q = 0.5
     matrixdirectory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/matrix'
     outmutexfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/confirmPRAD_testoutmutex' + str(num_permutations) + 'Q' + str(Q) + str(time.time()) + '.tsv'
     outcooccurfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/confirmPRAD_testoutcooccur' + str(num_permutations) + 'Q' + str(Q) + str(time.time()) + '.tsv'
