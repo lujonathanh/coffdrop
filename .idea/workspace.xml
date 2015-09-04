@@ -2,140 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dacb5ee-47a4-4e9d-aaa1-383490bcb7a8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/comet.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-1.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-10.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-11.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-12.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-13.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-14.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-15.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-16.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-17.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-18.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-19.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-2.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-20.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-21.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-22.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-23.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-24.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-25.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-26.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-27.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-28.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-29.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-3.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-30.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-31.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-32.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-33.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-34.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-35.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-36.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-37.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-38.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-39.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-4.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-40.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-41.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-42.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-43.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-44.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-45.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-46.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-47.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-48.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-5.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-6.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-7.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-8.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmp4X910x/permuted-matrix-9.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-1.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-10.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-11.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-12.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-13.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-14.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-15.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-16.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-2.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-3.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-4.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-5.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-6.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-7.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-8.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/.tmpp06244/permuted-matrix-9.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet commands.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/src.macosx-10.6-intel-2.7/fortranobject.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/src.macosx-10.6-intel-2.7/fortranobject.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/src.macosx-10.6-intel-2.7/permute_matrix-f2pywrappers.f" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/src.macosx-10.6-intel-2.7/permute_matrixmodule.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/comet_exhaustive.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/comet_mcmc.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/cometmodule.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/mutation_data.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/utils/cephes/gamma.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/utils/cephes/incbet.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/utils/cephes/polevl.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/utils/utilities.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/c/weights.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/Users/jlu96/comet/comet/src/fortran/permute_matrix.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/build/src.macosx-10.6-intel-2.7/fortranobject.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/build/src.macosx-10.6-intel-2.7/permute_matrix-f2pywrappers.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/build/temp.macosx-10.6-intel-2.7/build/src.macosx-10.6-intel-2.7/permute_matrixmodule.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/cComet.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/convergence.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/mutation_data.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/permute.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/permute_matrix.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/permute_matrix.so.dSYM/Contents/Info.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/setup.cfg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/setup.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/comet_exhaustive.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/comet_mcmc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/cometmodule.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/cometmodule.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/mutation_data.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/cephes_names.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/gamma.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/incbet.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/mconf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/polevl.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/cephes/protos.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/uthash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/utils/utilities.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/c/weights.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/fortran/permute_matrix.f95" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/html/template.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/js/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/js/comet-viz.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/comet/src/js/mp-graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/compute_significance.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/example_datasets/gbm/GBM.glst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/example_datasets/gbm/GBM.m2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/npm-debug.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/run_comet.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/run_comet_permutation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/run_exhaustive.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/test/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/comet/test/test_bipartite_edge_swap.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn146.cn30726Mpairs.tsv" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn146.cn30726Mpairs.tsv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MUTPARAMS.sh" afterPath="$PROJECT_DIR$/MUTPARAMS.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bingenesbypairs.py" afterPath="$PROJECT_DIR$/bingenesbypairs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/binpairs.sh" afterPath="$PROJECT_DIR$/binpairs.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutex.py" afterPath="$PROJECT_DIR$/mutex.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutex_triangles.py" afterPath="$PROJECT_DIR$/mutex_triangles.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutexnetwork.py" afterPath="$PROJECT_DIR$/mutexnetwork.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutexprob.py" afterPath="$PROJECT_DIR$/mutexprob.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_mutex.sh" afterPath="$PROJECT_DIR$/run_mutex.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mutex.iws" />
@@ -157,11 +32,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="permute.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="4.303571">
+              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mutex.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mutex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+            <state vertical-scroll-proportion="-69.77778">
+              <caret line="1084" column="0" selection-start-line="1084" selection-start-column="0" selection-end-line="1084" selection-end-column="0" />
               <folding>
                 <element signature="e#22#53#0" expanded="true" />
               </folding>
@@ -172,10 +57,44 @@
       <file leaf-file-name="mutex_triangles.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6198347">
-              <caret line="1011" column="29" selection-start-line="1011" selection-start-column="29" selection-end-line="1011" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.014778325">
+              <caret line="841" column="65" selection-start-line="841" selection-start-column="65" selection-end-line="841" selection-end-column="65" />
               <folding>
                 <element signature="e#22#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mutexnetwork.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.548387">
+              <caret line="473" column="34" selection-start-line="473" selection-start-column="34" selection-end-line="473" selection-end-column="34" />
+              <folding>
+                <element signature="e#22#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bingenesbypairs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.148148">
+              <caret line="721" column="43" selection-start-line="721" selection-start-column="43" selection-end-line="721" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mutexprob.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mutexprob.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#22#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -185,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -196,50 +115,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mutexprob.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mutexprob.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-72.22222">
-              <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
-              <folding>
-                <element signature="e#22#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mutexnetwork.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4074073">
-              <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
-              <folding>
-                <element signature="e#22#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="permute.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6666667">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="permute_matrix.so" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -257,10 +132,11 @@
         <option value="$PROJECT_DIR$/preprocessing/cna2matrix.py" />
         <option value="$PROJECT_DIR$/preprocessing/matrixreader.py" />
         <option value="$PROJECT_DIR$/postprocessing/edgeannotator.py" />
-        <option value="$PROJECT_DIR$/mutex.py" />
         <option value="$PROJECT_DIR$/postprocessing/edgereader.py" />
-        <option value="$PROJECT_DIR$/../../comet/comet/permute.py" />
         <option value="$PROJECT_DIR$/mutexprob.py" />
+        <option value="$PROJECT_DIR$/bingenesbypairs.py" />
+        <option value="$PROJECT_DIR$/mutex.py" />
+        <option value="$PROJECT_DIR$/../../comet/comet/permute.py" />
         <option value="$PROJECT_DIR$/mutexnetwork.py" />
         <option value="$PROJECT_DIR$/mutex_triangles.py" />
       </list>
@@ -270,9 +146,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="315" />
+    <option name="x" value="247" />
     <option name="y" value="23" />
-    <option name="width" value="1452" />
+    <option name="width" value="1207" />
     <option name="height" value="737" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -286,7 +162,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -297,193 +173,12 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mutex" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="postprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.project" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bingenesbypairs.py" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -628,28 +323,48 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="315" y="23" width="1452" height="737" extended-state="0" />
+    <frame x="247" y="23" width="1207" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.053719006" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24035813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18712574" sideWeight="0.5027548" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18562874" sideWeight="0.5055096" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18712574" sideWeight="0.4972452" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.49449036" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18562874" sideWeight="0.5055096" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18562874" sideWeight="0.49449036" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24035813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -669,92 +384,66 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
+    <entry file="file://$PROJECT_DIR$/mutex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="424" column="0" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postprocessing/edgeannotator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_29_15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-146.66667">
-          <caret line="502" column="10" selection-start-line="502" selection-start-column="10" selection-end-line="502" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postprocessing/edgereader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="32.25926">
-          <caret line="247" column="13" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_30_15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/run_comet_permutation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.333334">
-          <caret line="144" column="59" selection-start-line="144" selection-start-column="43" selection-end-line="144" selection-end-column="59" />
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
-            <element signature="e#43#108#0" expanded="true" />
+            <element signature="e#22#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="75" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="75" />
+          <folding>
+            <element signature="e#22#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexprob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="210" column="12" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="70" />
+          <folding>
+            <element signature="e#22#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -763,82 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/cComet.so">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2705884">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/cometmodule.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.88889">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4074073">
-          <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/run_exhaustive.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29411766">
-          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/cometmodule.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10552764">
-          <caret line="142" column="16" selection-start-line="142" selection-start-column="3" selection-end-line="142" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/comet_exhaustive.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3316583">
-          <caret line="47" column="12" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexprob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-72.22222">
-          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/binpairs.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -869,10 +482,235 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mutexprob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
+          <folding>
+            <element signature="e#22#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
+          <folding>
+            <element signature="e#22#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="424" column="0" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postprocessing/edgeannotator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_29_15.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-146.66667">
+          <caret line="502" column="10" selection-start-line="502" selection-start-column="10" selection-end-line="502" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postprocessing/edgereader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="32.25926">
+          <caret line="247" column="13" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_30_15.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/run_comet_permutation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.333334">
+          <caret line="144" column="59" selection-start-line="144" selection-start-column="43" selection-end-line="144" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/cComet.so">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2705884">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/cometmodule.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-38.88889">
+          <caret line="70" column="29" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/run_exhaustive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29411766">
+          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/cometmodule.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10552764">
+          <caret line="142" column="16" selection-start-line="142" selection-start-column="3" selection-end-line="142" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/src/c/comet_exhaustive.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3316583">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binpairs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexprob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.148148">
+          <caret line="721" column="43" selection-start-line="721" selection-start-column="43" selection-end-line="721" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.303571">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.548387">
+          <caret line="473" column="34" selection-start-line="473" selection-start-column="34" selection-end-line="473" selection-end-column="34" />
+          <folding>
+            <element signature="e#22#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-69.77778">
+          <caret line="1084" column="0" selection-start-line="1084" selection-start-column="0" selection-end-line="1084" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6198347">
-          <caret line="1011" column="29" selection-start-line="1011" selection-start-column="29" selection-end-line="1011" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.014778325">
+          <caret line="841" column="65" selection-start-line="841" selection-start-column="65" selection-end-line="841" selection-end-column="65" />
           <folding>
             <element signature="e#22#41#0" expanded="true" />
           </folding>
