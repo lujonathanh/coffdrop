@@ -61,10 +61,27 @@ export MINDISTANCETHRESHOLD=
 # CALCULATION PARAMETERS
 # ************************************************************************************
 
+# Set to 1 to generate Permutation matrices to test hypotheses.
+export USE_PERM_MATRICES=1
+# Number of permutations. Default: 100
+export NUM_PERMUTATIONS=500
+# Set to 1 to use the binary permutation method, not network
+export BINARY_PERM_METHOD=
+# Network Permutation Method will perform Q * |A| swaps, where A is the number of mutations in the
+# matrix. Default: 1.
+export Q=
+# An existing directory to hold the written matrices
+export PERM_MATRIX_DIRECTORY=
+# Set to 1 to write the matrices to the directory
+export WRITE_MATRICES=
+
+
+
 # Mutex Pair PValue Threshold. Default is 0.05
 export MPROB=
 # Maximum Overlap between mutually exclusive pairs.
 export MAXOVERLAP=
+
 
 
 # Cooccur Pair PValue Threshold. Default is 0.05
@@ -78,6 +95,5 @@ export MINRATIO=
 # If "Triplet", search for triplets among pairs. If "Network", calculate Network attributes
 export GROUPTYPE=Triplet
 
-
-# Number of processes to start and divide parameter testing across.
+# Number of processes to divide calculations across.
 export NUMPROCESSES=

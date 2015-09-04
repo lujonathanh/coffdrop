@@ -8,6 +8,7 @@ mutex requires the following Python modules:
 1.  NetworkX
 2.  SciPy
 3.  NumPy
+4.  matplotlib
 
 #Usage
 See "Mutex workflow" in the wiki for details.

@@ -10,6 +10,8 @@ import networkx as nx
 import sys
 import parallel_compute_working as pac
 import bingenesbypairs as bgbp
+import mutexnetwork as mun
+import line_profiler
 
 
 class Triplet:
@@ -64,14 +66,6 @@ class Triplet:
     def calc_triple_stats(self, numCases, geneToCases, patientToGenes, compute_prob=False, calc_triple_scores=False):
 
 
-        # self.overlap = mex.numoverlaps(self.genes, geneToCases)
-        # self.coverage = mex.numcoverage(self.genes, geneToCases)
-        # self.
-        # # print "Genes are ", self.genes
-        # # print "Overlap is", self.overlap
-        # # print "Coverage is", self.coverage
-        # # print "GeneToCases is", geneToCases
-
         if calc_triple_scores and self.type == 'CooccurringCooccurringCooccurring':
             triple_stats = mex.analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, self.genes, compute_prob=compute_prob)
 
@@ -95,10 +89,6 @@ class Triplet:
         #[pair1, pair2, pair3] = self.pairdict.keys()
 
         return self.stats
-
-
-
-
 
 
 
@@ -448,6 +438,9 @@ def cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, minCoo
     return cpairsdict, cgenedict
 
 
+
+
+
 def filterpairs_new(pairsdict, genesdict, entryToFilter):
     """
     :param pairsdict:
@@ -525,37 +518,55 @@ def pairs_limittogenes(pairsdict, genesdict, genes):
 
 
 
-
+def filter_mutex_gainloss(mpairdict, mgenedict):
+    newmpairdict = mpairdict.copy()
+    newmgenedict = mgenedict.copy()
+    for pair in mpairdict:
+        genes = tuple(pair)
+        if genes[0][:-4] == genes[1][:-4]:
+            newmpairdict.pop(pair)
+            newmgenedict[genes[0]].remove(genes[1])
+            if not newmgenedict[genes[0]]:
+                newmgenedict.pop(genes[0])
+            newmgenedict[genes[1]].remove(genes[0])
+            if not newmgenedict[genes[1]]:
+                newmgenedict.pop(genes[1])
+    return newmpairdict, newmgenedict
 
 
 def complete_mutexpairs(numCases, geneToCases, patientToGenes, genepairs, mprob, maxOverlap, parallel_compute_number,
-                        filter_mutex_gain_loss, filter_mutex_same_segment):
+                        filter_mutex_gain_loss, filter_mutex_same_segment, perm_matrices):
     """
     Complete Wrapper function for mutexpairs.
     :return: mpairsdict, mgenedict
     """
 
     t = time.time()
-
-    if parallel_compute_number:
-        mpairsdict, mgenedict = pac.parallel_compute_new(mutexpairs, [numCases, geneToCases, patientToGenes, genepairs, mprob, maxOverlap, True],
-                                                         list(genepairs), 3, pac.partition_inputs, {0: pac.combine_dictionaries},
-                                                         number=parallel_compute_number,
-                                                         procnumber=parallel_compute_number)
-        mgenedict = edg.get_gene_dict(mpairsdict)
-
-        # old_mpairsdict, old_mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
-        #
-        # print len(set(mpairsdict.keys()).difference(set(old_mpairsdict.keys())))
-        # print len(set(old_mpairsdict.keys()).difference(set(mpairsdict.keys())))
+    if perm_matrices:
+        mpairsdict, mgenedict = perm_matrices.complete_mutexpairs(genepairs, p=mprob, maxOverlap=maxOverlap,
+                                                                  parallel_compute_number=parallel_compute_number)
 
     else:
-        mpairsdict, mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
+        if parallel_compute_number:
+            mpairsdict, mgenedict = pac.parallel_compute_new(mutexpairs, [numCases, geneToCases, patientToGenes, genepairs, mprob, maxOverlap, True],
+                                                             list(genepairs), 3, pac.partition_inputs, {0: pac.combine_dictionaries},
+                                                             number=parallel_compute_number,
+                                                             procnumber=parallel_compute_number)
+            mgenedict = edg.get_gene_dict(mpairsdict)
+
+            # old_mpairsdict, old_mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
+            #
+            # print len(set(mpairsdict.keys()).difference(set(old_mpairsdict.keys())))
+            # print len(set(old_mpairsdict.keys()).difference(set(mpairsdict.keys())))
+
+        else:
+            mpairsdict, mgenedict = mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=mprob, maxOverlap=maxOverlap)
 
 
 
 
     if filter_mutex_gain_loss:
+
         prevlen = len(mpairsdict)
         mpairsdict, mgenedict = filter_mutex_gainloss(mpairsdict, mgenedict)
         print prevlen - len(mpairsdict), " mutex pairs removed by same-gene filter."
@@ -664,33 +675,31 @@ def calc_Network(pairsdict, genesdict, geneToCases, local_edge_bet, pair_filenam
 def complete_cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, cprob, minCooccur,
                           cooccur_distance_threshold, min_cooccurrence_ratio, parallel_compute_number,
                           filter_cooccur_same_segment, fcss_cratiothresh, fcss_mutfreqdiffratiothresh,
-                          fcss_coveragethresh, fcss_probabilitythresh):
+                          fcss_coveragethresh, fcss_probabilitythresh, perm_matrices):
     t1 = time.time()
 
 
 
-
-
-    if parallel_compute_number:
-        cpairsdict, cgenedict = pac.parallel_compute_new(cooccurpairs, [numCases, geneToCases, patientToGenes, genepairs, cprob, minCooccur,
-                                                                        True, cooccur_distance_threshold, min_cooccurrence_ratio],
-                                                         list(genepairs), 3, pac.partition_inputs, {0: pac.combine_dictionaries},
-                                                         number=parallel_compute_number,
-                                                         procnumber=parallel_compute_number)
-        cgenedict = edg.get_gene_dict(cpairsdict)
-
-
-        # old_cpairsdict, old_cgenedict = cooccurpairs(numCases, geneToCases, patientToGenes, cgenepairs, p=cprob, minCooccur=minCooccur, min_cooccurrence_ratio=min_cooccurrence_ratio)
-        #
-        # print len(set(cpairsdict.keys()).difference(set(old_cpairsdict.keys())))
-        # print len(set(old_cpairsdict.keys()).difference(set(cpairsdict.keys())))
-
-
+    if perm_matrices:
+        cpairsdict, cgenedict = perm_matrices.complete_cooccurpairs(genepairs, p=cprob, minCooccur=minCooccur,
+                                                                    parallel_compute_number=parallel_compute_number,
+                                                                    min_cooccurrence_ratio=min_cooccurrence_ratio)
 
     else:
-        cpairsdict, cgenedict = cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=cprob, minCooccur=minCooccur,
-                                             compute_prob=True, cooccur_distance_threshold=cooccur_distance_threshold,
-                                             min_cooccurrence_ratio=min_cooccurrence_ratio)
+        if parallel_compute_number:
+            cpairsdict, cgenedict = pac.parallel_compute_new(cooccurpairs, [numCases, geneToCases, patientToGenes, genepairs, cprob, minCooccur,
+                                                                            True, cooccur_distance_threshold, min_cooccurrence_ratio],
+                                                             list(genepairs), 3, pac.partition_inputs, {0: pac.combine_dictionaries},
+                                                             number=parallel_compute_number,
+                                                             procnumber=parallel_compute_number)
+            cgenedict = edg.get_gene_dict(cpairsdict)
+
+
+
+        else:
+            cpairsdict, cgenedict = cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=cprob, minCooccur=minCooccur,
+                                                 compute_prob=True, cooccur_distance_threshold=cooccur_distance_threshold,
+                                                 min_cooccurrence_ratio=min_cooccurrence_ratio)
 
     if filter_cooccur_same_segment:
         prevlen = len(cpairsdict)
@@ -846,12 +855,6 @@ def get_parser():
     parser.add_argument('-ctsc', '--calc_triple_scores', default=True, help='Calculate the set score, etc. of Triplet.')
     parser.add_argument('-om', '--only_mixed', default=False, help="Only search for mixed triplets.")
 
-    # parser.add_argument('-v', '--cytoscape_output', type=int, default=1, help='Set to 1 to produce cytoscape-compatible'
-    #                                                                           'outputs')
-    # parser.add_argument('-co', '--complete_output', type=int, default=1, help='Set to 1 to produce a file with complete information')
-
-    #parser.add_argument('-cif', '--check_in_file', default=None, help='Name of file to check if the set is in')
-
 
     parser.add_argument('-js', '--just_sets', type=int, default=0, help='Just find the possible cooccurring sets,'
                                                                         'without checking for significance')
@@ -864,6 +867,12 @@ def get_parser():
                              'with this number of bins before running')
     parser.add_argument('-plf', '--pair_list_file', default=None, help='File from which to load pair lists.')
 
+    parser.add_argument('-upm', '--use_perm_matrices', type=int, default=0)
+    parser.add_argument('-pmd', '--perm_matrix_directory', default=None)
+    parser.add_argument('-npm', '--num_permutations', default=100, type=int)
+    parser.add_argument('-q', '--Q', type=int, default=1)
+    parser.add_argument('-bpm', '--binary_perm_method', type=int, default=0)
+    parser.add_argument('-wpm', '--write_matrices', type=int, default=0)
 
 
     return parser
@@ -935,7 +944,18 @@ def run(args):
 
     group_type = args.group_type
     local_edge_bet = args.local_edge_bet
-    pair_type = args.pair_type
+
+
+    use_perm_matrices = args.use_perm_matrices
+    num_permutations = args.num_permutations
+    Q = args.Q
+    binary_perm_method = args.binary_perm_method
+
+    perm_matrix_directory = args.perm_matrix_directory
+    if not perm_matrix_directory:
+        perm_matrix_directory = file_prefix + '_perm_matrices'
+    write_matrices = args.write_matrices
+
     # ------------------------------------------------------------------------------------------------------------
     # ------------------------------------------------------------------------------------------------------------
 
@@ -951,19 +971,10 @@ def run(args):
 
 
 
-
-
-
-
-
-<<<<<<< Updated upstream
-
+    # ------------------------------------------------------------------------------------------------------------
     # LOAD MUTATION DATA
-    # --------------------------------
+    # ------------------------------------------------------------------------------------------------------------
 
-=======
-    # Load mutation data
->>>>>>> Stashed changes
     if mutationmatrix:
 
         mutations = mex.remove_blacklists(gene_blacklist, patient_blacklist,
@@ -971,6 +982,8 @@ def run(args):
         numGenes, numCases, genes, patients, geneToCases, patientToGenes = mutations
 
         print 'Pre-percentile filter Mutation data: %s genes x %s patients' % (numGenes, numCases)
+
+
 
         if min_percentile != 0:
             print "Loading using minimum percentile: ", min_percentile
@@ -994,9 +1007,9 @@ def run(args):
 
 
 
-
-
-    # LOAD OR CALCULATE PAIRS
+    # ------------------------------------------------------------------------------------------------------------
+    # LOAD MUTUALLY EXCLUSIVE OR COOCCURRING PAIRS FROM FILE
+    # ------------------------------------------------------------------------------------------------------------
     if mdictfile or cdictfile:
         if mdictfile:
             medges = edg.EdgeReader(mdictfile, include_gene_cols=True)
@@ -1024,6 +1037,9 @@ def run(args):
                        + '.pcn' + ('0' if not parallel_compute_number else str(parallel_compute_number))
 
 
+    # ------------------------------------------------------------------------------------------------------------
+    # GENERATE LIST OF PAIRS TO TEST FOR MUTAL EXCLUSIVITY/CO-OCCURRENCE
+    # ------------------------------------------------------------------------------------------------------------
 
         print "Getting gene pairs to test..."
 
@@ -1050,26 +1066,6 @@ def run(args):
         else:
             genepairs = getgenepairs(geneToCases, genes1=genes)
 
-        print "Gene pairs finished"
-
-<<<<<<< Updated upstream
-
-
-
-
-
-
-
-
-        # MUTEX BEGINNING HERE
-=======
->>>>>>> Stashed changes
-
-
-
-
-        # MUTEX BEGINNING HERE
-
 
         if cooccur_distance_threshold:
             print "Before distance threshold: ", len(genepairs), " pairs to test"
@@ -1077,14 +1073,34 @@ def run(args):
             print "After distance threshold: ", len(genepairs), " pairs to test"
             cooccur_distance_threshold = None
 
+        print "Gene pairs finished"
+
+
+
+
+    # ------------------------------------------------------------------------------------------------------------
+    # CHECK FOR MUTUAL EXCLUSIVITY AND CO-OCCURRENCE
+    # ------------------------------------------------------------------------------------------------------------
+
+        # Generate permutation matrices
+        if use_perm_matrices:
+            perm_matrices = mun.PermutationMatrices(geneToCases, patientToGenes, num_permutations=num_permutations,
+                                          Q=Q, matrixdirectory=perm_matrix_directory, binary_perm_method=binary_perm_method,
+                                            write_matrices=write_matrices)
+        else:
+            perm_matrices = None
+
+
 
         cpairsdict, cgenedict = complete_cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, cprob, minCooccur,
                           cooccur_distance_threshold, min_cooccurrence_ratio, parallel_compute_number,
                           filter_cooccur_same_segment, fcss_cratiothresh, fcss_mutfreqdiffratiothresh,
-                          fcss_coveragethresh, fcss_probabilitythresh)
+                          fcss_coveragethresh, fcss_probabilitythresh, perm_matrices)
 
         mpairsdict, mgenedict = complete_mutexpairs(numCases, geneToCases, patientToGenes, genepairs, mprob, maxOverlap, parallel_compute_number,
-                filter_mutex_gain_loss, filter_mutex_same_segment)
+                filter_mutex_gain_loss, filter_mutex_same_segment, perm_matrices)
+
+
 
 
         if ridiculous_pvalue_thresh:
@@ -1100,6 +1116,9 @@ def run(args):
 
 
 
+
+        # Write the pairs out
+
         file_prefix += '.mn' + str(len(mpairsdict)) + '.cn' + str(len(cpairsdict))
 
         if mpairsdict:
@@ -1112,6 +1131,10 @@ def run(args):
             writegenedict(cgenedict, file_prefix + 'Cgenes.tsv')
             print len(cpairsdict), 'Cooccur pairs written to ', file_prefix + 'Cpairs.tsv'
 
+
+    # ------------------------------------------------------------------------------------------------------------
+    # FILTER CO-OCCURRING PAIRS
+    # ------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1149,64 +1172,35 @@ def run(args):
             file_prefix += filtered_suffix
 
 
-    if pair_type == 'm':
-        pairsdict = mpairsdict.copy()
-        genesdict = mgenedict.copy()
-    elif pair_type == 'c':
-        pairsdict = cpairsdict.copy()
-        genesdict = cgenedict.copy()
-    else:
-        pairsdict = cpairsdict.copy()
-        pairsdict.update(mpairsdict)
 
-        genesdict = cgenedict.copy()
-        for gene in mgenedict:
-            if gene in genesdict:
-                genesdict[gene] = genesdict[gene].union(mgenedict[gene])
-            else:
-                genesdict[gene] = mgenedict[gene]
 
-        print "Num mutex ", len(mpairsdict)
-        print "Num cooccur ", len(cpairsdict)
+
+
+    # ------------------------------------------------------------------------------------------------------------
+    # GENERATE LIST OF PAIRS TO USE FOR FINDING TRIPLETS
+    # ------------------------------------------------------------------------------------------------------------
+
+    pairsdict = cpairsdict.copy()
+    pairsdict.update(mpairsdict)
+
+    genesdict = cgenedict.copy()
+    for gene in mgenedict:
+        if gene in genesdict:
+            genesdict[gene] = genesdict[gene].union(mgenedict[gene])
+        else:
+            genesdict[gene] = mgenedict[gene]
+
+    print "Num mutex ", len(mpairsdict)
+    print "Num cooccur ", len(cpairsdict)
 
     print "Number of pairs total ", len(pairsdict)
 
 
 
 
-
-    if group_type == 'Network' or group_type == 'TripletNetwork':
-
-        if mpairsdict:
-            print "------------------------------------------------------------------"
-            print "MUTUAL EXCLUSIVITY NETWORK"
-            calc_Network(mpairsdict, mgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkMpairs.tsv",
-                 file_prefix + "_NetworkMgenes.tsv")
-            print "MUTUAL EXCLUSIVITY LOGPCOV WEIGHT"
-            calc_Network(mpairsdict, mgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovMpairs.tsv",
-                 file_prefix + "_NetworkRoundedLogPCovMgenes.tsv", weight='RoundedLogPCov')
-        if cpairsdict:
-            print "------------------------------------------------------------------"
-            print "COOCCURRING NETWORK"
-            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkCpairs.tsv",
-                 file_prefix + "_NetworkCgenes.tsv")
-            print "COOCCURRING NETWORK COMBINED SCORE WEIGHT"
-            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkCombScoreCpairs.tsv",
-                 file_prefix + "_NetworkCombScoreCgenes.tsv", weight="CombinedScore")
-            print "COOCCURRING NETWORK LOGPCOV WEIGHT"
-            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovCpairs.tsv",
-                 file_prefix + "_NetworkRoundedLogPCovCgenes.tsv", weight='RoundedLogPCov')
-        if pairsdict:
-            print "------------------------------------------------------------------"
-            print "COMBINED NETWORK"
-            calc_Network(pairsdict, genesdict, geneToCases, local_edge_bet, file_prefix + "_Networkpairs.tsv",
-                         file_prefix + "_Networkgenes.tsv")
-            print "COMBINED NETWORK LOGPCOV WEIGHT"
-            calc_Network(pairsdict, genesdict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovpairs.tsv",
-             file_prefix + "_NetworkRoundedLogPCovgenes.tsv", weight='RoundedLogPCov')
-        print "------------------------------------------------------------------"
-
-
+    # ------------------------------------------------------------------------------------------------------------
+    # CALCULATE TRIPLETS
+    # ------------------------------------------------------------------------------------------------------------
 
     if group_type == 'Triplet' or group_type == 'TripletNetwork':
 
@@ -1241,9 +1235,6 @@ def run(args):
             print len(Triplet_dict[type]), " of type ",  type
             writeTriplets(Triplet_dict[type], file_prefix + '.n' + str(len(Triplet_dict[type])) + type)
 
-        # file_prefix += '.n' + str(len(Triplets))
-
-
         pairs_header = pairsdict_Triplets.values()[0].keys()
         pairs_header.remove(name)
         genes_header = genesdict_Triplets.values()[0].keys()
@@ -1254,6 +1245,48 @@ def run(args):
 
         print "Triplet pairs written to " + file_prefix + "_Tripletspairs.tsv"
         print "Triplet genes written to " + file_prefix + "_Tripletsgenes.tsv"
+
+
+
+    # ------------------------------------------------------------------------------------------------------------
+    # CALCULATE NETWORK PROPERTIES
+    # ------------------------------------------------------------------------------------------------------------
+
+    if group_type == 'Network' or group_type == 'TripletNetwork':
+
+        if mpairsdict:
+            print "------------------------------------------------------------------"
+            print "MUTUAL EXCLUSIVITY NETWORK"
+            calc_Network(mpairsdict, mgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkMpairs.tsv",
+                 file_prefix + "_NetworkMgenes.tsv")
+            print "MUTUAL EXCLUSIVITY LOGPCOV WEIGHT"
+            calc_Network(mpairsdict, mgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovMpairs.tsv",
+                 file_prefix + "_NetworkRoundedLogPCovMgenes.tsv", weight='RoundedLogPCov')
+        if cpairsdict:
+            print "------------------------------------------------------------------"
+            print "COOCCURRING NETWORK"
+            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkCpairs.tsv",
+                 file_prefix + "_NetworkCgenes.tsv")
+            print "COOCCURRING NETWORK COMBINED SCORE WEIGHT"
+            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkCombScoreCpairs.tsv",
+                 file_prefix + "_NetworkCombScoreCgenes.tsv", weight="CombinedScore")
+            print "COOCCURRING NETWORK LOGPCOV WEIGHT"
+            calc_Network(cpairsdict, cgenedict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovCpairs.tsv",
+                 file_prefix + "_NetworkRoundedLogPCovCgenes.tsv", weight='RoundedLogPCov')
+        if pairsdict:
+            print "------------------------------------------------------------------"
+            print "COMBINED NETWORK"
+            calc_Network(pairsdict, genesdict, geneToCases, local_edge_bet, file_prefix + "_Networkpairs.tsv",
+                         file_prefix + "_Networkgenes.tsv")
+            print "COMBINED NETWORK LOGPCOV WEIGHT"
+            calc_Network(pairsdict, genesdict, geneToCases, local_edge_bet, file_prefix + "_NetworkRoundedLogPCovpairs.tsv",
+             file_prefix + "_NetworkRoundedLogPCovgenes.tsv", weight='RoundedLogPCov')
+        print "------------------------------------------------------------------"
+
+
+
+
+
 
 
     print "Time used ", time.time() - tstart
@@ -1801,20 +1834,7 @@ def filter_pair_coding(genepairs, filename='/Users/jlu96/conte/jlu/geneToLength_
     return newgenepairs
 
 
-def filter_mutex_gainloss(mpairdict, mgenedict):
-    newmpairdict = mpairdict.copy()
-    newmgenedict = mgenedict.copy()
-    for pair in mpairdict:
-        genes = tuple(pair)
-        if genes[0][:-4] == genes[1][:-4]:
-            newmpairdict.pop(pair)
-            newmgenedict[genes[0]].remove(genes[1])
-            if not newmgenedict[genes[0]]:
-                newmgenedict.pop(genes[0])
-            newmgenedict[genes[1]].remove(genes[0])
-            if not newmgenedict[genes[1]]:
-                newmgenedict.pop(genes[1])
-    return newmpairdict, newmgenedict
+
 
 def filter_mutex_samesegment(mpairdict, mgenedict):
     newmpairdict = mpairdict.copy()

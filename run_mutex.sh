@@ -1,5 +1,3 @@
-module load python/2.7.6-vanilla
-
 source ./MUTPARAMS.sh
 
 
@@ -72,6 +70,48 @@ if [ $PAIRLIST ]
 then
 COMMAND=${COMMAND}" -plf $PAIRLIST"
 fi
+
+
+
+
+
+
+
+if [ $USE_PERM_MATRICES ]
+then
+COMMAND=${COMMAND}" -upm $USE_PERM_MATRICES"
+fi
+
+if [ $NUM_PERMUTATIONS ]
+then
+COMMAND=${COMMAND}" -npm $NUM_PERMUTATIONS"
+fi
+
+if [ $BINARY_PERM_METHOD ]
+then
+COMMAND=${COMMAND}" -bpm $BINARY_PERM_METHOD"
+fi
+
+if [ $Q]
+then
+COMMAND=${COMMAND}" -q $Q"
+fi
+
+if [ $PERM_MATRIX_DIRECTORY ]
+then
+COMMAND=${COMMAND}" -pmd $PERM_MATRIX_DIRECTORY"
+fi
+
+if [ $WRITE_MATRICES ]
+then
+COMMAND=${COMMAND}" -wpm $WRITE_MATRICES"
+fi
+
+
+
+
+
+
 
 
 if [ $NUMPROCESSES ]

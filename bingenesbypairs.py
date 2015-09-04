@@ -611,8 +611,9 @@ def get_parser():
 
     parser.add_argument('-lgs', '--load_gene_segments', default=None)
     parser.add_argument('-gsf', '--gene_segment_file', default=None)
-    parser.add_argument('-ig2s', '--is_gene2seg', type=int, default=0, help="If the file is a gene2seg fie output from cna2matrix.py, as opposed to SEGMENTINFO sfile.")
+    parser.add_argument('-ig2s', '--is_gene2seg', type=int, default=0, help="If the file is a gene2seg fie output from cna2matrix.py, as opposed to SEGMENTINFO file.")
     parser.add_argument('-gbef', '--gene_bin_entries_file', default=None)
+    parser.add_argument('-sgif', '--segment_info_file', default=None, help='Name of the file to write SEGMENTINFO to.')
 
     parser.add_argument('-ntoe', '--no_throw_out_extras', type=int, default=-0)
 
@@ -640,10 +641,7 @@ def run(args):
     patientFile = args.patient_file
     gene_blacklist = args.gene_blacklist_file
     patient_blacklist = args.patient_blacklist_file
-    gene_file_1 = args.gene_list_1
-    gene_file_2 = args.gene_list_2
     minFreq = args.min_freq
-    maxOverlap = args.max_overlaps
     minCooccur = args.min_cooccur
     min_cooccurrence_ratio = args.min_cooccurrence_ratio
     top_percentile = args.top_percentile
@@ -666,11 +664,14 @@ def run(args):
     is_gene2seg = args.is_gene2seg
     gene_bin_entries_file = args.gene_bin_entries_file
     no_throw_out_extras = args.no_throw_out_extras
+    segment_info_file = args.segment_info_file
+
 
     if not gene_bin_entries_file:
         gene_bin_entries_file = file_prefix + '_binnedgenes.tsv'
 
-
+    if not segment_info_file:
+        segment_info_file = file_prefix + '_SEGMENTINFO.tsv'
 
     #-----------------------------------------------------
 
@@ -700,8 +701,8 @@ def run(args):
         genepairs = getgenepairs(geneToCases, genes, closer_than_distance=bin_distance_threshold)
         print "Pairs retrieved. Calculating cooccurring pairs to make bins."
 
-        cpairsdict, cgenedict = met.complete_cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, cprob, minCooccur,
-                      cooccur_distance_threshold, min_cooccurrence_ratio, parallel_compute_number,
+        cpairsdict, cgenedict = met.complete_cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, fcss_probabilitythresh, minCooccur,
+                      cooccur_distance_threshold, fcss_cratiothresh, parallel_compute_number,
                       filter_cooccur_same_segment, fcss_cratiothresh, fcss_mutfreqdiffratiothresh,
                       fcss_coveragethresh, fcss_probabilitythresh)
 
@@ -710,7 +711,9 @@ def run(args):
                            fcss_mutfreqdiffratiothresh, fcss_coveragethresh, fcss_probabilitythresh, bin_distance_threshold=bin_distance_threshold)
         # Write these new bins out
         new_bins = convert_genes_to_bins(genes, geneToBin)
-        write_segment_infos(new_bins, filename='SEGMENTINFO')
+        write_segment_infos(new_bins, filename=segment_info_file)
+        print "New SEGMENTINFO written to ", segment_info_file
+
         write_gene_positions(new_bins)
         print "New segment positions appended to gene_positions.txt"
 
