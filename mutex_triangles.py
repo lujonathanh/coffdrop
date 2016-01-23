@@ -395,7 +395,7 @@ def mutexpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, maxOverl
 
 
 def cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, minCooccur=1, compute_prob=True, cooccur_distance_threshold=None,
-                 min_cooccurrence_ratio=0.0):
+                 min_cooccurrence_ratio=0.0, compute_mutex=False):
     """
     :param numCases: The number of patients, total.
     :param geneToCases: Mapping of genes to cases.
@@ -417,7 +417,7 @@ def cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, p=1.0, minCoo
         if cratio >= min_cooccurrence_ratio:
 
             cstats = mex.analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, genepair, compute_prob=compute_prob,
-                                                 getdistance=cooccur_distance_threshold)
+                                                 getdistance=cooccur_distance_threshold, compute_mutex=compute_mutex)
             cprob = cstats['Probability']
             coverlap = cstats['Overlap']
             cratio = cstats['CooccurrenceRatio']

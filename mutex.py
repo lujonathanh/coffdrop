@@ -298,7 +298,7 @@ def analyze_mutex_set_new(numCases, geneToCases, patientToGenes, geneset, comput
 
 
 def analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, geneset, compute_prob=True, trials=10000,
-                            getdistance=False, compute_scores=True):
+                            getdistance=False, compute_scores=True, compute_mutex=False):
     mutationfrequencies = [len(geneToCases[gene]) for gene in geneset]
     overlap = numoverlaps(geneset, geneToCases)
 
@@ -309,6 +309,15 @@ def analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, geneset, comp
             cooccurprob = mep.cooccurprob_approximate(numCases, overlap, trials, *mutationfrequencies)
     else:
         cooccurprob = 0.0
+
+    if compute_mutex:
+        if len(geneset) == 2:
+            mutexprob = mep.mutexprob(numCases, mutationfrequencies, overlap)
+        else:
+            exclusive = numexclusive(geneset, geneToCases, patientToGenes)
+            mutexprob = mep.mutexprob_approximate(numCases, exclusive, trials, *mutationfrequencies)
+    else:
+        mutexprob = 0.0
 
     coverage = numcoverage(geneset, geneToCases)
     c_ratio = overlap * 1.0 / coverage
@@ -362,6 +371,9 @@ def analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, geneset, comp
 
     if getdistance:
         cstats['Distance'] = distance
+
+    if compute_mutex:
+        cstats['MutexProb'] = mutexprob
 
     return cstats
 

@@ -339,6 +339,7 @@ def main():
     geneFile = None
     minFreq = 0
     test_minFreq = 5
+    compute_mutex = True
     num_cohorts_list = [1,2,3]
 
 
@@ -360,7 +361,7 @@ def main():
 
 
     print "Normal cooccur test"
-    cpairsdict, cgenedict = met.cooccurpairs(numCases, geneToCases, patientToGenes, genepairs)
+    cpairsdict, cgenedict = met.cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, compute_mutex=compute_mutex)
 
     # print "Add binomial probability"
     # cpairsdict = add_BinomP_all_pairs(cpairsdict, geneToCases, patientToGenes)
