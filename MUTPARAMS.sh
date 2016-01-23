@@ -4,10 +4,10 @@
 # INPUT OUTPUT
 # ************************************************************************************
 
-export MUTATIONMATRIXPATH=/Users/jlu96/conte/jlu/mutex/data/GBM-comet.m2
+export MUTATIONMATRIXPATH=/Users/jlu96/maf/new/PRAD_broad/PRAD_broad-som.m2
 
 # This will be prefix all of the output files.
-export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/GBM-mutex
+export OUTPUTPREFIX=/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/Analyses/LowMutatednessScore/data/PRAD_broad-som
 
 
 # ************************************************************************************
@@ -15,7 +15,7 @@ export OUTPUTPREFIX=/Users/jlu96/conte/jlu/mutex/output/GBM-mutex
 # ************************************************************************************
 
 # Limit to genes mutated in at least this # of patients
-export MINFREQ=5
+export MINFREQ=
 
 # Limit to genes mutated in at least this % of patients
 export MINPERCENTILE=
@@ -48,6 +48,9 @@ export GENELIST2=
 # If set, only test pairs from PAIRLIST. The column header must be "Gene0   Gene1"
 export PAIRLIST=
 
+# If set, only test pairs whose genes have a minimum mutation frequency at least this.
+export TESTMINFREQ=4
+
 # If set, only test genes that are at least this distance away.
 # This will only apply to genes ending in "gain" or "loss".
 # E.G. Say TP53 and MYC are 30 bp away. If the threshold is set to 1000000, the pair (TP53gain, MYCloss) will not
@@ -62,9 +65,9 @@ export MINDISTANCETHRESHOLD=
 # ************************************************************************************
 
 # Set to 1 to generate Permutation matrices to test hypotheses.
-export USE_PERM_MATRICES=1
+export USE_PERM_MATRICES=
 # Number of permutations. Default: 100
-export NUM_PERMUTATIONS=500
+export NUM_PERMUTATIONS=
 # Set to 1 to use the binary permutation method, not network
 export BINARY_PERM_METHOD=
 # Network Permutation Method will perform Q * |A| swaps, where A is the number of mutations in the
@@ -93,7 +96,7 @@ export MINRATIO=
 
 
 # If "Triplet", search for triplets among pairs. If "Network", calculate Network attributes
-export GROUPTYPE=Triplet
+export GROUPTYPE=
 
 # Number of processes to divide calculations across.
 export NUMPROCESSES=

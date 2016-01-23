@@ -11,6 +11,7 @@ import sys
 import parallel_compute_working as pac
 import bingenesbypairs as bgbp
 import mutexnetwork as mun
+import lowmutatedness as lm
 import line_profiler
 
 
@@ -316,7 +317,7 @@ def writegenedict(genedict, filename, delimiter='\t', fieldnames=None):
 
 
 
-def getgenepairs(geneToCases, genes1, genes2=None):
+def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0):
     """
     :param genes1: First list of genes.
     :param genes2: Second list of genes. If None, defaults to making pairs from the first gene list.
@@ -326,7 +327,8 @@ def getgenepairs(geneToCases, genes1, genes2=None):
     if not genes2:
         genes2 = genes1
 
-    relevant_genes = set(geneToCases.keys())
+    relevant_genes = set([gene for gene in geneToCases.keys() if len(geneToCases[gene]) >= test_minFreq])
+
     genepairs = set()
 
     for gene1 in genes1:
@@ -781,6 +783,8 @@ def get_parser():
     parser.add_argument('-gl2', '--gene_list_2', default=None,
                         help='Second set of genes to draw from')
 
+    parser.add_argument('-tmf', '--test_minFreq', type=int, default=0,
+                        help='Minimum frequency of genes to test pairs on')
 
 
 
@@ -846,7 +850,7 @@ def get_parser():
 
     parser.add_argument('-leb', '--local_edge_bet', default=None, help='Calculate the local edge betweenness.')
 
-    parser.add_argument('-gt', '--group_type', default='TripletNetwork', help='Type of group to find')
+    parser.add_argument('-gt', '--group_type', default='', help='Type of group to find')
     parser.add_argument('-pt', '--pair_type', default=None, help='Type of pair to limit to')
 
 
@@ -907,6 +911,8 @@ def run(args):
     gene_file_2 = args.gene_list_2
 
     pair_list_file = args.pair_list_file
+    test_minFreq = args.test_minFreq
+
 
     minFreq = args.min_freq
     maxOverlap = args.max_overlaps
@@ -1058,13 +1064,13 @@ def run(args):
 
 
         if gene_list_1 and gene_list_2:
-            genepairs = getgenepairs(geneToCases, genes1=gene_list_1, genes2=gene_list_2)
+            genepairs = getgenepairs(geneToCases, genes1=gene_list_1, genes2=gene_list_2, test_minFreq=test_minFreq)
         elif gene_list_1:
-            genepairs = getgenepairs(geneToCases, genes1=gene_list_1)
+            genepairs = getgenepairs(geneToCases, genes1=gene_list_1, test_minFreq=test_minFreq)
         elif pair_list_file:
-            genepairs = loadgenepairs(pair_list_file, geneToCases)
+            genepairs = loadgenepairs(pair_list_file, geneToCases, test_minFreq=test_minFreq)
         else:
-            genepairs = getgenepairs(geneToCases, genes1=genes)
+            genepairs = getgenepairs(geneToCases, genes1=genes, test_minFreq=test_minFreq)
 
 
         if cooccur_distance_threshold:
@@ -1073,7 +1079,7 @@ def run(args):
             print "After distance threshold: ", len(genepairs), " pairs to test"
             cooccur_distance_threshold = None
 
-        print "Gene pairs finished"
+        print len(genepairs), "gene pairs finished"
 
 
 
@@ -1114,6 +1120,17 @@ def run(args):
             print len(cpairsdict), "cooccur pairs remain"
             print len(mpairsdict), "mutex pairs remain"
 
+
+        # ------------------------------------------------------------------------------------------------------------
+        # CALCULATE LOW-MUTATEDNESS SCORE FOR CO-OCCURRING PAIRS
+        # ------------------------------------------------------------------------------------------------------------
+
+        low_mut = True
+        low_mut_dist_num = 1000
+
+        if low_mut:
+            cpairsdict = lm.add_low_mutated_scores(cpairsdict, geneToCases, patientToGenes, dist_num=low_mut_dist_num)
+            print "Low mutatedness scores calculated for co-occurring pairs."
 
 
 
@@ -1171,10 +1188,6 @@ def run(args):
             cgenedict = cgenedict_filtered
             file_prefix += filtered_suffix
 
-
-    # ------------------------------------------------------------------------------------------------------------
-    # CALCULATE LOW-MUTATEDNESS SCORE FOR CO-OCCURRING PAIRS
-    # ------------------------------------------------------------------------------------------------------------
 
 
 

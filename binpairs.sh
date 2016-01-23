@@ -5,9 +5,9 @@ source ./BINPARAMS.sh
 #MAKE COMMAND NAME out of parameters. Then run.
 COMMAND="python bingenesbypairs.py"
 
-if [ $OLDSEGMATRIX ]
+if [ $OLDMATRIX ]
 then
-COMMAND=${COMMAND}" -m $OLDSEGMATRIX"
+COMMAND=${COMMAND}" -m $OLDMATRIX"
 fi
 
 if [ $DISTANCETHRESHOLD ]

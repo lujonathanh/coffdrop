@@ -7,13 +7,13 @@
 # ************************************************************************************
 
 # The input matrix
-export OLDMATRIX=
+export OLDMATRIX=data/ACC_broad-cna-gl.m2
 
 # The output, segmented matrix.
-export NEWSEGMATRIX=
+export NEWSEGMATRIX=output/ACC_broad-seg-gl.m2
 
 # The name of the file to write the concordance of each gene with its reprsentative
-# segment. Default is $OLDMATRIX_binnedgenes.tsv
+# segment. Default is $NEWSEGMATRIX_binnedgenes.tsv
 export GENEBINENTRIESFILE=
 
 # The bin option. To load, set to 1. To bin by co-occurrence, set to 0. Default: 0
