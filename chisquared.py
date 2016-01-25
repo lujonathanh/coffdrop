@@ -196,9 +196,11 @@ def get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort):
         p_g_overlap *= p_g
 
     # Get p-value
-    p = stats.binom_test(len(overlap_patients), n=numCases, p=p_g_overlap)
+    # rv = stats.binom(numCases, p_g_overlap)
+    cooccurprob = stats.binom.sf(len(overlap_patients), numCases, p_g_overlap)
+    mutexprob = stats.binom.cdf(len(overlap_patients), numCases, p_g_overlap)
 
-    return p
+    return cooccurprob, mutexprob
 
 
 
@@ -208,13 +210,16 @@ def add_BinomP_cohorts_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_
 
     for pair in pairsdict:
         geneset = set(pair)
-        all_sig = True
+        all_c_sig = True
+        all_m_sig = True
         for cohort_num in cohort_dict:
-            BinomP = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
-            pairsdict[pair][str(num_cohorts) + 'BinomProbability' + str(cohort_num)] = BinomP
-            all_sig = all_sig and (BinomP < pvalue)
-        pairsdict[pair][str(num_cohorts) + 'AllSig'] = all_sig
-
+            cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
+            pairsdict[pair][str(num_cohorts) + 'CBinomProb' + str(cohort_num)] = cprob
+            pairsdict[pair][str(num_cohorts) + 'MBinomProb' + str(cohort_num)] = mprob
+            all_c_sig = all_c_sig and (cprob < pvalue)
+            all_m_sig = all_m_sig and (mprob < pvalue)
+        pairsdict[pair][str(num_cohorts) + 'CAllSig'] = all_c_sig
+        pairsdict[pair][str(num_cohorts) + 'MAllSig'] = all_m_sig
 
     return pairsdict
 
@@ -332,15 +337,16 @@ def generate_patient_cohorts(patientToGenes, num_cohorts):
 def main():
 
 
-    mutationmatrix = '/Users/jlu96/maf/new/PRAD_broad/PRAD_broad-som.m2'
-    patientFile = '/Users/jlu96/maf/new/PRAD_broad/shared_patients.plst'
-    cpairfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LorenzoModel/Binomial/PRAD_broad-som-Cpairs.txt'
+    mutationmatrix = '/Users/jlu96/maf/new/SARC_broad/SARC_broad-som-cna-jl.m2'
+    patientFile = '/Users/jlu96/maf/new/SARC_broad/shared_patients.plst'
+    cpairfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LorenzoModel/Binomial/SARC_broad-som-cna-jl-CpairS.txt'
 
     geneFile = None
     minFreq = 0
-    test_minFreq = 5
+    test_minFreq = 130
     compute_mutex = True
-    num_cohorts_list = [1,2,3]
+    include_cohort_info = False
+    num_cohorts_list = [1,3, 5, 7]
 
 
     numGenes, numCases, genes, patients, geneToCases, patientToGenes = mex.load_mutation_data(mutationmatrix, patientFile, geneFile, minFreq)
@@ -367,18 +373,19 @@ def main():
     # cpairsdict = add_BinomP_all_pairs(cpairsdict, geneToCases, patientToGenes)
 
     # undo
-    # print "Beginning cohorts"
-    #
-    #
-    # for num_cohorts in num_cohorts_list:
-    #     # get cohorts
-    #     cohort_dict = generate_patient_cohorts(patientToGenes, num_cohorts)
-    #
-    #     cpairsdict = add_BinomP_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
-    #
-    #     cpairsdict = add_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
-    #
-    # print "Writing to file..."
+    print "Beginning cohorts"
+
+
+    for num_cohorts in num_cohorts_list:
+        # get cohorts
+        cohort_dict = generate_patient_cohorts(patientToGenes, num_cohorts)
+
+        cpairsdict = add_BinomP_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
+
+        if include_cohort_info:
+            cpairsdict = add_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
+
+    print "Writing to file..."
     met.writeanydict(cpairsdict, cpairfile)
 
 
