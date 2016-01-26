@@ -448,7 +448,7 @@ class PermutationMatrices:
     # generate matrices
     #@profile
     def __init__(self, geneToCases, patientToGenes, num_permutations, seeds=[], Q=100, matrixdirectory=None, binary_perm_method=False,
-                 write_matrices=False):
+                 write_matrices=False, load_matrices=False):
         t_start = time.time()
 
         if not seeds:
@@ -480,14 +480,13 @@ class PermutationMatrices:
         for patient in patients:
             self.patientToGenes_perm[patient] = []
 
+
+
         # Generate output directory to write matrix
         if not os.path.exists(os.path.dirname(matrixdirectory)) and write_matrices:
             os.makedirs(os.path.dirname(matrixdirectory))
 
 
-        # Matrix method---------------------------------------------------------------------
-        # PM = PermutationMatrix(geneToCases, patientToGenes)
-        # Matrix method---------------------------------------------------------------------
 
         if binary_perm_method:
             PM = PermutationMatrix(geneToCases, patientToGenes)
@@ -749,12 +748,14 @@ def main():
 
     mutationmatrix = '/Users/jlu96/maf/new/PRAD_broad/PRAD_broad-som.m2'
     patientFile = None
-    geneFile = '/Users/jlu96/conte/jlu/REQUIREDFILES_OnlyLoss2/COSMICGenes_OnlyLoss.txt'
+    geneFile = None
+    #'/Users/jlu96/conte/jlu/REQUIREDFILES_OnlyLoss2/COSMICGenes_OnlyLoss.txt'
     minFreq = 0
-    num_permutations = 100
-    binary_perm_method = True
-    Q = 3
-    matrixdirectory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/PRAD_broad-som-cna-jl' + ('matrix' if binary_perm_method else 'network')
+    num_permutations = 15
+    binary_perm_method = False
+    Q = 100
+    write_matrices = True
+    matrixdirectory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/PRAD_broad-som-jl-' + ('matrix' if binary_perm_method else 'network')
     outmutexfile = matrixdirectory + '/mutex' + str(num_permutations) + str(time.time()) + '.tsv'
     outcooccurfile = matrixdirectory + '/cooccur' + str(num_permutations)  + str(time.time()) + '.tsv'
     outseedsfile = matrixdirectory + '/seeds' + str(time.time()) + '.tsv'
@@ -827,7 +828,7 @@ def main():
 
     # Write to output
     with open(outmutexfile, 'w') as csvfile:
-        fieldnames = pair_to_mutex[genepair].keys()
+        fieldnames = pair_to_mutex[genepairs[0]].keys()
         writer = csv.DictWriter(csvfile, delimiter='\t', fieldnames=fieldnames)
         writer.writeheader()
         for genepair in pair_to_mutex:
@@ -870,7 +871,7 @@ def main():
 
     # Write to output
     with open(outcooccurfile, 'w') as csvfile:
-        fieldnames = pair_to_cooccur[genepair].keys()
+        fieldnames = pair_to_cooccur[genepairs[0]].keys()
         writer = csv.DictWriter(csvfile, delimiter='\t', fieldnames=fieldnames)
         writer.writeheader()
         for genepair in pair_to_cooccur:
