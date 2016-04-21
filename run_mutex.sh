@@ -14,6 +14,11 @@ then
     COMMAND=${COMMAND}" -mf $MINFREQ"
 fi
 
+if [ $TESTMINFREQ ]
+then
+COMMAND=${COMMAND}" -tmf $TESTMINFREQ"
+fi
+
 if [ $TOP_PERCENTILE ]
 then
 COMMAND=${COMMAND}" -tp $TOP_PERCENTILE"

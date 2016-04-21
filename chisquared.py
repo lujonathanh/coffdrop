@@ -4,6 +4,8 @@ import mutex as mex
 import mutex_triangles as met
 import csv
 from scipy import stats
+import partition
+import time
 
 
 def get_patient_ChiP(patient, geneToCases, patientToGenes):
@@ -197,10 +199,9 @@ def get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort):
 
     # Get p-value
     # rv = stats.binom(numCases, p_g_overlap)
-    cooccurprob = stats.binom.sf(len(overlap_patients), numCases, p_g_overlap)
-    mutexprob = stats.binom.cdf(len(overlap_patients), numCases, p_g_overlap)
-
-    return cooccurprob, mutexprob
+    cooccurprob = stats.binom.sf(len(overlap_patients) - 1, numCases,   p_g_overlap)
+    mutexprob = stats.binom.cdf(len(overlap_patients), numCases,   p_g_overlap)
+    return numCases, [len(p) for p in patientlist], len(overlap_patients), cooccurprob, mutexprob
 
 
 
@@ -213,7 +214,10 @@ def add_BinomP_cohorts_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_
         all_c_sig = True
         all_m_sig = True
         for cohort_num in cohort_dict:
-            cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
+            cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
+            pairsdict[pair][str(num_cohorts) + 'Size' + str(cohort_num)] = cohort_size
+            pairsdict[pair][str(num_cohorts) + 'Freqs' + str(cohort_num)] = freqs
+            pairsdict[pair][str(num_cohorts) + 'Overlap' + str(cohort_num)] = overlap
             pairsdict[pair][str(num_cohorts) + 'CBinomProb' + str(cohort_num)] = cprob
             pairsdict[pair][str(num_cohorts) + 'MBinomProb' + str(cohort_num)] = mprob
             all_c_sig = all_c_sig and (cprob < pvalue)
@@ -244,6 +248,49 @@ def add_cohorts_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_dict):
     return pairsdict
 
 
+
+def add_BinomP_min_cohort_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_dict, min_cohort, pvalue=0.05,
+                                    min_p_thresh=0.05):
+
+    num_cohorts = len(cohort_dict)
+
+    # limit to the pairs that are present in min_cohort
+    min_cohort_genes = set.union(*(patientToGenes[p] for p in min_cohort))
+    min_cohort_pairs = set([pair for pair in pairsdict if set(pair).issubset(min_cohort_genes)])
+    print "Original pairs ", len(pairsdict), ". Min cohort pairs: ", len(min_cohort_pairs)
+    min_pthresh = pvalue * 1.0 / len(min_cohort_pairs) # the multiple-testing corrected pvalue threshold
+
+    for pair in pairsdict:
+        geneset = set(pair)
+        all_c_sig = True
+        all_m_sig = True
+
+        if pair in min_cohort_pairs:
+            # Add their value in the minimum binom prob
+            cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, min_cohort)
+            pairsdict[pair][str(num_cohorts) + 'Size' + 'Min'] = cohort_size
+            pairsdict[pair][str(num_cohorts) + 'Freqs' + 'Min'] = freqs
+            pairsdict[pair][str(num_cohorts) + 'Overlap' + 'Min'] = overlap
+            pairsdict[pair][str(num_cohorts) + 'Min' + 'CBinomProb'] = cprob
+            pairsdict[pair][str(num_cohorts) + 'Min' + 'MBinomProb'] = mprob
+            pairsdict[pair]['MinSig'] = 1 if ((cprob < min_pthresh) or (mprob < min_pthresh)) else 0
+
+            for cohort_num in cohort_dict:
+                cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
+                pairsdict[pair][str(num_cohorts) + 'Size' + str(cohort_num)] = cohort_size
+                pairsdict[pair][str(num_cohorts) + 'Freqs' + str(cohort_num)] = freqs
+                pairsdict[pair][str(num_cohorts) + 'Overlap' + str(cohort_num)] = overlap
+                pairsdict[pair][str(num_cohorts) + 'CBinomProb' + str(cohort_num)] = cprob
+                pairsdict[pair][str(num_cohorts) + 'MBinomProb' + str(cohort_num)] = mprob
+
+                all_c_sig = all_c_sig and (cprob < pvalue)
+                all_m_sig = all_m_sig and (mprob < pvalue)
+            pairsdict[pair][str(num_cohorts) + 'CAllSig'] = all_c_sig
+            pairsdict[pair][str(num_cohorts) + 'MAllSig'] = all_m_sig
+        else:
+            pairsdict.pop(pair)
+
+    return pairsdict
 
 
 def analyze_pair_cohort(geneset, geneToCases, patientToGenes, cohort):
@@ -337,14 +384,20 @@ def generate_patient_cohorts(patientToGenes, num_cohorts):
 def main():
 
 
-    mutationmatrix = '/Users/jlu96/maf/new/SARC_broad/SARC_broad-som-cna-jl.m2'
-    patientFile = '/Users/jlu96/maf/new/SARC_broad/shared_patients.plst'
-    cpairfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LorenzoModel/Binomial/SARC_broad-som-cna-jl-CpairS.txt'
+    mutationmatrix = '/Users/jlu96/maf/new/OV_broad/OV_broad-cna-jl.m2'
+    patientFile = '/Users/jlu96/maf/new/OV_broad/shared_patients.plst'
+    cpairfile = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LorenzoModel/Binomial/OV_broad-cna-jl-cpairs-min_cohort.txt'
+    partitionfile = '/Users/jlu96/maf/new/OV_broad/OV_broad-cna-jl.ppf'
+    load_partitions = True
+    do_min_cohort = True
 
     geneFile = None
     minFreq = 0
-    test_minFreq = 130
+    test_minFreq = 100
     compute_mutex = True
+
+
+
     include_cohort_info = False
     num_cohorts_list = [1,3, 5, 7]
 
@@ -353,37 +406,58 @@ def main():
 
     print "number of genes is ", numGenes
 
-    # patientToChi = get_patientToChiP(patients, geneToCases, patientToGenes)
-    # patient_chi_file = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/Chi-Squared/PRAD_broad-som-patients.txt'
-    # with open(patient_chi_file, 'w') as pcf:
-    #     writer = csv.writer(pcf, delimiter='\t')
-    #     writer.writerow(['Patient', 'Chi-Squared', 'MutationFrequency'])
-    #     for patient, chi in patientToChi.items():
-    #         writer.writerow([patient, chi, len(patientToGenes[patient])])
+
+    if do_min_cohort:
+        cohort_dict, clusterToProp, min_cohort = partition.load_patient_cohorts(partitionfile, patientToGenes)
+        min_cohort_genes = set.union(*(patientToGenes[p] for p in min_cohort))
+
+        print "getting pairs"
+        genepairs = met.getgenepairs(geneToCases, min_cohort_genes, test_minFreq=test_minFreq)
+
+        print "Number of pairs ", len(genepairs)
 
 
-    genepairs = met.getgenepairs(geneToCases, genes, test_minFreq=test_minFreq)
-    print "Number of pairs ", len(genepairs)
+        print "Normal cooccur test"
+        t = time.time()
+        cpairsdict, cgenedict = met.cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, compute_mutex=compute_mutex)
+        print "Normal cooccur done in ", time.time() - t
+
+        print "Beginning cohorts"
+        t = time.time()
+        cpairsdict = add_BinomP_min_cohort_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict, min_cohort)
+        print "Cohorts done in ", time.time() - t
+
+    else:
+        genepairs = met.getgenepairs(geneToCases, genes, test_minFreq=test_minFreq)
+        print "Number of pairs ", len(genepairs)
 
 
-    print "Normal cooccur test"
-    cpairsdict, cgenedict = met.cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, compute_mutex=compute_mutex)
+        print "Normal cooccur test"
+        cpairsdict, cgenedict = met.cooccurpairs(numCases, geneToCases, patientToGenes, genepairs, compute_mutex=compute_mutex)
 
-    # print "Add binomial probability"
-    # cpairsdict = add_BinomP_all_pairs(cpairsdict, geneToCases, patientToGenes)
+        # print "Add binomial probability"
+        # cpairsdict = add_BinomP_all_pairs(cpairsdict, geneToCases, patientToGenes)
 
-    # undo
-    print "Beginning cohorts"
+        # undo
+        print "Beginning cohorts"
 
 
-    for num_cohorts in num_cohorts_list:
-        # get cohorts
-        cohort_dict = generate_patient_cohorts(patientToGenes, num_cohorts)
 
-        cpairsdict = add_BinomP_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
 
-        if include_cohort_info:
-            cpairsdict = add_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
+
+        if load_partitions:
+            cohort_dict = partition.load_patient_cohorts(partitionfile)
+            cpairsdict = add_BinomP_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
+
+        else:
+            for num_cohorts in num_cohorts_list:
+                # get cohorts
+                cohort_dict = generate_patient_cohorts(patientToGenes, num_cohorts)
+
+                cpairsdict = add_BinomP_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
+
+                if include_cohort_info:
+                    cpairsdict = add_cohorts_all_pairs(cpairsdict, geneToCases, patientToGenes, cohort_dict)
 
     print "Writing to file..."
     met.writeanydict(cpairsdict, cpairfile)

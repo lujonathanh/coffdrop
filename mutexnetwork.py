@@ -448,8 +448,8 @@ class PermutationMatrices:
     # generate matrices
     #@profile
     def __init__(self, geneToCases, patientToGenes, num_permutations, seeds=[], Q=100, matrixdirectory=None, binary_perm_method=False,
-                 write_matrices=False, load_matrices=False):
-        t_start = time.time()
+                 write_matrices=False, load_directory=None, geneFile=None, patientFile=None, minFreq=0):
+
 
         if not seeds:
             for i in range(num_permutations):
@@ -458,8 +458,8 @@ class PermutationMatrices:
         self.seeds = seeds
 
 
-        genes = geneToCases.keys()
-        patients = patientToGenes.keys()
+        self.genes = geneToCases.keys()
+        self.patients = patientToGenes.keys()
         self.num_permutations = num_permutations
 
 
@@ -472,15 +472,26 @@ class PermutationMatrices:
         # A dictionary that holds each gene to a list of sets of cases. Each entry in the list is the gene's cases
         # for one of the permutations
         self.geneToCases_perm = {}
-        for gene in genes:
+        for gene in self.genes:
             self.geneToCases_perm[gene] = []
 
         # Same as above, but from patient to genes.
         self.patientToGenes_perm = {}
-        for patient in patients:
+        for patient in self.patients:
             self.patientToGenes_perm[patient] = []
 
+        #-jlu
+        if load_directory:
+            self.load_matrices(load_directory, geneFile, patientFile, minFreq)
+        else:
+            self.generate_matrices(geneToCases, patientToGenes, Q, matrixdirectory, binary_perm_method, write_matrices)
 
+
+    def generate_matrices(self, geneToCases, patientToGenes, Q=100, matrixdirectory=None, binary_perm_method=False,
+                 write_matrices=False):
+
+
+        t_start = time.time()
 
         # Generate output directory to write matrix
         if not os.path.exists(os.path.dirname(matrixdirectory)) and write_matrices:
@@ -496,7 +507,7 @@ class PermutationMatrices:
             print '\t- Graph has', len( G.edges() ), 'edges among', len( G.nodes() ), 'nodes.'
 
 
-        for i in range(num_permutations):
+        for i in range(self.num_permutations):
 
             t = time.time()
 
@@ -507,12 +518,12 @@ class PermutationMatrices:
                     exit(1)
                 newGeneToCases, newPatientToGenes = PM.getGenePatientDicts()
                 print i + 1, " matrices generated in ", time.time() - t
-                print " number of same alterations is ", sum([len(patientToGenes[patient].intersection(newPatientToGenes[patient])) for patient in patients])
+                print " number of same alterations is ", sum([len(patientToGenes[patient].intersection(newPatientToGenes[patient])) for patient in self.patients])
             # Matrix method---------------------------------------------------------------------
             else:
-                _, _, _, _, newGeneToCases, newPatientToGenes = permute.permute_mutation_data(G, genes, patients, self.seeds[i], Q)
+                _, _, _, _, newGeneToCases, newPatientToGenes = permute.permute_mutation_data(G, self.genes, self.patients, self.seeds[i], Q)
                 print i + 1, " matrices generated in ", time.time() - t
-                print "For Q=", Q, " number of same alterations is ", sum([len(patientToGenes[patient].intersection(newPatientToGenes[patient])) for patient in patients])
+                print "For Q=", Q, " number of same alterations is ", sum([len(patientToGenes[patient].intersection(newPatientToGenes[patient])) for patient in self.patients])
 
             # Old graph method------------------------------------------------------------------
                        # Old graph method------------------------------------------------------------------
@@ -526,7 +537,7 @@ class PermutationMatrices:
 
             # Write permuted matrices out
             if write_matrices and matrixdirectory:
-                adj_list = [ p + "\t" + "\t".join( sorted(newPatientToGenes[p]) ) for p in patients ]
+                adj_list = [ p + "\t" + "\t".join( sorted(newPatientToGenes[p]) ) for p in self.patients ]
 
                 permutation_file = "{}/permuted-matrix-{}.m2".format(matrixdirectory, i+1)
                 with open(permutation_file, 'w') as outfile: outfile.write('\n'.join(adj_list))
@@ -536,6 +547,35 @@ class PermutationMatrices:
             newPatientToGenes.clear()
 
         print "Time to generate mutation matrices ", time.time() - t_start
+
+
+    def load_matrices(self, load_directory, geneFile=None, patientFile=None, minFreq=0):
+        matrices = os.listdir(load_directory)
+        for file in matrices:
+            _, _, newGenes, newPatients, newGeneToCases, newPatientToGenes = mex.load_mutation_data(load_directory + '/' + file, geneFile=geneFile,
+                                                                                   patientFile=patientFile, minFreq=minFreq)
+
+            # check for differences in loaded genes/patient
+            if set.difference(set(newGenes), set(self.genes)):
+                print "Error: loaded genes different from original matrix"
+                print "in file ", file, " in matrix directory ", load_directory
+                exit(1)
+            if set.difference(set(newPatients), set(self.patients)):
+                print "Error: loaded genes different from original matrix"
+                print "in file ", file, " in matrix directory ", load_directory
+                exit(1)
+
+            # load the new ones in
+            for gene in newGeneToCases:
+                self.geneToCases_perm[gene].append(newGeneToCases[gene])
+
+            for patient in newPatientToGenes:
+                self.patientToGenes_perm[patient].append(newPatientToGenes[patient])
+
+        print "Number of loaded matrices: ", len(matrices)
+        self.num_permutations = len(matrices)
+
+        return
 
     # # Method to iterate over its matrices. Return value: number of satisfying matrices
     # def pvalue(self, condition_function):
@@ -747,18 +787,21 @@ class Condition:
 def main():
 
     mutationmatrix = '/Users/jlu96/maf/new/PRAD_broad/PRAD_broad-som.m2'
-    patientFile = None
-    geneFile = None
-    #'/Users/jlu96/conte/jlu/REQUIREDFILES_OnlyLoss2/COSMICGenes_OnlyLoss.txt'
+    patientFile = None #'/Users/jlu96/maf/new/PRAD_broad/shared_patients.plst'
+    geneFile = None #'/Users/jlu96/conte/jlu/REQUIREDFILES_OnlyLoss2/COSMICGenes_OnlyLoss.txt'
+    load_directory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LoadMatrices'
     minFreq = 0
-    num_permutations = 15
+    num_permutations = 20
     binary_perm_method = False
     Q = 100
     write_matrices = True
-    matrixdirectory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/PRAD_broad-som-jl-' + ('matrix' if binary_perm_method else 'network')
+    matrixdirectory = '/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/LoadMatrices'
+        #'/Users/jlu96/conte/jlu/Analyses/CooccurImprovement/SARC_broad-som-jl-' + ('matrix' if binary_perm_method else 'network')
     outmutexfile = matrixdirectory + '/mutex' + str(num_permutations) + str(time.time()) + '.tsv'
     outcooccurfile = matrixdirectory + '/cooccur' + str(num_permutations)  + str(time.time()) + '.tsv'
     outseedsfile = matrixdirectory + '/seeds' + str(time.time()) + '.tsv'
+
+
     if not os.path.exists(os.path.dirname(matrixdirectory)):
         os.makedirs(os.path.dirname(matrixdirectory))
 
@@ -774,7 +817,8 @@ def main():
 
     # Generate Permutation Matrices
     pm = PermutationMatrices(geneToCases, patientToGenes, num_permutations, Q=Q, matrixdirectory=matrixdirectory,
-                             binary_perm_method=binary_perm_method, write_matrices=write_matrices)
+                             binary_perm_method=binary_perm_method, write_matrices=write_matrices, load_directory=load_directory,
+                             geneFile=geneFile, patientFile=patientFile, minFreq=minFreq)
 
     # Make list of pairs from highly mutated genes
     test_genes = [gene for gene in genes if len(geneToCases[gene]) > 5]

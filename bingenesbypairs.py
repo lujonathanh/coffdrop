@@ -7,7 +7,7 @@ import csv
 import sys
 
 
-def getgenepairs(geneToCases, genes1, genes2=None, closer_than_distance=None):
+def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_distance=None):
     """
     :param genes1: First list of genes.
     :param genes2: Second list of genes. If None, defaults to making pairs from the first gene list.
@@ -18,7 +18,7 @@ def getgenepairs(geneToCases, genes1, genes2=None, closer_than_distance=None):
     if not genes2:
         genes2 = genes1
 
-    relevant_genes = set(geneToCases.keys())
+    relevant_genes = set([gene for gene in geneToCases.keys() if len(geneToCases[gene]) >= test_minFreq])
 
     genepairs = set()
 
@@ -28,7 +28,7 @@ def getgenepairs(geneToCases, genes1, genes2=None, closer_than_distance=None):
                 if gene1 in relevant_genes and gene2 in relevant_genes:
                     genepair = frozenset([gene1, gene2])
                     try:
-                        if not closer_than_distance or check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
+                        if not closer_than_distance or not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
                             genepairs.add(genepair)
                     except KeyError:
                         pass
@@ -250,7 +250,7 @@ def get_segment_gene_info(segment):
 
         if segment[-4:] in {'loss', 'gain'}:
             alt_type = segment[-4:]
-            genes = f
+            genes = segment[:-4].split('_')
         else:
             alt_type = 'somatic'
             genes = segment.split('_')
@@ -635,7 +635,7 @@ def run(args):
 
     file_prefix = args.output_prefix
     if not file_prefix:
-        file_prefix = mutationmatrix
+        file_prefix = newmutationmatrix
 
     geneFile = args.gene_file
     patientFile = args.patient_file

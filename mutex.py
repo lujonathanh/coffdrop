@@ -42,6 +42,7 @@ def graph_patient_distribution(numGenes, cases, patientToGenes, filename, top_pe
     # plt.title(
     #     filename.split('.m2')[0] + "'s Distribution of Mutation Number per Patient, Total Genes  = " + str(numGenes),
     #     fontsize=20)
+    # plt.title(filename)
     plt.xlabel('# Somatic Mutations In Tumor', fontsize=20)
     plt.ylabel('Number of Samples', fontsize=20)
     plt.legend()
@@ -338,7 +339,7 @@ def analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, geneset, comp
     if getdistance:
         distance = bgbp.get_gene_distance(*geneset)
 
-    cstats = {}
+    cstats = collections.OrderedDict()
     cstats['GeneSet'] = geneset
     if len(geneset) == 3:
         cstats['Gene0'], cstats['Gene1'], cstats['Gene2'] = tuple(geneset)
@@ -374,6 +375,7 @@ def analyze_cooccur_set_new(numCases, geneToCases, patientToGenes, geneset, comp
 
     if compute_mutex:
         cstats['MutexProb'] = mutexprob
+        cstats['Type'] = 'Cooccurring' if cooccurprob < mutexprob else 'MutuallyExclusive'
 
     return cstats
 
