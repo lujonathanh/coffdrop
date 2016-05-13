@@ -16,18 +16,83 @@ import line_profiler
 
 
 class Triplet:
-    def __init__(self, number, pairdict=None):
+    def __init__(self, number, geneToCases=None, pairdict=None):
         assert len(pairdict) == 3
         self.number = number
         self.pairdict = pairdict.copy()
         self.genes = set.union(*[set(pair) for pair in pairdict.keys()])
 
         types = [self.pairdict[pair]['Type'] for pair in self.pairdict]
+        self.mpairs = [pair for pair in self.pairdict if self.pairdict[pair]['Type'] == 'MutuallyExclusive']
+        self.cpairs = [pair for pair in self.pairdict if self.pairdict[pair]['Type'] == 'Cooccurring']
         self.type = ''.join(sorted(types))
 
         self.stats = collections.OrderedDict()
         self.stats['ID'] = self.number
+        if geneToCases:
+            self.stats['Count'] = len(self.get_matching_patients(geneToCases))
+
+
         self.calc_double_stats()
+
+    def get_matching_patients(self, geneToCases):
+        if self.type == 'CooccurringMutuallyExclusiveMutuallyExclusive':
+            cpair = set(self.cpairs[0])
+            other = (self.genes.difference(cpair)).pop()
+
+            matches = set()
+
+            cpair_matches = set.union(*(geneToCases[gene] for gene in cpair))
+            other_matches = geneToCases[other]
+
+            matches = matches.union(cpair_matches.difference(other_matches))
+            matches = matches.union(other_matches.difference(cpair_matches))
+            self.matches = matches
+            return matches
+
+
+        elif self.type == 'MutuallyExclusiveMutuallyExclusiveMutuallyExclusive':
+
+            matches = set()
+            for gene in self.genes:
+                other_genes = self.genes.difference(set(gene))
+                this_gene_matches = geneToCases[gene]
+                other_gene_matches = set.union(*(geneToCases[gene] for gene in other_genes))
+                only_this_gene_matches = this_gene_matches.difference(other_gene_matches)
+                matches = matches.union(only_this_gene_matches)
+
+            self.matches = matches
+            return matches
+
+
+        elif self.type == 'CooccurringCooccurringCooccurring':
+
+            self.matches = set.intersection(*(geneToCases[gene] for gene in self.genes))
+            return self.matches
+
+
+        elif self.type == 'CooccurringCooccurringMutuallyExclusive':
+            gene0, gene1 = tuple(set(self.mpairs[0]))
+            other_gene = self.genes.difference({gene0, gene1}).pop()
+            matches = set()
+
+
+            cooccur_patients_0 = set.intersection(*[geneToCases[gene0], geneToCases[other_gene]])
+
+            cooccur_patients_1 = set.intersection(*[geneToCases[gene1], geneToCases[other_gene]])
+
+            matches = matches.union(cooccur_patients_0.difference(cooccur_patients_1))
+            first_count = len(matches)
+            matches = matches.union(cooccur_patients_1.difference(cooccur_patients_0))
+
+            self.matches = matches
+            return matches
+
+            return []
+
+
+
+
 
     def calc_double_stats(self):
         # Left off here, move writable dict to here? Quickly.
@@ -55,6 +120,7 @@ class Triplet:
         self.stats['02Concordance']= self.pairdict[pair02]['Concordance']
         self.stats['12Concordance'] = self.pairdict[pair12]['Concordance']
 
+
         self.stats['Somatic'] = 0
         for gene in tuple(self.genes):
             if gene[-4:] not in {'loss', 'gain'}:
@@ -62,6 +128,20 @@ class Triplet:
 
 
         self.stats['Probability'] = mex.prod([self.pairdict[pair]['Probability'] for pair in self.pairdict])
+
+
+        genes = [gene0, gene1, gene2]
+        # add the normal chromosome info
+        for i in range(len(genes)):
+            gene = genes[i]
+            info = bgbp.get_segment_gene_info(gene)
+            self.stats['Gene' + str(i) + "Loc"] = str(info['Chromosome']) + ":" + str(info['Start'])
+        # add the gene cytoband info
+        \
+        for i in range(len(genes)):
+            gene = genes[i]
+            info = bgbp.get_segment_gene_info(gene)
+            self.stats['Gene' + str(i) + "Cytobands"] = str(info['Cytobands'])
 
 
     def calc_triple_stats(self, numCases, geneToCases, patientToGenes, compute_prob=False, calc_triple_scores=False):
@@ -175,7 +255,7 @@ def getTriplets(pairsdict, genesdict, pairstotest, numCases=None, geneToCases=No
                             pairdict[bothpair1] = pairsdict[bothpair1]
                             pairdict[bothpair2] = pairsdict[bothpair2]
 
-                            newTriplet = Triplet(num_Triplets, pairdict=pairdict)
+                            newTriplet = Triplet(num_Triplets, pairdict=pairdict, geneToCases=geneToCases)
                             Triplets.append(newTriplet)
 
                             # pairsdict_Triplets[pair][name].add(num_Triplets)

@@ -256,11 +256,32 @@ def get_segment_gene_info(segment):
             genes = segment.split('_')
 
         # alt_type = segment[-4:]
-        #
-        # print genes
+
 
         seg_info['Name'] = segment
-        seg_info['Chromosome'] = get_segment_gene_info.geneToStat[genes[0]]['Chromosome']
+
+        in_dictionary = False
+        for gene in genes:
+            if gene in get_segment_gene_info.geneToStat and get_segment_gene_info.geneToStat[gene]['Chromosome'] != 'Z':
+                seg_info['Chromosome'] = get_segment_gene_info.geneToStat[gene]['Chromosome']
+                in_dictionary = True
+                break
+            else:
+                if gene not in get_segment_gene_info.geneToStat:
+                    get_segment_gene_info.geneToStat[gene] = {}
+                    get_segment_gene_info.geneToStat[gene]['Chromosome'] = 'Z'
+                    get_segment_gene_info.geneToStat[gene]['Start'] = 0
+                    get_segment_gene_info.geneToStat[gene]['End'] = 1
+
+        if not in_dictionary:
+            seg_info['Chromosome'] = 'Z'
+            for gene in genes:
+                get_segment_gene_info.geneToStat[gene] = {}
+                get_segment_gene_info.geneToStat[gene]['Chromosome'] = 'Z'
+                get_segment_gene_info.geneToStat[gene]['Start'] = 0
+                get_segment_gene_info.geneToStat[gene]['End'] = 1
+
+
         seg_info['Genes'] = genes
         seg_info['Number'] = len(genes)
         seg_info['Type'] = alt_type
@@ -272,7 +293,7 @@ def get_segment_gene_info(segment):
 
         # LEFT OFF HERE 8/4/15 -jlu
 
-        cytobands = get_cytobands(seg_info['Chromosome'], seg_info['Start'], seg_info['End'])
+        cytobands = get_cytobands2(seg_info['Chromosome'], seg_info['Start'], seg_info['End'])
         seg_info['Cytobands'] = cytobands
         seg_info['JoinedCytobands'] = '_'.join(cytobands)
 
@@ -280,6 +301,9 @@ def get_segment_gene_info(segment):
                                                             seg_info['Length'], seg_info['Number'], seg_info['Type']]])
 
         get_segment_gene_info.segToStat[segment] = seg_info
+
+        if not in_dictionary:
+            print "segment ", segment, "not in dictionary. Default to Chromosome Z."
 
         return seg_info
 
@@ -294,31 +318,8 @@ def write_segment_infos(segments, filename, header=['Name',  'Number', 'Type', '
             writer.writerow(get_segment_gene_info(segment))
 
 
-
-
-
-def get_cytobands(chrom, start, end):
-
-    try:
-        cyto_dict = get_cytobands.cyto_dict
-    except AttributeError:
-        get_cytobands.cyto_dict = load_cytobands()
-        cyto_dict = get_cytobands.cyto_dict
-
-
-    cytobands = []
-
-    for cyto in cyto_dict:
-        if chrom == cyto_dict[cyto]['Chromosome']:
-            if not ((cyto_dict[cyto]['End'] < start and cyto_dict[cyto]['Start'] < start)
-                or (cyto_dict[cyto]['End'] >= end and cyto_dict[cyto]['Start'] >= end )):
-                cytobands.append(cyto)
-
-    return cytobands
-
-
-def load_cytobands(filename='cytoBand.txt'):
-    cyto_dict = {}
+def load_cytobands2(filename='cytoBand.txt'):
+    chrom_dict = {}
     with open(filename, 'rU') as csvfile:
         reader = csv.reader(csvfile, delimiter='\t')
         for row in reader:
@@ -327,22 +328,48 @@ def load_cytobands(filename='cytoBand.txt'):
             end = eval(row[2])
             cytoband = row[3]
 
-            cyto_dict[cytoband] = {}
-            cyto_dict[cytoband]['Chromosome'] = chrom
-            cyto_dict[cytoband]['Start'] = start
-            cyto_dict[cytoband]['End'] = end
+            if chrom not in chrom_dict:
+                chrom_dict[chrom] = []
+
+            chrom_dict[chrom].append((start, end, str(chrom) + cytoband))
+    for chrom in chrom_dict:
+        chrom_dict[chrom] = sorted(chrom_dict[chrom], key=lambda entry: entry[0]) # sort ascending
+
+    return chrom_dict
+
+def get_cytobands2(chrom, start, end):
+
+    try:
+        chrom_dict = get_cytobands2.chrom_dict
+    except AttributeError:
+        get_cytobands2.chrom_dict = load_cytobands2()
+        chrom_dict = get_cytobands2.chrom_dict
 
 
-            # if chrom not in chrom:
-            #     chrom_to_start_to_cyto[chrom] = {}
-            # chrom_to_start_to_cyto[chrom][start] = cytoband
 
-    return cyto_dict
+    if chrom not in chrom_dict:
+        return []
 
-
+    cyto_tuples = chrom_dict[chrom] # these are in the form start, end, cytoband
 
 
-def load_gene_positions(filename='gene_positions.txt', genecol='Associated Gene Name', chromcol='Chromosome Name',
+    cytobands = [entry[2] for entry in cyto_tuples if (entry[0] <= start and entry[1] >= start) or
+                 (entry[0] >= start and entry[0] <= end and entry[1] >= start and entry[1] <= end) or
+                 (entry[0] <= end and entry[1] >= end) or (entry[0] <= start and entry[1] >= end)] # first intersection
+    #
+    #
+    # for cyto in cyto_dict:
+    #     if chrom == cyto_dict[cyto]['Chromosome']:
+    #         if not ((cyto_dict[cyto]['End'] < start and cyto_dict[cyto]['Start'] < start)
+    #             or (cyto_dict[cyto]['End'] >= end and cyto_dict[cyto]['Start'] >= end )):
+    #             cytobands.append(cyto)
+
+    return cytobands
+
+
+
+
+def load_gene_positions(filename='gene_positions.txt', genecol='Associated Gene Name', chromcol='Chromosome Name', extra_genecols=['Ensembl Gene ID'],
                    startcol='Gene Start (bp)', endcol='Gene End (bp)', delimiter='\t',
                    chromosomes = set(['X', 'Y'] + [str(i) for i in range(1, 23)])):
     t = time.time()
@@ -359,6 +386,10 @@ def load_gene_positions(filename='gene_positions.txt', genecol='Associated Gene 
 
                 if gene not in geneToStat:
                     geneToStat[gene] = position
+                if extra_genecols:
+                    genes = [row[extra_genecol] for extra_genecol in extra_genecols]
+                    for gene in genes:
+                        geneToStat[gene] = position
 
     return geneToStat
 

@@ -107,6 +107,95 @@ def get_pair_ChiP(geneset, geneToCases, patientToGenes):
     return p
 
 
+def get_triplet_ChiP(gene_triplet, geneToCases, patientToGenes):
+    gene0, gene1, gene2 = gene_triplet
+    gene_list = list(gene_triplet)
+
+    gene_triplet = set(gene_triplet)
+    numGenes = len(geneToCases)
+    patients = patientToGenes.keys()
+    numCases = len(patients)
+
+    #Marginal probability of genes
+    p_gs = [len(geneToCases[gene]) * 1.0 / len(patients) for gene in gene_list]
+    print "Marginal probs ", p_gs
+
+    f_obs = []
+    f_exp = []
+
+    # All those with all of them
+    p_alls = []
+    p_all = 1.0
+    for p_g in p_gs:
+        p_all *= p_g
+    p_alls.append(p_all)
+
+    f_obs.append(len([p for p in patientToGenes if gene_triplet.issubset(patientToGenes[p])]))
+    f_exp.append(numCases * 1.0 * p_all)
+
+    # All those with two of them
+    for geneA in gene_list:
+        index = gene_list.index(geneA)
+        other_genes = gene_triplet.difference(set([geneA]))
+        geneB, geneC = other_genes
+
+        #print "In gene ", geneA, "Second gene ", geneB, "last gene ", geneC
+
+        p_all = 1.0
+        for i in range(3):
+            if i == index:
+                p_all *= 1.0 - p_gs[i]
+            else:
+                p_all *= p_gs[i]
+        f_obs.append(len([p for p in patientToGenes if other_genes.issubset(patientToGenes[p]) and geneA not in patientToGenes[p]]))
+        f_exp.append(numCases * 1.0 * p_all)
+
+        p_alls.append(p_all)
+
+
+    # All those with one of them
+
+    #print "only contain 1"
+    for geneA in gene_list:
+        index = gene_list.index(geneA)
+        other_genes = gene_triplet.difference(set([geneA]))
+        geneB, geneC = other_genes
+
+
+        #print "In gene ", geneA, "Second gene ", geneB, "last gene ", geneC
+        p_all = 1.0
+        for i in range(3):
+            if i != index:
+                p_all *= 1.0 - p_gs[i]
+            else:
+                p_all *= p_gs[i]
+        f_obs.append(len([p for p in patientToGenes if not other_genes.intersection(patientToGenes[p]) and geneA in patientToGenes[p]]))
+        f_exp.append(numCases * 1.0 * p_all)
+
+        p_alls.append(p_all)
+
+    # All those with none
+    p_all = 1.0
+    for p_g in p_gs:
+        p_all *= 1.0 - p_g
+    p_alls.append(p_all)
+
+    f_obs.append(len([p for p in patientToGenes if not gene_triplet.intersection(patientToGenes[p])]))
+    f_exp.append(numCases * 1.0 * p_all)
+
+    print "Observed ", f_obs, "expected ", f_exp
+    print "Probabilities ", p_alls
+    print "total probability ", sum(p_alls)
+
+    chisq, p = stats.chisquare(f_obs, f_exp)
+    print "chi-squared test "
+    print chisq, p
+    return p
+
+
+
+
+
 
 def add_ChiP_all_pairs(pairsdict, geneToCases, patientToGenes):
 
@@ -121,53 +210,126 @@ def add_ChiP_all_pairs(pairsdict, geneToCases, patientToGenes):
 
 
 # Binomial Test Functions
-
-def get_pair_BinomP(geneset, geneToCases, patientToGenes):
-    """
-    :param geneset:
-    :param geneToCases:
-    :param patientToGenes:
-
-    Test the hypothesis that the paired probability is equal to the expected probability
-
-    :return:
-    """
-
-    numCases = len(patientToGenes)
-
-    patientlist = [set(geneToCases[gene]) for gene in geneset]
-
-    # Overlapping patients
-    overlap_patients = set.intersection(*patientlist)
-
-    # Marginal probability of genes
-    p_gs = [len(geneToCases[gene]) * 1.0 / numCases for gene in geneset]
-
-    # Probability of overlap of genes
-    p_g_overlap = 1.
-    for p_g in p_gs:
-        p_g_overlap *= p_g
-
-    # Get p-value
-    p = stats.binom_test(len(overlap_patients), n=numCases, p=p_g_overlap)
-
-
-    return p
-
-
-
-
-def add_BinomP_all_pairs(pairsdict, geneToCases, patientToGenes):
-
-    for pair in pairsdict:
-        geneset = set(pair)
-        pairsdict[pair]['BinomProbability'] = get_pair_BinomP(geneset, geneToCases, patientToGenes)
-
-    return pairsdict
+#
+# def get_pair_BinomP(geneset, geneToCases, patientToGenes):
+#     """
+#     :param geneset:
+#     :param geneToCases:
+#     :param patientToGenes:
+#
+#     Test the hypothesis that the paired probability is equal to the expected probability
+#
+#     :return:
+#     """
+#
+#     numCases = len(patientToGenes)
+#
+#     patientlist = [set(geneToCases[gene]) for gene in geneset]
+#
+#     # Overlapping patients
+#     overlap_patients = set.intersection(*patientlist)
+#
+#     # Marginal probability of genes
+#     p_gs = [len(geneToCases[gene]) * 1.0 / numCases for gene in geneset]
+#
+#     # Probability of overlap of genes
+#     p_g_overlap = 1.
+#     for p_g in p_gs:
+#         p_g_overlap *= p_g
+#
+#
+#
+#     # cooccurprob = stats.binom.sf(len(overlap_patients) - 1, numCases,   p_g_overlap)
+#     # mutexprob = stats.binom.cdf(len(overlap_patients), numCases,   p_g_overlap)
+#
+#
+#     return p
 
 
+# def get_triplet_BinomP(geneset, geneToCases, patientToGenes, cpairs, mpairs, triplet_type='CooccurringMutuallyExclusiveMutuallyExclusive'):
+#     numCases = len(patientToGenes)
+#
+#     if triplet_type == 'CooccurringMutuallyExclusiveMutuallyExclusive':
+#         cpair = cpairs[0]
+#         g_m = geneset.difference(set(cpair)).pop()
+#         g_c1, g_c2 = cpair
+#
+#         p_g_m = len(geneToCases[g_m]) * 1.0 / numCases
+#         #p_g_c = len([p for p in patientToGenes if g_c1 in patientToGenes[p] and g_c2 in patientToGenes[p]]) * 1.0 / numCases
+#         p_g_c1 = len(geneToCases[g_c1]) * 1.0 / numCases
+#         p_g_c2 = len(geneToCases[g_c2]) * 1.0 / numCases
+#         # Claculate probaiblity of CMM: p(g_c1)p(g_c2)(1-p(g_m) + (1-p(g_c1))(1-p(g_2))p(g_m)
+#
+#
+#
+#         p_cmm = p_g_c1 * p_g_c2 * (1 - p_g_m) + (1 - p_g_c1) * (1 - p_g_c2) * p_g_m
+#
+#         overlap_patients = [p for p in patientToGenes if
+#                             (g_m in patientToGenes[p] and g_c1 not in patientToGenes[p] and g_c2 not in patientToGenes[p])
+#                             or (g_m not in patientToGenes[p] and g_c1 in patientToGenes[p] and g_c2 in patientToGenes[p])]
+#
+#         p = 0.5 * stats.binom_test(len(overlap_patients), n=numCases, p=p_cmm)
+#
+#         print "Coccur pair : ", len(geneToCases[g_c1]), len(geneToCases[g_c2]), "Mutex: ", len(geneToCases[g_m])
+#
+#         print "p_g_cs", p_g_c1, p_g_c2, "p_g_m", p_g_m
+#         print "p_cmm ", p_cmm, "expected ", p_cmm * numCases
+#
+#         print "observed prop", len(overlap_patients)*1.0/numCases, "num overlap ", len(overlap_patients), "out of ", numCases, "total "
+#
+#         return p
+#
+# # Make sure to only do tail probabilities
+# def get_triplet_BinomP_ab(geneset, geneToCases, patientToGenes, cpairs, mpairs, triplet_type='CooccurringMutuallyExclusiveMutuallyExclusive'):
+#     numCases = len(patientToGenes)
+#
+#     if triplet_type == 'CooccurringMutuallyExclusiveMutuallyExclusive':
+#         cpair = cpairs[0]
+#         g_m = geneset.difference(set(cpair)).pop()
+#         g_c1, g_c2 = cpair
+#
+#         p_g_m = len(geneToCases[g_m]) * 1.0 / numCases
+#         p_g_c = len([p for p in patientToGenes if g_c1 in patientToGenes[p] and g_c2 in patientToGenes[p]]) * 1.0 / numCases
+#         # p_g_c1 = len(geneToCases[g_c1]) * 1.0 / numCases
+#         # p_g_c2 = len(geneToCases[g_c2]) * 1.0 / numCases
+#         # Claculate probaiblity of CMM: p(g_c1)p(g_c2)(1-p(g_m) + (1-p(g_c1))(1-p(g_2))p(g_m)
+#
+#         p_cmm = p_g_m * (1 - p_g_c) + p_g_c * (1 - p_g_m)
+#
+#
+#         # p_cmm = p_g_c1 * p_g_c2 * (1 - p_g_m) + (1 - p_g_c1) * (1 - p_g_c2) * p_g_m
+#
+#         overlap_patients = [p for p in patientToGenes if
+#                             (g_m in patientToGenes[p] and g_c1 not in patientToGenes[p] and g_c2 not in patientToGenes[p])
+#                             or (g_m not in patientToGenes[p] and g_c1 in patientToGenes[p] and g_c2 in patientToGenes[p])]
+#
+#         p = 0.5 * stats.binom_test(len(overlap_patients), n=numCases, p=p_cmm)
+#
+#         print "Coccur pair : ", len(geneToCases[g_c1]), len(geneToCases[g_c2]), "Mutex: ", len(geneToCases[g_m])
+#
+#         print "p_g_cs", p_g_c, "p_g_m", p_g_m
+#         print "p_cmm ", p_cmm, "expected ", p_cmm * numCases
+#
+#         print "observed prop", len(overlap_patients)*1.0/numCases, "num overlap ", len(overlap_patients), "out of ", numCases, "total "
+#
+#         return p
 
 
+
+
+
+
+# def add_BinomP_all_pairs(pairsdict, geneToCases, patientToGenes):
+#
+#     for pair in pairsdict:
+#         geneset = set(pair)
+#         pairsdict[pair]['BinomProbability'] = get_pair_BinomP(geneset, geneToCases, patientToGenes)
+#
+#     return pairsdict
+#
+#
+#
+#
 
 
 
@@ -213,6 +375,16 @@ def add_BinomP_cohorts_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_
         geneset = set(pair)
         all_c_sig = True
         all_m_sig = True
+
+        # Do over all of them
+        cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, patientToGenes.keys())
+        pairsdict[pair]['AllSize'] = cohort_size
+        pairsdict[pair]['AllFreqs'] = freqs
+        pairsdict[pair]['AllOverlap'] = overlap
+        pairsdict[pair]['AllCBinomProb'] = cprob
+        pairsdict[pair]['AllMBinomProb'] = mprob
+
+        # Then over each of the individual cohorts
         for cohort_num in cohort_dict:
             cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
             pairsdict[pair][str(num_cohorts) + 'Size' + str(cohort_num)] = cohort_size
@@ -274,19 +446,6 @@ def add_BinomP_min_cohort_all_pairs(pairsdict, geneToCases, patientToGenes, coho
             pairsdict[pair][str(num_cohorts) + 'Min' + 'CBinomProb'] = cprob
             pairsdict[pair][str(num_cohorts) + 'Min' + 'MBinomProb'] = mprob
             pairsdict[pair]['MinSig'] = 1 if ((cprob < min_pthresh) or (mprob < min_pthresh)) else 0
-
-            for cohort_num in cohort_dict:
-                cohort_size, freqs, overlap, cprob, mprob = get_pair_BinomP_cohort(geneset, geneToCases, patientToGenes, cohort_dict[cohort_num])
-                pairsdict[pair][str(num_cohorts) + 'Size' + str(cohort_num)] = cohort_size
-                pairsdict[pair][str(num_cohorts) + 'Freqs' + str(cohort_num)] = freqs
-                pairsdict[pair][str(num_cohorts) + 'Overlap' + str(cohort_num)] = overlap
-                pairsdict[pair][str(num_cohorts) + 'CBinomProb' + str(cohort_num)] = cprob
-                pairsdict[pair][str(num_cohorts) + 'MBinomProb' + str(cohort_num)] = mprob
-
-                all_c_sig = all_c_sig and (cprob < pvalue)
-                all_m_sig = all_m_sig and (mprob < pvalue)
-            pairsdict[pair][str(num_cohorts) + 'CAllSig'] = all_c_sig
-            pairsdict[pair][str(num_cohorts) + 'MAllSig'] = all_m_sig
         else:
             pairsdict.pop(pair)
 

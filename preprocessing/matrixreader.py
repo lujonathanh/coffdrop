@@ -63,7 +63,20 @@ class MatrixReader:
 
         return newMatrix
 
+    def removeEndingIn(self, ending, length):
+        genes = set([g for g in self.mutation_list if g[-1 * length:] != ending])
 
+        newMatrix = MatrixReader()
+        newMatrix.sample_records = self.sample_records.copy()
+        newMatrix.mutation_list = genes.intersection(self.mutation_list)
+
+        for sample in self.sample_records:
+            newMatrix.sample_records[sample] = genes.intersection(self.sample_records[sample])
+            if not newMatrix.sample_records[sample]:
+                newMatrix.sample_records.pop(sample)
+
+
+        return newMatrix
 
 def get_parser():
     # Parse arguments
