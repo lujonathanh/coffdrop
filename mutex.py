@@ -32,6 +32,21 @@ def graph_mutation_distribution(numCases, genes, geneToCases, filename, top_perc
     # plt.savefig(filename + '_' + str(bins) + '.pdf', bbox_inches='tight')
 
 
+def graph_mutation_distribution(numCases, genes, geneToCases, filename, top_percentile=10, bins=100):
+    mutationfrequencies = [len(geneToCases[gene]) for gene in genes]
+    plt.figure()
+    plt.hist(mutationfrequencies, bins)
+    percentile_score = stats.scoreatpercentile(mutationfrequencies, 100 - top_percentile)
+    print "Score is ", percentile_score
+    plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
+                label='Top ' + str(top_percentile) + ' Percentile at ' + str(percentile_score))
+    plt.title(filename.split('.m2')[0] + "'s Distribution of Mutation Frequencies, n = " + str(numCases), fontsize=20)
+    plt.xlabel('Mutation Frequency (# Samples with Mutations)', fontsize=20)
+    plt.ylabel('Amount of Mutations', fontsize=20)
+    plt.legend()
+    plt.show()
+
+
 def graph_patient_distribution(numGenes, cases, patientToGenes, filename, top_percentile=10, bins=100):
     patientfrequencies = [len(patientToGenes[case]) for case in cases]
     plt.figure()
@@ -42,7 +57,7 @@ def graph_patient_distribution(numGenes, cases, patientToGenes, filename, top_pe
     # plt.title(
     #     filename.split('.m2')[0] + "'s Distribution of Mutation Number per Patient, Total Genes  = " + str(numGenes),
     #     fontsize=20)
-    # plt.title(filename)
+    plt.title(filename)
     plt.xlabel('# Somatic Mutations In Tumor', fontsize=20)
     plt.ylabel('Number of Samples', fontsize=20)
     plt.legend()

@@ -98,6 +98,10 @@ class Triplet:
         # Left off here, move writable dict to here? Quickly.
         gene0, gene1, gene2 = tuple(self.genes)
         self.stats['Gene0'], self.stats['Gene1'], self.stats['Gene2'] = gene0, gene1, gene2
+        for i in range(len(tuple(self.genes))):
+            self.stats['Gene' + str(i) + "Cytobands"] = bgbp.get_segment_gene_info(tuple(self.genes)[i])['Cytobands']
+
+
         pair01, pair02, pair12 = frozenset([gene0, gene1]), frozenset([gene0, gene2]), frozenset([gene1, gene2]),
         self.stats['TripletType'] = self.type
 
@@ -360,6 +364,20 @@ def writeTriplets(Triplets, file_prefix, delimiter='\t', fieldnames=None):
     print "Triplets written to ", file_prefix + '_Triplets.tsv'
 
 
+def writeTriplets2(Triplets, Tripletfile, delimiter='\t', fieldnames=None):
+    # Dictwriter
+    # Get writabledict from each Triplet, make header from
+
+    with open(Tripletfile, 'w') as csvfile:
+        if not fieldnames:
+            fieldnames = Triplets[0].getwritabledict().keys()
+        writer = csv.DictWriter(csvfile, delimiter=delimiter, fieldnames=fieldnames, extrasaction='ignore')
+
+        writer.writeheader()
+        for Triplet in Triplets:
+            writer.writerow(Triplet.getwritabledict())
+
+    print "Triplets written to ",Tripletfile
 
 
 

@@ -1,9 +1,0 @@
-Gene	Entries
-OTOP1	set(['KRTAP4-11'])
-MT-CO1	set(['MUC16'])
-KRTAP5-5	set(['TUBBP5'])
-UPF3A	set(['KRTAP4-11'])
-CTNNB1	set(['MUC16'])
-TUBBP5	set(['KRTAP5-5'])
-KRTAP4-11	set(['OTOP1', 'UPF3A'])
-MUC16	set(['CTNNB1', 'MT-CO1'])

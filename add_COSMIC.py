@@ -5,7 +5,13 @@ import sys
 
 
 def get_genes(segment):
-    genes = segment[:-4].split('_')
+    if segment[-4:] in {'loss', 'gain'}:
+        alt_type = segment[-4:]
+        genes = segment[:-4].split('_')
+    else:
+        alt_type = 'somatic'
+        genes = segment.split('_')
+
     return set(genes)
 
 def get_parser():
@@ -19,10 +25,11 @@ def get_parser():
     parser.add_argument('-c', '--COSMICFILE', default = "COSMICCensus.txt",
                         help='File name with conversions.')
 
-    parser.add_argument('-ic', '--input_ID', default='Name')
-    parser.add_argument('-oc', '--output_column', default='COSMIC_GENES')
+    parser.add_argument('-ic', '--input_IDs', type=str, nargs='+', default='Name')
+    parser.add_argument('-oc', '--output_IDs', default="", type=str, nargs='+', help="Must have same length as input ids")
     parser.add_argument('-i', '--annotate_file', required=True)
     parser.add_argument('-o', '--output_file', default=None)
+    parser.add_argument('-ip', '--insertion_point', type=int, default=None, help="the index at which to insert the new output fieldnames")
 
     return parser
 
@@ -40,12 +47,18 @@ def run(args):
 
 
     annotate_file = args.annotate_file
-    genecol = args.input_ID
+
     output_file = args.output_file
     if not output_file:
         output_file = annotate_file + '_COSMIC.txt'
 
-    new_col = args.output_column
+    genecols = args.input_IDs
+    new_cols = args.output_IDs
+    if not new_cols:
+        new_cols = ["COSMICGenes_" + genecol for genecol in genecols]
+    if len(new_cols) != len(genecols):
+        print "Number of output IDs must be same as number of input IDs"
+        raise ValueError
 
     records = []
 
@@ -53,18 +66,38 @@ def run(args):
         reader = csv.DictReader(csvfile, delimiter='\t')
         header = reader.fieldnames
         for row in reader:
-            segment = row[genecol]
-            genes = get_genes(segment)
-            # print genes
-            cosmic_genes = genes.intersection(cosmic_gene_list)
-            if cosmic_genes:
-                row[new_col] = '_'.join(list(cosmic_genes)) + segment[-4:]
-            else:
-                row[new_col] = 'NA' + segment[-4:]
+            for i in range(len(genecols)):
+                genecol = genecols[i]
+                new_col = new_cols[i]
+                segment = row[genecol]
+                genes = get_genes(segment)
+                cosmic_genes = genes.intersection(cosmic_gene_list)
+
+                if cosmic_genes:
+                    if segment[-4:] in {'loss', 'gain'}:
+                        row[new_col] = '_'.join(list(cosmic_genes)) + segment[-4:]
+                    else:
+                        row[new_col] = '_'.join(list(cosmic_genes))
+                else:
+                    if segment[-4:] in {'loss', 'gain'}:
+                        row[new_col] = 'NA' + segment[-4:]
+                    else:
+                        row[new_col] = 'NA'
             records.append(row)
 
 
-    new_header = header + [new_col]
+
+
+    insertion_point = args.insertion_point
+    new_header = header
+
+
+    for new_col in reversed(new_cols):
+        if insertion_point == None:
+            new_header.append(new_col)
+        else:
+            new_header.insert(insertion_point, new_col)
+
     with open(output_file, 'w') as csvfile:
         writer = csv.DictWriter(csvfile, delimiter='\t', fieldnames=new_header)
         writer.writeheader()
