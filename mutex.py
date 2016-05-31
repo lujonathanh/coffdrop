@@ -16,52 +16,64 @@ import csv
 import bingenesbypairs as bgbp
 
 
-def graph_mutation_distribution(numCases, genes, geneToCases, filename, top_percentile=10, bins=100):
+def graph_mutation_distribution(numCases, genes, geneToCases, filename, top_percentile=10, zoomin_percentile=None, bins=100):
     mutationfrequencies = [len(geneToCases[gene]) for gene in genes]
     plt.figure()
     plt.hist(mutationfrequencies, bins)
     percentile_score = stats.scoreatpercentile(mutationfrequencies, 100 - top_percentile)
-    print "Score is ", percentile_score
     plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
-                label='Top ' + str(top_percentile) + ' Percentile at ' + str(percentile_score))
-    plt.title(filename.split('.m2')[0] + "'s Distribution of Mutation Frequencies, n = " + str(numCases), fontsize=20)
-    plt.xlabel('Mutation Frequency (# Samples with Mutations)', fontsize=20)
-    plt.ylabel('Amount of Mutations', fontsize=20)
-    plt.legend()
-    plt.show()
-    # plt.savefig(filename + '_' + str(bins) + '.pdf', bbox_inches='tight')
-
-
-def graph_mutation_distribution(numCases, genes, geneToCases, filename, top_percentile=10, bins=100):
-    mutationfrequencies = [len(geneToCases[gene]) for gene in genes]
-    plt.figure()
-    plt.hist(mutationfrequencies, bins)
-    percentile_score = stats.scoreatpercentile(mutationfrequencies, 100 - top_percentile)
-    print "Score is ", percentile_score
-    plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
-                label='Top ' + str(top_percentile) + ' Percentile at ' + str(percentile_score))
-    plt.title(filename.split('.m2')[0] + "'s Distribution of Mutation Frequencies, n = " + str(numCases), fontsize=20)
-    plt.xlabel('Mutation Frequency (# Samples with Mutations)', fontsize=20)
-    plt.ylabel('Amount of Mutations', fontsize=20)
+                label='Top ' + str(top_percentile) + ' % at ' + str(percentile_score))
+    plt.title(filename, fontsize=20)
+    plt.xlabel('Gene Mutation Number', fontsize=20)
+    plt.ylabel('Genes', fontsize=20)
     plt.legend()
     plt.show()
 
+    if zoomin_percentile:
+        print "Zoomed into bottom " + str(zoomin_percentile) + " percent region"
 
-def graph_patient_distribution(numGenes, cases, patientToGenes, filename, top_percentile=10, bins=100):
+        zoomin_percentile_score = stats.scoreatpercentile(mutationfrequencies, zoomin_percentile)
+        zoomin_mutationfrequencies = [m for m in mutationfrequencies if m <= zoomin_percentile_score]
+        plt.figure()
+        plt.hist(zoomin_mutationfrequencies)
+        plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
+                    label='Top ' + str(top_percentile) + ' % at ' + str(percentile_score))
+        plt.title(filename + " zoom-in", fontsize=20)
+        plt.xlabel('Gene Mutation Number', fontsize=20)
+        plt.ylabel('Genes', fontsize=20)
+        plt.legend()
+        plt.show()
+
+
+
+
+def graph_patient_distribution(numGenes, cases, patientToGenes, filename, top_percentile=10, bottom_percentile=10, zoomin_percentile=None, bins=100):
     patientfrequencies = [len(patientToGenes[case]) for case in cases]
     plt.figure()
     plt.hist(patientfrequencies, bins)
-    percentile_score = stats.scoreatpercentile(patientfrequencies, 100 - top_percentile)
-    # plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
-    #             label='Top ' + str(top_percentile) + ' Percentile at ' + str(percentile_score))
-    # plt.title(
-    #     filename.split('.m2')[0] + "'s Distribution of Mutation Number per Patient, Total Genes  = " + str(numGenes),
-    #     fontsize=20)
-    plt.title(filename)
-    plt.xlabel('# Somatic Mutations In Tumor', fontsize=20)
-    plt.ylabel('Number of Samples', fontsize=20)
+    percentile_score = stats.scoreatpercentile(patientfrequencies, bottom_percentile)
+    plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
+                label='Bottom ' + str(top_percentile) + ' % at ' + str(percentile_score))
+    plt.title(filename, fontsize=20)
+    plt.xlabel('Patient Mutation Number', fontsize=20)
+    plt.ylabel('Patients', fontsize=20)
     plt.legend()
     plt.show()
+
+    if zoomin_percentile:
+        print "Zoomed into bottom " + str(zoomin_percentile) + " percent region"
+        zoomin_percentile_score = stats.scoreatpercentile(patientfrequencies, zoomin_percentile)
+        zoomin_mutationfrequencies = [m for m in patientfrequencies if m <= zoomin_percentile_score]
+        plt.figure()
+        plt.hist(zoomin_mutationfrequencies)
+        plt.title(filename + "zoom-in", fontsize=20)
+        plt.axvline(percentile_score, color='k', linestyle='dashed', linewidth=2,
+                    label='Bottom ' + str(top_percentile) + ' % at ' + str(percentile_score))
+        plt.xlabel('Patient Mutation Number', fontsize=20)
+        plt.ylabel('Patients', fontsize=20)
+        plt.legend()
+        plt.show()
+
 
 
 

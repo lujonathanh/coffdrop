@@ -2,125 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dacb5ee-47a4-4e9d-aaa1-383490bcb7a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mutexnetwork.py.lprof" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mutexnetwork.py.prof" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/GBM-comet.m2.orig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn146.cn30726Cgenes.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn146.cn30726Cpairs.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn146.cn30726Mgenes.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402.n134MutuallyExclusiveMutuallyExclusiveMutuallyExclusive_Triplets.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402.n1509CooccurringMutuallyExclusiveMutuallyExclusive_Triplets.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402.n1CooccurringCooccurringMutuallyExclusive_Triplets.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402.n5812CooccurringCooccurringCooccurring_Triplets.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402Cgenes.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402Cpairs.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402Mgenes.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402Mpairs.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402_Tripletsgenes.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex.g719.p261.mf5.mp0.05.mo400.cp0.05.mc1.mcr0.0.pcn0.mn927.cn3402_Tripletspairs.tsv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lowmutatedness.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mutex_triangles.py.orig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/permute.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-1.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-10.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-100.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-11.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-12.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-13.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-14.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-15.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-16.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-17.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-18.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-19.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-2.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-20.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-21.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-22.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-23.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-24.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-25.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-26.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-27.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-28.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-29.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-3.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-30.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-31.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-32.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-33.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-34.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-35.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-36.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-37.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-38.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-39.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-4.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-40.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-41.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-42.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-43.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-44.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-45.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-46.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-47.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-48.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-49.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-5.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-50.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-51.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-52.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-53.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-54.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-55.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-56.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-57.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-58.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-59.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-6.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-60.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-61.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-62.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-63.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-64.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-65.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-66.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-67.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-68.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-69.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-7.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-70.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-71.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-72.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-73.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-74.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-75.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-76.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-77.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-78.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-79.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-8.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-80.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-81.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-82.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-83.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-84.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-85.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-86.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-87.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-88.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-89.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-9.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-90.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-91.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-92.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-93.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-94.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-95.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-96.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-97.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-98.m2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output/GBM-mutex_perm_matrices/permuted-matrix-99.m2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EM_test.py" afterPath="$PROJECT_DIR$/EM_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Mutex_Runs-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Mutex_Runs-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mutex_Runs.ipynb" afterPath="$PROJECT_DIR$/Mutex_Runs.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bingenesbypairs.py" afterPath="$PROJECT_DIR$/bingenesbypairs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/preprocessing/cna2matrix.py" afterPath="$PROJECT_DIR$/preprocessing/cna2matrix.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutex.py" afterPath="$PROJECT_DIR$/mutex.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mutex_triangles.py" afterPath="$PROJECT_DIR$/mutex_triangles.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -143,57 +30,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mutex.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mutex.py">
+      <file leaf-file-name="chisquared.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chisquared.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="181" column="37" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="37" />
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding>
-                <element signature="e#22#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mutex_triangles.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1908397">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lowmutatedness.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lowmutatedness.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.410715">
-              <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-              <folding>
-                <element signature="e#22#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cna2matrix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="434" column="22" selection-start-line="434" selection-start-column="4" selection-end-line="434" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mutexnetwork.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="578" column="44" selection-start-line="578" selection-start-column="30" selection-end-line="578" selection-end-column="44" />
-              <folding>
-                <element signature="e#22#34#0" expanded="true" />
+                <element signature="e#22#41#0" expanded="true" />
+                <element signature="e#1030#1321#0" expanded="false" />
+                <element signature="e#1390#1762#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -202,8 +47,66 @@
       <file leaf-file-name="bingenesbypairs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.387097">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#22#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_COSMIC.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/add_COSMIC.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="721" column="43" selection-start-line="721" selection-start-column="43" selection-end-line="721" selection-end-column="43" />
+              <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+              <folding>
+                <element signature="e#22#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mutex_triangles.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333">
+              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mutex.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mutex.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+              <folding>
+                <element signature="e#22#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="surface3d_demo (1).py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/surface3d_demo (1).py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scatter3d_demo (1).py" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Downloads/scatter3d_demo (1).py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -213,7 +116,7 @@
         <entry file="file://$PROJECT_DIR$/mutexprob.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
                 <element signature="e#22#49#0" expanded="true" />
               </folding>
@@ -221,22 +124,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parallel_compute_working.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
+      <file leaf-file-name="cna2matrix.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scorecooccur.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scorecooccur.py">
+      <file leaf-file-name="matrixreader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <caret line="37" column="27" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="27" />
+              <folding>
+                <element signature="e#22#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -257,17 +162,27 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/preprocessing/maf2matrix.py" />
-        <option value="$PROJECT_DIR$/preprocessing/cna2matrix.py" />
-        <option value="$PROJECT_DIR$/preprocessing/matrixreader.py" />
         <option value="$PROJECT_DIR$/postprocessing/edgeannotator.py" />
         <option value="$PROJECT_DIR$/postprocessing/edgereader.py" />
         <option value="$PROJECT_DIR$/mutexprob.py" />
-        <option value="$PROJECT_DIR$/bingenesbypairs.py" />
-        <option value="$PROJECT_DIR$/mutex.py" />
         <option value="$PROJECT_DIR$/../../comet/comet/permute.py" />
-        <option value="$PROJECT_DIR$/mutexnetwork.py" />
         <option value="$PROJECT_DIR$/lowmutatedness.py" />
+        <option value="$PROJECT_DIR$/mutexnetwork.py" />
+        <option value="$PROJECT_DIR$/clustering.py" />
+        <option value="$PROJECT_DIR$/EM_test.py" />
+        <option value="$PROJECT_DIR$/test_sound.py" />
+        <option value="$USER_HOME$/cos424/Assignment3/Assignment3_Bitcoin-master/pmf.py" />
+        <option value="$USER_HOME$/maf/OnlyLoss2/UCEC_broad/gainloss2justloss.py" />
+        <option value="$PROJECT_DIR$/preprocessing/matrixreader.py" />
+        <option value="$PROJECT_DIR$/preprocessing/gainloss2justloss.py" />
+        <option value="$PROJECT_DIR$/partition.py" />
+        <option value="$USER_HOME$/v-causal-snps/code/get_sim.py" />
+        <option value="$PROJECT_DIR$/chisquared.py" />
+        <option value="$PROJECT_DIR$/add_COSMIC.py" />
+        <option value="$PROJECT_DIR$/preprocessing/cna2matrix.py" />
+        <option value="$PROJECT_DIR$/bingenesbypairs.py" />
         <option value="$PROJECT_DIR$/mutex_triangles.py" />
+        <option value="$PROJECT_DIR$/mutex.py" />
       </list>
     </option>
   </component>
@@ -275,10 +190,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="348" />
-    <option name="y" value="57" />
-    <option name="width" value="983" />
-    <option name="height" value="737" />
+    <option name="x" value="266" />
+    <option name="y" value="61" />
+    <option name="width" value="908" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -291,7 +206,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -302,19 +217,77 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="preprocessing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.project" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bingenesbypairs.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/preprocessing/matrixreader.py" />
+    <property name="recentsLimit" value="5" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/jlu96/conte/jlu/mutex/partition_3_11_16.py" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/.." />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.partition">
+    <configuration default="false" name="partition" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mutex" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/partition.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -437,6 +410,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.partition" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.partition" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -452,48 +433,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="348" y="57" width="983" height="737" extended-state="0" />
-    <editor active="true" />
+    <frame x="266" y="61" width="908" height="824" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24035813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970026" sideWeight="0.49683258" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18562874" sideWeight="0.5055096" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934132" sideWeight="0.49449036" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24915445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37429377" sideWeight="0.56352085" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37429377" sideWeight="0.43647912" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18562874" sideWeight="0.5055096" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18562874" sideWeight="0.49449036" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24035813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -511,277 +472,69 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/mutex.py</url>
-          <line>65</line>
+          <line>93</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/lowmutatedness.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/clustering.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/partition.py</url>
+          <line>812</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/partition.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/partition.py</url>
+          <line>416</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/chisquared.py</url>
+          <line>436</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/cos424/Assignment3/Assignment3_Bitcoin-master/pmf.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/preprocessing/matrixreader.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/mutex_triangles.py</url>
+          <line>199</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/mutex_triangles.py</url>
+          <line>1354</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/Downloads/surface3d_demo (1).py</url>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mutex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="434" column="22" selection-start-line="434" selection-start-column="4" selection-end-line="434" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="578" column="44" selection-start-line="578" selection-start-column="30" selection-end-line="578" selection-end-column="44" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="721" column="43" selection-start-line="721" selection-start-column="43" selection-end-line="721" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexprob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="e#22#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="75" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexprob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="210" column="12" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="70" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexprob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="979" column="60" selection-start-line="979" selection-start-column="60" selection-end-line="979" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="424" column="0" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/maf2matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postprocessing/edgeannotator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_29_15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postprocessing/edgereader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="32.25926">
-          <caret line="247" column="13" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mutexnetwork_8_30_15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../comet/run_comet_permutation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.333334">
@@ -831,14 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../comet/comet/permute_matrix.so.dSYM/Contents/Resources/DWARF/permute_matrix.so">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -846,29 +591,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mutexprob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parallel_compute_working.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="721" column="43" selection-start-line="721" selection-start-column="43" selection-end-line="721" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,48 +605,331 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
+    <entry file="file://$PROJECT_DIR$/scorecooccur.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="434" column="22" selection-start-line="434" selection-start-column="4" selection-end-line="434" selection-end-column="22" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lowmutatedness.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="83" />
+          <folding>
+            <element signature="e#22#35#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mutexnetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="578" column="44" selection-start-line="578" selection-start-column="30" selection-end-line="578" selection-end-column="44" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
+          <caret line="789" column="23" selection-start-line="789" selection-start-column="23" selection-end-line="789" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mutex.py">
+    <entry file="file://$USER_HOME$/maf/TCGA_data/cna2matrix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="181" column="37" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="37" />
+          <caret line="559" column="4" selection-start-line="559" selection-start-column="4" selection-end-line="559" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EM_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.055248618">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partition_2_19_16.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../classifier_7_8_15.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="41" selection-start-line="140" selection-start-column="41" selection-end-line="140" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_sound.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partition_3_11_16.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/test_app/mysite/polls/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/test_app_1.9/mysite/polls/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/pumac/test_port/djmac/djmac/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="104" selection-start-line="10" selection-start-column="104" selection-end-line="10" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/test_app/mysite/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0837438">
+          <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/pumac/test_port/djmac/djmac/settings_common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3596059">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="114" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/pumac/test_port/djmac/djmac/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14778325">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/test_app/mysite/polls/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/Python27/PeakSeeker_quick_check_6_21_15.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="624" column="0" selection-start-line="624" selection-start-column="0" selection-end-line="625" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="0" selection-start-line="75" selection-start-column="3" selection-end-line="82" selection-end-column="0" />
           <folding>
-            <element signature="e#22#53#0" expanded="true" />
+            <element signature="e#22#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lowmutatedness.py">
+    <entry file="file://$PROJECT_DIR$/edgereader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.410715">
-          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partition_3_11_16_before_ll_refactor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/v-causal-snps/StochPy-2.3/stochpy/pscmodels/CellDivision.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postprocessing/limitedges.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/v-causal-snps/StochPy-2.3/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/cos424/Assignment3/Assignment3_Bitcoin-master/pmf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#22#35#0" expanded="true" />
+            <element signature="e#156#166#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/maf/OnlyLoss2/UCEC_broad/add_COSMIC.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/maf/OnlyLoss2/UCEC_broad/gainloss2justloss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.036585364">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postprocessing/edgereader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/maf/OnlyLoss2/BLCA_broad/findandreplace.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="76" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postprocessing/edgeannotator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1211" column="0" selection-start-line="1211" selection-start-column="0" selection-end-line="1211" selection-end-column="0" />
+          <folding>
+            <element signature="e#21#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/gainloss2justloss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/matrixreader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="27" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="e#22#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/cna2matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add_COSMIC.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+          <folding>
+            <element signature="e#22#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mutex_triangles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1908397">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state vertical-scroll-proportion="-3.3333333">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chisquared.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#41#0" expanded="true" />
+            <element signature="e#1030#1321#0" expanded="false" />
+            <element signature="e#1390#1762#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bingenesbypairs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.387097">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutexprob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#22#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+          <folding>
+            <element signature="e#22#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/surface3d_demo (1).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/scatter3d_demo (1).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

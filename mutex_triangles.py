@@ -10,7 +10,6 @@ import networkx as nx
 import sys
 import parallel_compute_working as pac
 import bingenesbypairs as bgbp
-import mutexnetwork as mun
 import lowmutatedness as lm
 import line_profiler
 
@@ -1193,9 +1192,14 @@ def run(args):
 
         # Generate permutation matrices
         if use_perm_matrices:
-            perm_matrices = mun.PermutationMatrices(geneToCases, patientToGenes, num_permutations=num_permutations,
-                                          Q=Q, matrixdirectory=perm_matrix_directory, binary_perm_method=binary_perm_method,
-                                            write_matrices=write_matrices)
+
+            print "Permutation matrices no longer supported. Please contact admin."
+            raise Exception
+
+
+            # perm_matrices = mun.PermutationMatrices(geneToCases, patientToGenes, num_permutations=num_permutations,
+            #                               Q=Q, matrixdirectory=perm_matrix_directory, binary_perm_method=binary_perm_method,
+            #                                 write_matrices=write_matrices)
         else:
             perm_matrices = None
 

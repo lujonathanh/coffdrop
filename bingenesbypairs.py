@@ -303,7 +303,7 @@ def get_segment_gene_info(segment):
         get_segment_gene_info.segToStat[segment] = seg_info
 
         if not in_dictionary:
-            print "segment ", segment, "not in dictionary. Default to Chromosome Z."
+            print "Gene ", segment, " was not found in gene_positions.txt. We pretend it is on Chromosome Z."
 
         return seg_info
 

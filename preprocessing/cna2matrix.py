@@ -11,6 +11,7 @@ import numpy as np
 class Segment:
     # Each geneDict is dict of 0s to patients, 1s, 2s, -1s, -2s, as well as position and chromosome
     def __init__(self, gene, altDict):
+        
         self.alterations = [-2, -1, 0, 1, 2]
 
         self.dict = altDict.copy()
@@ -131,6 +132,13 @@ def chrom_compare(a, b, chromosomes=['X', 'Y'] + [str(i) for i in range(1, 23)])
 
 class CNA:
     def __init__(self, filename, genecol = 'Gene Symbol', notsamplecols = set(['Cytoband', 'Locus ID', 'Locus.ID', 'gene_name', 'GENE_ID', 'COMMON', ''])):
+        """
+        :param filename: file name
+        :param genecol: Header column for genes
+        :param notsamplecols: header column names that aren't samples
+        Calculate self.records. self.records[sample][gene] equals the copy number of that gene in that sample.
+        """
+
         self.records = {}
 
         with open(filename) as csvfile:
@@ -171,6 +179,10 @@ class CNA:
         print "Total number of gene alterations: ", num_alterations
 
     def convert_to_genes(self):
+        """
+        Calculate self.geneDict. self.geneDict[gene][copy-number] is the set of all samples that have that copy-number
+        for that gene. E.g. any sample in self.geneDict[TP53][2] has 2 extra copies of TP53.
+        """
         self.geneDict = {}
 
         # Each gene has: chromosome, position, 2 position, 1 patients, etc.
@@ -237,15 +249,16 @@ class CNA:
         print "Distance threshold: ", distance_thresh
 
 
-        # Sort the loaded_genes by chromosome, start, and end.
+        # Sort the loaded_genes in order by chromosome, start, and end.
         sorted_genes = sorted(self.loaded_genes, key=lambda entry: self.geneDict[entry], cmp=chrom_compare)
 
-        # print [(self.geneDict[g]['Chromosome'], self.geneDict[g]['Start']) for g in sorted_genes]
-
+        # Initialize the segment list
         self.segments = [gene for gene in sorted_genes]
         self.geneToSegments = {}
 
 
+
+        # Initialize the first segment
         num_segments = 0
         self.segments[num_segments] = Segment(sorted_genes[0], self.geneDict[sorted_genes[0]])
         prevChrom = self.segments[num_segments].dict['Chromosome']
@@ -255,9 +268,13 @@ class CNA:
         iter_genes.next()
 
 
+
         for gene in iter_genes:
-            #print "Gene was ", gene
+
             chrom = self.geneDict[gene]["Chromosome"]
+
+            # If the gene is below distance threshold from previous segment  or below concordance threshold, terminate
+            # segment and recalculate
             if chrom != prevChrom or \
                 abs(self.segments[num_segments].dict['Start'] - self.geneDict[gene]['Start']) > distance_thresh \
                 or concordance_factor(self.segments[num_segments].dict, self.geneDict[gene]) < concordance_thresh:
@@ -269,21 +286,15 @@ class CNA:
                     self.geneToSegments[past_gene] = self.segments[num_segments].name
 
                 num_segments += 1
-                # print prevChrom
-                # print "Before: ", self.segments[num_segments]
-                # print "gene is ", gene
-                # print "self.geneDict[gene] is ", self.geneDict[gene]
-                self.segments[num_segments] = sclass(gene, self.geneDict[gene])
-                # print "After: ", self.segments[num_segments]
-                # print "After, gene is ", gene
 
-                # print "Now gene is ", gene
+                self.segments[num_segments] = sclass(gene, self.geneDict[gene])
+
                 prevChrom = chrom
 
 
             else:
                 self.segments[num_segments].integrate(gene, self.geneDict[gene])
-                # print "Gene ", gene, " integrated"
+
 
         # For the last segment.
         self.segments[num_segments].calc_representation()
@@ -293,10 +304,8 @@ class CNA:
 
         print "Number of position segments ", num_segments
 
-        # Now load the unloaded genes
 
 
-        # self.not_added_genes = []
 
 
         self.segments = self.segments[:num_segments]
