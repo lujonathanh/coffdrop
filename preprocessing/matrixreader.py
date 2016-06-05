@@ -4,6 +4,7 @@ import csv
 import time
 import os
 import sys
+import numpy as np
 
 
 class MatrixReader:
@@ -63,6 +64,32 @@ class MatrixReader:
 
         return newMatrix
 
+
+    def permute_by_gene(self, random_seed=123):
+        gene_records = self.get_gene_records()
+        geneToFreq = {}
+
+        for gene in gene_records:
+            geneToFreq[gene] = len(gene_records[gene])
+
+        samples = self.sample_records.keys()
+
+        new_gene_records = {}
+
+        for gene in gene_records:
+            new_gene_records[gene] = set(np.random.choice(samples, geneToFreq[gene], replace=False))
+
+        new_sample_records = convert_sample_gene(new_gene_records)
+
+
+
+        newMatrix = MatrixReader()
+        newMatrix.sample_records = new_sample_records
+        newMatrix.mutation_list = self.mutation_list
+
+        return newMatrix
+
+
     def removeEndingIn(self, ending, length):
         genes = set([g for g in self.mutation_list if g[-1 * length:] != ending])
 
@@ -77,6 +104,48 @@ class MatrixReader:
 
 
         return newMatrix
+
+
+    def get_gene_records(self):
+        gene_records = {}
+        for sample in self.sample_records:
+            for gene in self.sample_records[sample]:
+                if gene not in gene_records:
+                    gene_records[gene] = set()
+                gene_records[gene].add(sample)
+
+        return gene_records
+
+    def write_weSME_mut_list(self, filename):
+        sampleToNumber = {}
+        samples = self.sample_records.keys()
+        for i in range(len(self.sample_records)):
+            sample = samples[i]
+            sampleToNumber[sample] = i
+        gene_records = self.get_gene_records()
+        geneToSampleNumbers = {}
+        for gene in gene_records:
+            geneToSampleNumbers[gene] = set([sampleToNumber[g] for g in gene_records[gene]])
+
+        with open(filename, 'w') as csvfile:
+            writer = csv.writer(csvfile, delimiter='\t')
+            writer.writerow(["samples", ",".join(samples)])
+            for gene in geneToSampleNumbers:
+                writer.writerow([gene, ",".join([str(num) for num in sorted(geneToSampleNumbers[gene])])])
+
+
+def convert_sample_gene(sample_records):
+    gene_records = {}
+    for sample in sample_records:
+        for gene in sample_records[sample]:
+            if gene not in gene_records:
+                gene_records[gene] = set()
+            gene_records[gene].add(sample)
+
+    return gene_records
+
+
+
 
 def get_parser():
     # Parse arguments
