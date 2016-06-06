@@ -7,7 +7,7 @@ import csv
 import sys
 
 
-def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_distance=None):
+def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_distance=None, only_filter_copy_distance=True):
     """
     :param genes1: First list of genes.
     :param genes2: Second list of genes. If None, defaults to making pairs from the first gene list.
@@ -28,8 +28,16 @@ def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_d
                 if gene1 in relevant_genes and gene2 in relevant_genes:
                     genepair = frozenset([gene1, gene2])
                     try:
-                        if not closer_than_distance or not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
-                            genepairs.add(genepair)
+                        if only_filter_copy_distance:
+                            if not closer_than_distance:
+                                genepairs.add(genepair)
+                            elif (not is_segment(gene1) or not is_segment(gene2)): # if one of them is somatic it doesn't matter
+                                genepairs.add(genepair)
+                            elif not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
+                                genepairs.add(genepair)
+                        else:
+                            if not closer_than_distance or not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
+                                genepairs.add(genepair)
                     except KeyError:
                         pass
 
@@ -230,7 +238,8 @@ def get_gene_distance(gene1, gene2, usestart=True):
         return None
 
 
-
+def is_segment(segment):
+    return segment[-4:] in {'loss', 'gain'}
 
 
 def get_segment_gene_info(segment):
