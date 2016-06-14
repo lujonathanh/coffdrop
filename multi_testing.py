@@ -22,20 +22,20 @@ def BH(results, pvalues, Q=0.05, use_dependencies=False):
         # change the base threshold to Q * 1.0/m * sum_i=1^m 1/i
         whole_sum = np.sum(1.0/ np.arange(1, m + 1))
         base_threshold /= whole_sum
-        print whole_sum
 
 
     # i will be the cutoff index for discoveries
     for i in range(len(result_pvalue_sorted)):
         result, pvalue = result_pvalue_sorted[i]
         threshold = (i + 1) * base_threshold
-        print pvalue, threshold
         if pvalue > threshold:
             discovered = result_pvalue_sorted[:i]
+            if len(discovered) == 0:
+                return [], [], threshold
             discovered_results, discovered_pvalues = zip(*discovered)[0], zip(*discovered)[1]
-            return discovered_results, discovered_pvalues
+            return discovered_results, discovered_pvalues, threshold
 
-    return results, pvalues
+    return results, pvalues, threshold
 
 
 def main():
