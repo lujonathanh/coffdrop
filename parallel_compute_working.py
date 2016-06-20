@@ -220,6 +220,14 @@ def initialize_pool(procnumber=32):
 
 def parallel_compute_new(function, args, input, input_index, partition_input_function, join_functions_dict,
                          number=32, procnumber=32):
+    # function is the function
+    # args is the arguments
+    # input is the input list where things are changed
+    # input_index is the index of input in the arguments
+    # partiion_input_function partitions the input according to the number of processes
+    # join_functions_dict joins the return values of teh function
+
+
     # Partition the data
     # Only return those indices with a corresponding join function.
     t = time.time()
@@ -378,7 +386,8 @@ def test_parallel_compute(a, b, c, number=32, procnumber=32):
     print "Time to run with no parallel compute: ", t1 - t0
 
 
-    d1, e1, f1 = parallel_compute_new(test_function, [a, b, c], b, 1, join_functions_dict, number=number, procnumber=procnumber)
+    d1, e1, f1 = parallel_compute_new(test_function, [a, b, c], b, 1, partition_inputs, join_functions_dict, number=number, procnumber=procnumber)
+
     t2 = time.time()
     print "Time to run with parallel compute: ", t2 - t1, " with number ", number
 

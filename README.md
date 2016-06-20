@@ -1,7 +1,16 @@
 #Mutex
-Mutex is a software package identifying mutually exclusive and co-occurring pairs and triplets of mutations in sequenced tumor samples. Mutex is written in Python. It was developd by Jonathan Lu and Jason Pitt in the Kevin White Lab at the Institute for Genomics and Systems Biology at the University of Chicago.
+Mutex is a software package identifying mutually exclusive and co-occurring pairs and triplets of mutations in sequenced tumor samples. Mutex is written in Python. It was developed by Jonathan Lu and Jason Pitt in the Kevin White Lab at the Institute for Genomics and Systems Biology at the University of Chicago.
 
-Mutex implements a permutation statistical model to assess for significance of the interaction. Furthermore, it has a flexible preprocessing feature to allow for handling various mutation types, particularly Copy Number Alterations, which can create significant artefacts due to lack of independence among alterations in nearby genes.
+Mutex implements a binomial statistical model to assess for significance of the mutual exclusivity/co-occurrence of a pair. To control false discoveries, one can limit the tested pairs by performing an initial screen of the pairs over the patients with the least mutations, then choosing only the most significant ones to test across the whole distribution. Mutex uses the Benjamini-Hochberg procedure to control False Discoveries.
+
+After detecting significant pairs, Mutex 
+    1. searches for enriched genes and chromosomal regions
+    2. searches for enriched pairs.
+    3. plots the mutual-exclusivity and co-occurrence networks and finds genes with the highest degree centrality
+
+Furthermore, it has a flexible preprocessing feature to allow for:
+    1. handling various mutation types, particularly Copy Number Alterations, which can create significant artefacts due to lack of independence among alterations in nearby genes. Thus, one can require genes to be a certain distance away before being run
+    2. testing only those genes above a certain frequency
 
 ##Requirements
 mutex requires the following Python modules:
@@ -14,12 +23,13 @@ mutex requires the following Python modules:
 See "Mutex workflow" in the wiki for details.
 
 #Input
+Mutex provides several python scripts for processing and integrating MAF and GISTIC files into the alteration matrix format, detailed below.
+
 Alteration matrix. This tab-separated file lists alterations in your dataset. Each row lists the alterations for a single sample. In each row, the first column lists a sample ID, and the remaining columns list genes that are altered in that sample. Note that the matrix is not necessarily symmetric, as different samples will have different numbers of alterations.
 In all files, lines starting with '#' are ignored.
 
-Mutex provides several python scripts for processing and integrating MAF and GISTIC files.
 
 #Output
-Output files are tsv files with each identified pair or triplet as one row.
+Output files are txt files with each identified pair or triplet as one row.
 
 We provide example matrices (".m2") in the data folder.
