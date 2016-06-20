@@ -1,5 +1,5 @@
 #Mutex
-Mutex is a software package identifying mutually exclusive and co-occurring pairs and triplets of mutations in sequenced tumor samples. Mutex is written in Python. It was developed by Jonathan Lu and Jason Pitt in the Kevin White Lab at the Institute for Genomics and Systems Biology at the University of Chicago.
+Mutex is a software package identifying mutually exclusive and co-occurring pairs and triplets of mutations in sequenced tumor samples. Mutex is written in Python. It was developed by Jonathan Lu, Jason Pitt, and Lorenzo Pesce at the University of Chicago.
 
 Mutex implements a binomial statistical model to assess for significance of the mutual exclusivity/co-occurrence of a pair. To control false discoveries, one can limit the tested pairs by performing an initial screen of the pairs over the patients with the least mutations, then choosing only the most significant ones to test across the whole distribution. Mutex uses the Benjamini-Hochberg procedure to control False Discoveries.
 
@@ -7,6 +7,7 @@ After detecting significant pairs, Mutex
     1. searches for enriched genes and chromosomal regions
     2. searches for enriched pairs.
     3. plots the mutual-exclusivity and co-occurrence networks and finds genes with the highest degree centrality
+    4. Searches for triplets of mixed mutually exclusive and co-occurring pairs.
 
 Furthermore, it has a flexible preprocessing feature to allow for:
     1. handling various mutation types, particularly Copy Number Alterations, which can create significant artefacts due to lack of independence among alterations in nearby genes. Thus, one can require genes to be a certain distance away before being run
@@ -14,10 +15,10 @@ Furthermore, it has a flexible preprocessing feature to allow for:
 
 ##Requirements
 mutex requires the following Python modules:
-1.  NetworkX
-2.  SciPy
-3.  NumPy
-4.  matplotlib
+    1. NetworkX
+    2. SciPy
+    3. NumPy
+    4. matplotlib
 
 #Usage
 See "Mutex workflow" in the wiki for details.
