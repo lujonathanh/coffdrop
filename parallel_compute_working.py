@@ -114,9 +114,9 @@ def worker_function_new(args):
     function_args = args[1]
     procnum = args[2]
 
-    print "Process ", os.getpid(), "number ", procnum, "with function ", function, " begun at ", time.strftime("%H:%M:%S")
+    #print "Process ", os.getpid(), "number ", procnum, "with function ", function, " begun at ", time.strftime("%H:%M:%S")
     returnvalue = function(*function_args)
-    print "Process ", os.getpid(), "number ", procnum, "with function ", function, " finished at ", time.strftime("%H:%M:%S")
+    #print "Process ", os.getpid(), "number ", procnum, "with function ", function, " finished at ", time.strftime("%H:%M:%S")
     return returnvalue
 
 # def parallel_compute_new(function, args, input, input_index, join_functions_dict, number=32, procnumber=32):
@@ -257,7 +257,7 @@ def parallel_compute_new(function, args, input, input_index, partition_input_fun
     # print "Time to prepare processes ", t2_5 - t2
 
     #print worker_function_args_list
-
+    print "Number of processes: ", number
     print "Mapping begun at ", time.strftime("%H:%M:%S")
     returnlist = pool.map(worker_function_new, worker_function_args_list)
     pool.close()

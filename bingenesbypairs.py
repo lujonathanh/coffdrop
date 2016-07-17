@@ -6,8 +6,11 @@ import time
 import csv
 import sys
 
+global missing_chromosome
+missing_chromosome = 'Z'
 
-def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_distance=None, only_filter_copy_distance=True):
+def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_distance=None, only_filter_copy_distance=True,
+                 remove_missing_genes=True):
     """
     :param genes1: First list of genes.
     :param genes2: Second list of genes. If None, defaults to making pairs from the first gene list.
@@ -20,13 +23,19 @@ def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_d
 
     relevant_genes = set([gene for gene in geneToCases.keys() if len(geneToCases[gene]) >= test_minFreq])
 
+    if remove_missing_genes:
+        print "All genes that weren't found in gene_positions file will not be considered"
+        for gene in list(relevant_genes):
+            if get_segment_gene_info(gene)['Chromosome'] == missing_chromosome:
+                relevant_genes.remove(gene)
+
     genepairs = set()
 
     for gene1 in genes1:
         for gene2 in genes2:
             if gene1 != gene2:
                 if gene1 in relevant_genes and gene2 in relevant_genes:
-                    genepair = frozenset([gene1, gene2])
+                    genepair = frozenset(sorted([gene1, gene2]))
                     try:
                         if only_filter_copy_distance:
                             if not closer_than_distance:
@@ -34,6 +43,7 @@ def getgenepairs(geneToCases, genes1, genes2=None, test_minFreq=0, closer_than_d
                             elif (not is_segment(gene1) or not is_segment(gene2)): # if one of them is somatic it doesn't matter
                                 genepairs.add(genepair)
                             elif not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
+                                    # Remove those genes that weren't found in the
                                 genepairs.add(genepair)
                         else:
                             if not closer_than_distance or not check_pair_same_segment(genepair, bin_distance_threshold=closer_than_distance):
@@ -187,7 +197,7 @@ def convert_genes_to_bins(genes, geneToBin):
 
 
 
-def check_pair_same_segment(pair, bin_distance_threshold=2000000):
+def check_pair_same_segment(pair, bin_distance_threshold=2000000, ):
     gene0, gene1 = tuple(pair)
     gene0info = get_segment_gene_info(gene0)
     gene1info = get_segment_gene_info(gene1)
@@ -227,6 +237,7 @@ def get_gene_distance(gene1, gene2, usestart=True):
         gene1pos = geneToPosition[gene1]
         gene2pos = geneToPosition[gene2]
 
+    # POS- change equals to check for tuples, go for each
     if gene1pos['Chromosome'] == gene2pos['Chromosome']:
         indices = [gene1pos['Start'], gene1pos['End'], gene2pos['Start'], gene2pos['End']]
         sorted_indices = sorted(indices)
@@ -271,22 +282,22 @@ def get_segment_gene_info(segment):
 
         in_dictionary = False
         for gene in genes:
-            if gene in get_segment_gene_info.geneToStat and get_segment_gene_info.geneToStat[gene]['Chromosome'] != 'Z':
+            if gene in get_segment_gene_info.geneToStat and get_segment_gene_info.geneToStat[gene]['Chromosome'] != missing_chromosome:
                 seg_info['Chromosome'] = get_segment_gene_info.geneToStat[gene]['Chromosome']
                 in_dictionary = True
                 break
             else:
                 if gene not in get_segment_gene_info.geneToStat:
                     get_segment_gene_info.geneToStat[gene] = {}
-                    get_segment_gene_info.geneToStat[gene]['Chromosome'] = 'Z'
+                    get_segment_gene_info.geneToStat[gene]['Chromosome'] = missing_chromosome
                     get_segment_gene_info.geneToStat[gene]['Start'] = 0
                     get_segment_gene_info.geneToStat[gene]['End'] = 1
 
         if not in_dictionary:
-            seg_info['Chromosome'] = 'Z'
+            seg_info['Chromosome'] = missing_chromosome
             for gene in genes:
                 get_segment_gene_info.geneToStat[gene] = {}
-                get_segment_gene_info.geneToStat[gene]['Chromosome'] = 'Z'
+                get_segment_gene_info.geneToStat[gene]['Chromosome'] = missing_chromosome
                 get_segment_gene_info.geneToStat[gene]['Start'] = 0
                 get_segment_gene_info.geneToStat[gene]['End'] = 1
 
@@ -380,9 +391,11 @@ def get_cytobands2(chrom, start, end):
 
 def load_gene_positions(filename='gene_positions.txt', genecol='Associated Gene Name', chromcol='Chromosome Name', extra_genecols=['Ensembl Gene ID'],
                    startcol='Gene Start (bp)', endcol='Gene End (bp)', delimiter='\t',
-                   chromosomes = set(['X', 'Y'] + [str(i) for i in range(1, 23)])):
+                   chromosomes = set(['X', 'Y'] + [str(i) for i in range(1, 23)]),
+                        include_extras=False):
     t = time.time()
     geneToStat = {}
+    extra_genes = set()
     with open(filename,'rU') as geneToStatFile:
         statreader = csv.DictReader(geneToStatFile, delimiter=delimiter)
         for row in statreader:
@@ -395,12 +408,27 @@ def load_gene_positions(filename='gene_positions.txt', genecol='Associated Gene 
 
                 if gene not in geneToStat:
                     geneToStat[gene] = position
+                elif include_extras:
+                    print "Extra entry for ", gene
+                    if not isinstance(geneToStat[gene]['Chromosome'], tuple):
+                        geneToStat[gene]['Chromosome'] = (geneToStat[gene]['Chromosome'],)
+                        geneToStat[gene]['Start'] = (geneToStat[gene]['Start'],)
+                        geneToStat[gene]['End'] = (geneToStat[gene]['End'],)
+                    geneToStat[gene]['Chromosome'] += (position['Chromosome'],)
+                    geneToStat[gene]['Start'] += (position['Start'],)
+                    geneToStat[gene]['End'] += (position['End'],)
+                    extra_genes.add(gene)
+
                 if extra_genecols:
                     genes = [row[extra_genecol] for extra_genecol in extra_genecols]
                     for gene in genes:
-                        geneToStat[gene] = position
+                        if gene not in geneToStat:
+                            geneToStat[gene] = position
 
-    return geneToStat
+    if not include_extras:
+        return geneToStat
+    else:
+        return geneToStat, extra_genes
 
 
 def write_gene_positions(genes, filename='gene_positions.txt', genecol='Associated Gene Name', chromcol='Chromosome Name',

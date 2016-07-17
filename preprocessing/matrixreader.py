@@ -64,6 +64,22 @@ class MatrixReader:
 
         return newMatrix
 
+    def filter_samples(self, sampleFile=None):
+
+
+        if sampleFile:
+            with open(sampleFile) as f:
+                samples = set(l.rstrip().split()[0] for l in f if not l.startswith("#"))
+        else:
+            samples = set()
+
+
+        newMatrix = MatrixReader()
+        newMatrix.sample_records = {}
+        for sample in samples:
+            newMatrix.sample_records[sample] = self.sample_records[sample]
+        return newMatrix
+
 
     def permute_by_gene(self, random_seed=123):
         gene_records = self.get_gene_records()

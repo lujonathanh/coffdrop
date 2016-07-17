@@ -2,7 +2,7 @@ __author__ = 'jlu96'
 
 import numpy as np
 
-def BH(results, pvalues, Q=0.05, use_dependencies=False):
+def BH(results, pvalues, Q=0.05, use_dependencies=True):
     """Benjamini-Hochberg
 
     Given a list of results and list of their corresponding p-values:

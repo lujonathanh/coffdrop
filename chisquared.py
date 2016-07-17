@@ -372,7 +372,7 @@ def add_BinomP_cohorts_all_pairs(pairsdict, geneToCases, patientToGenes, cohort_
     num_cohorts = len(cohort_dict)
 
     for pair in pairsdict:
-        geneset = set(pair)
+        geneset = pair #set(pair)
         all_c_sig = True
         all_m_sig = True
 
